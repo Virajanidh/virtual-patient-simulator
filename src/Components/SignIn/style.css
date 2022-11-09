@@ -1,0 +1,14 @@
+#backgound-img{
+    background-image: 
+ "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fsmcbangla.com%2FDentistry&psig=AOvVaw32k7YbDEG44-shqIwZuOjk&ust=1667506040200000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCIDt9pumkPsCFQAAAAAdAAAAABAE')";
+        height:'100vh';
+        margin-top:'-70px';
+        font-size:'50px';
+        background-size: 'cover';
+        background-repeat: 'no-repeat';
+}
+div.relative {
+    position: relative;
+    left: 30px;
+    right: 30px;
+  }
