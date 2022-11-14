@@ -10,21 +10,41 @@ import { alignPropType } from 'react-bootstrap/esm/types';
 import './style.css'
 import { useSelector,useDispatch} from "react-redux";
 import { UserActions } from '../Actions/UserActions';
+import Swl from 'sweetalert2';
+
+
 
 function SignIn(){
 
     const [user,setUser]= useState({});
     
-
     const dispatch = useDispatch()
 
     function handleCallbackResponse(response){
         console.log("Encoded JWT Id token" + response.credential);
         var userObject = jwt_decode(response.credential);
-        console.log(userObject)
-        setUser(userObject)
-        dispatch(UserActions.getCurrentUserDetails(userObject))
-        document.getElementById("signInDiv").hidden=true
+        console.log(userObject.email.length)
+        var text =userObject.email
+        if(text.match("@eng.pdn.ac.lk")){
+            setUser(userObject)
+            dispatch(UserActions.getCurrentUserDetails(userObject))
+            document.getElementById("signInDiv").hidden=true
+        }
+        else{
+           // alert("Login Failed. Use your Dental student account to login!");
+           // swal("Login Failed!", "Use your Dental student account to login");
+           showAlert();
+           // document.getElementById("errorM").innerHTML= "Login Failed. Use your Dental student account to login"
+        }
+    }
+
+    function showAlert (){
+        Swl.fire({
+            title: "Login Failed",
+            text: "Use your Dental student account to login",
+            icon: "fail",
+            confirmButtonText: "OK",
+          });
     }
 
     function handleSignout(event){
@@ -38,11 +58,11 @@ function SignIn(){
             client_id: "305839887405-kho6bmbpfcr24d2jtpksfirb79a8v78v.apps.googleusercontent.com",
             callback:handleCallbackResponse
     })
-    google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        {theme:'outline' , size:'large' }
-    )
-    google.accounts.id.prompt();
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            {theme:'outline' , size:'large' }
+        )
+        google.accounts.id.prompt();
     } ,[]);
 
     if(Object.keys(user).length==0 ){
@@ -52,22 +72,25 @@ function SignIn(){
             backgroundImage: `url(${background})`,
             height:'120vh',
             marginTop:'0px',
-            fontSize:'50px',
+          
             backgroundSize: 'cover',
             }}>
               
               
- <div style={{position:'absolute',
-    left:'60%',
-    top:'10%',
-    fontSize:'70px',
-    fontWeight : 'bold'
-}}>
-        Virtual Patient<br/>Simulator for<br/>Skill Training<br/> in Dentistry
+            <div style={{position:'absolute',
+                left:'60%',
+                top:'20%',
+                fontSize:'70px',
+                fontWeight : 'bold'
+            }}>
+                    Virtual Patient<br/>Simulator for<br/>Skill Training<br/> in Dentistry
 
-        <Button     className= "relative"
- id="signInDiv" variant="light">Sign In2</Button>
-        </div>
+                <Button     className= "relative"
+                 id="signInDiv" variant="light">Sign In2</Button>
+
+                 <p id="errorM"></p>
+            </div>
+            
 
         </div>
         </Fragment>
