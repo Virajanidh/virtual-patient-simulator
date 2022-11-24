@@ -7,7 +7,7 @@ export const UserActions = {
 function  getCurrentUserDetails(data){
     return async dispatch => {
         try {
-            //console.log(data)
+            console.log('at userActions',data)
             dispatch(success(data));
         } catch (error) {
             console.log(error)

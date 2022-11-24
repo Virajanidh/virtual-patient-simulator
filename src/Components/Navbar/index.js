@@ -1,11 +1,16 @@
-import React from 'react'
-import { useSelector} from "react-redux";
+import React, { useEffect } from 'react'
+import { useSelector,useDispatch} from "react-redux";
+import { createTest } from '../../Actions/historyTakingQ/historyTakingActions'
 
 
 function Navbar(){
 
    const {userInfomation} = useSelector((state) => state.user)
    console.log(userInfomation.name)
+  //  const dispatch =useDispatch()
+  //  useEffect(() => {
+  //   dispatch(createTest({"messsage":"hello Test"}))
+  // }, []);
 
     return(
 <div>

@@ -9,8 +9,9 @@ import Header1 from "../Headers/Header1"
 import { alignPropType } from 'react-bootstrap/esm/types';
 import './style.css'
 import { useSelector,useDispatch} from "react-redux";
-import { UserActions } from '../Actions/UserActions';
+import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
+import Dashboard from '../Home/Dashboard';
 
 
 
@@ -28,7 +29,7 @@ function SignIn(){
         if(text.match("@eng.pdn.ac.lk")){
             setUser(userObject)
             dispatch(UserActions.getCurrentUserDetails(userObject))
-            document.getElementById("signInDiv").hidden=true
+          //  document.getElementById("signInDiv").hidden=true
         }
         else{
            // alert("Login Failed. Use your Dental student account to login!");
@@ -99,7 +100,7 @@ function SignIn(){
             else{
              return(
                 <div>
-              <Header1/> 
+              <Dashboard/> 
                 </div>
              )   
             }
