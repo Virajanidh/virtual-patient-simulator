@@ -1,0 +1,52 @@
+.card{
+    padding-top: 10px;
+}
+
+.cards{
+    padding-top: 250px;
+    text-align: center;
+    align-self: center;
+    padding-left: 100px;
+    max-width: '50rem';
+}
+.cardsd{
+    padding-top: 10px;
+    text-align: center;
+    align-self: center;
+    padding-left: 100px;
+    max-width: '100rem';
+    height: '1000px';
+}
+
+.cardDesc{
+    padding-top: 150px;
+    text-align: center;
+    align-self: center;
+    padding-left: 100px;
+    max-width: '50rem';
+}
+.dropdown{
+    padding-top: 10px;
+    text-align: center;
+    padding-right: 100px;
+}
+
+.ddown{
+    height: 250px;
+    padding-top: 0px;
+}
+.NextChip{
+    padding-right: 10px;
+    padding-left: 1100px;
+}
+
+.chips{
+    max-height: 30px;
+    font-size: 20px;
+}
+
+.qna{
+    max-width: 200rem;
+    padding-right: 0px;
+    padding-top: 250px;
+}

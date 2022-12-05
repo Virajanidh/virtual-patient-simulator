@@ -11,8 +11,8 @@ import './style.css'
 import { useSelector,useDispatch} from "react-redux";
 import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
-import Dashboard from '../Home/Dashboard';
-
+//import Dashboard from '../Home/Dashboard';
+import CaseSelect from '../UI/CaseSelect' 
 
 
 function SignIn(){
@@ -100,7 +100,7 @@ function SignIn(){
             else{
              return(
                 <div>
-              <Dashboard/> 
+              <CaseSelect/> 
                 </div>
              )   
             }
