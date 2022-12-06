@@ -37,6 +37,7 @@ function CaseSelect() {
       console.log("hii")
       fetchCase();
     }, []);
+   
   
     const fetchCase=async()=>{
       console.log("hii")
@@ -102,7 +103,7 @@ function CaseSelect() {
                           height="100"
                           alt="Case 1"
                           image="./case1.jpeg"
-                        />
+                        /> 
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
                             Case Name

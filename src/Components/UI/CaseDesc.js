@@ -27,6 +27,7 @@ import img2 from "../../Images/Img2.jpg";
 import { QuestionAnswer } from '@mui/icons-material';
 import firebase from '../../Config/Config'
 import Qcard from './questionCards/Qcard';
+import QcardPack from './questionCards/QcardPack';
 
 const useStyles = makeStyles({
     label: {
@@ -50,6 +51,7 @@ function CaseDesc() {
   const [value,setValue] =useState('');
   const [Section,setSection]=useState('');
   const [ans,setAns] = useState('');
+  const [selectedQ,setSelectedQ]=useState('');
 
   const initialState = {};
   const resetState = () => {
@@ -85,6 +87,19 @@ function CaseDesc() {
     console.log(e);
     setValue(e)
     setIdOfQ(e);
+    for (let item of questions){
+      let num= e.toString()
+      if(item.id == e.toString()){
+        console.log(item)
+        setSelectedQ( // Replace the state
+        [ // with a new array
+          ...selectedQ, // that contains all the old items
+          item // and one new item at the end
+        ]
+        );
+      }
+    }
+    console.log(selectedQ)
     setSelectedQId( // Replace the state
     [ // with a new array
       ...selectedQId, // that contains all the old items
@@ -213,7 +228,8 @@ function CaseDesc() {
                     <Typography gutterBottom variant="h5" component="div">
                       Your Questions
                     </Typography>
-                    {Section && qId ?  
+                      <QcardPack questionList={selectedQ}/>
+                    {/* {Section && qId ?  
                     <Typography variant="body2" color="text.secondary">
                    
                     {questions.filter(question => question.id.includes(qId)).map(filteredName => (
@@ -226,7 +242,7 @@ function CaseDesc() {
                          <h4>{filteredName.a}</h4>
                     ))}
                     </Typography>
-                    : null}
+                    : null} */}
                     {/* <Qcard Qlist={questions} selectedQId={selectedQId}/> */}
                   </CardContent>
                 </CardActionArea>
@@ -263,6 +279,19 @@ function CaseDesc() {
           <label>History of the presenting complaint</label> :null}
           {Section==='habits' ?
           <label>Habits</label> :null}
+          {Section==='medicalH' ?
+          <label>Medical history</label> :null}
+          {Section==='plaque' ?
+          <label>Plaque control</label> :null}
+          {Section==='dhistory' ?
+          <label>Dietary history</label> :null}
+          {Section==='pretreate' ?
+          <label>Previous dental treatments</label> :null}
+           {Section==='shistory' ?
+          <label>Social history</label> :null}
+          
+          
+
                   
                
             </div>
