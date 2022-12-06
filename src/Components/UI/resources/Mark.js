@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./App.css";
 import sheet from '../../../Images/Dental_sheet.PNG'; 
 import "./CheckBox"
+import { useSelector,useDispatch } from "react-redux";
+import { DentalSheetActions } from "../../../Actions/DentalSheet/DentalSheetActions";
 
 import "./styles.css";
 import CheckBox from "./CheckBox";
@@ -13,6 +15,18 @@ export default function Mark() {
   // State with list of all checked item
   
   const [checked, setChecked] = useState([]);
+  const {cariesMark} =useSelector((state) => state.cariesDentalMarking)
+  console.log(cariesMark)
+  console.log(checked)
+
+  useEffect(() => {
+    setChecked(cariesMark)
+  
+   
+  }, [])
+  
+
+  const dispatch = useDispatch()
 
   const carie_checkList = ["1A", "1B", "1C", "1D","2A", "2B", "2C", "2D","3A", "3B", "3C", "3D","4A", "4B", "4C", "4D",
   "5A", "5B", "5C", "5D","6A", "6B", "6C", "6D","7A", "7B","7C", "7D","8A", "8B","8C", "8D","9A", "9B", "9C", "9D",
@@ -32,8 +46,11 @@ export default function Mark() {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
+    console.log(checked)
+    dispatch(DentalSheetActions.setcariesMarkDetails(updatedList))
   };
   
+
 
   // Generate string of checked items
   const checkedItems = checked.length
@@ -41,7 +58,7 @@ export default function Mark() {
         return total + ", " + item;
       })
     : "";
- 
+// dispatch(DentalSheetActions.setcariesMarkDetails(checked))
 
   // Return classes based on whether item is checked
   var isChecked = (item) =>

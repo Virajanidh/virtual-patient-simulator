@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
+import { DentalSheetActions } from "../../../Actions/DentalSheet/DentalSheetActions";
 
 import "./styles.css";
 
@@ -11,6 +13,15 @@ function CheckBox (){
   "29A", "29B", "29C", "29D","30A", "30B", "30C", "30D","31A", "31B", "31C", "31D","32A", "32B", "32C", "32D"
 ];
 const [checked, setChecked] = useState([]);
+const {restorationMark} =useSelector((state) => state.resDentalMarking)
+const dispatch = useDispatch()
+
+console.log(restorationMark)
+
+useEffect(() => {
+  setChecked(...checked,restorationMark)
+}, [])
+
 const handleCheck = (event) => {
     var updatedList = [...checked];
     if (event.target.checked) {
@@ -19,6 +30,7 @@ const handleCheck = (event) => {
       updatedList.splice(checked.indexOf(event.target.value), 1);
     }
     setChecked(updatedList);
+    dispatch(DentalSheetActions.setrestorationMarkDetails(updatedList))
   };
 
   const checkedItems = checked.length

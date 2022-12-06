@@ -8,3 +8,8 @@ export const userTypes = {
 export const historyTakingQTypes = {
     CREATE_CASE_Q : 'CREATE_CASE_Q'
 };
+
+export const DentalSheetTypes ={
+    CARIES :'CARIES',
+    RESTORATION :'RESTORATION'
+}
