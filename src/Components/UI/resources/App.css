@@ -1,0 +1,7 @@
+#Dental_Sheet {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-image: url('../../../Images/Dental_sheet.PNG');
+  }
