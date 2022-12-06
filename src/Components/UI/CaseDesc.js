@@ -25,6 +25,9 @@ import { maxHeight } from '@mui/system';
 import img1 from "../../Images/images.jpeg";
 import img2 from "../../Images/Img2.jpg";
 import { QuestionAnswer } from '@mui/icons-material';
+import firebase from '../../Config/Config'
+import Qcard from './questionCards/Qcard';
+import QcardPack from './questionCards/QcardPack';
 
 const useStyles = makeStyles({
     label: {
@@ -39,30 +42,99 @@ const useStyles = makeStyles({
 
 function CaseDesc() {
 
+  const [questions,setQuestions]=useState([])
+  const [selectedQId,setSelectedQId] =useState([])
+  const {userInfomation} = useSelector((state) => state.user)
+  const classes = useStyles();
+  const navigate = useNavigate();
+  const [qId,setIdOfQ]=useState('');
+  const [value,setValue] =useState('');
+  const [Section,setSection]=useState('');
+  const [ans,setAns] = useState('');
+  const [selectedQ,setSelectedQ]=useState('');
+
+  const initialState = {};
+  const resetState = () => {
+    setQuestions(initialState);
+  };
+  const mapValuesToState=(qArray)=>{
+    console.log("qarray:",qArray);
+   // setQuestions(initialState)
+    qArray.map((item) =>
+    setQuestions(item)
+    );
+    
+    console.log(questions);
+  }
+
+  useEffect(() => {
+    console.log("hii")
+    fetchQuestions();
+  }, []);
+
+  const fetchQuestions=async()=>{
+    console.log("hii")
+    const snapshot = await firebase.firestore().collection('C001').get()
+    const qArray= snapshot.docs.map(doc => doc.data())
+    console.log(qArray);
+    if(questions.length<qArray.length){
+    setQuestions(questions.concat(qArray));
+    }
+    console.log(questions);
+  }
+
   const handleSelect=(e)=>{
     console.log(e);
     setValue(e)
+    setIdOfQ(e);
+    for (let item of questions){
+      let num= e.toString()
+      if(item.id == e.toString()){
+        console.log(item)
+        setSelectedQ( // Replace the state
+        [ // with a new array
+          ...selectedQ, // that contains all the old items
+          item // and one new item at the end
+        ]
+        );
+      }
+    }
+    console.log(selectedQ)
+    setSelectedQId( // Replace the state
+    [ // with a new array
+      ...selectedQId, // that contains all the old items
+      e.toString() // and one new item at the end
+    ]
+  );
+
+    console.log(selectedQId)
     
     if(e==="Question-1"){
       setAns("Ans1")
     }
+
     
   }
-  const handleSection=(e)=>{
-    setSection(e)
-  }
-    const {userInfomation} = useSelector((state) => state.user)
-    const classes = useStyles();
-    const navigate = useNavigate();
-    const [value,setValue]=useState('');
-    const [Section,setSection]=useState('');
-    const [ans,setAns] = useState('');
 
-    const handleClick = () => {
-      navigate('/page2');
-      
-    };
-   console.log(userInfomation.name)
+  const displayq=(e)=>{
+    const QList= questions;
+    console.log("QList",QList)
+    
+
+  }
+
+  const handleSection=(e)=>{
+    console.log(e)
+    setSection(e)
+    displayq(e)
+  }
+
+
+
+  const handleClick = () => {
+    navigate('/page2');  
+  };
+  console.log(userInfomation.name)
 
    const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -133,10 +205,10 @@ function CaseDesc() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Case Name
+                    Biginner case
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      this is the description of the case
+                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
                     </Typography>
                   
                   </CardContent>
@@ -156,11 +228,22 @@ function CaseDesc() {
                     <Typography gutterBottom variant="h5" component="div">
                       Your Questions
                     </Typography>
+                      <QcardPack questionList={selectedQ}/>
+                    {/* {Section && qId ?  
                     <Typography variant="body2" color="text.secondary">
-                      <h4>{value}</h4>
-                      <h4>{Section}</h4>
-                      <h4>{ans}</h4>
+                   
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.cat}</h4>
+                    ))}
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.q}</h4>
+                    ))}
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.a}</h4>
+                    ))}
                     </Typography>
+                    : null} */}
+                    {/* <Qcard Qlist={questions} selectedQId={selectedQId}/> */}
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -173,36 +256,63 @@ function CaseDesc() {
                   <CardContent sx={{maxHeight: 1000}} >
                     <div className='ddown'>
                   <DropdownButton
-            alignRight
-            title="Select the Section"
-            id="dropdown-menu-align-right"
-            onSelect={handleSection}
+                    alignRight
+                    title="Select the Section"
+                    id="dropdown-menu-align-right"
+                    onSelect={handleSection}
+                   
             
-              >
-              <Dropdown.Item eventKey="History of the presenting complaint">History of the presenting complaint</Dropdown.Item>
-              <Dropdown.Item eventKey="Medical history">Medical history</Dropdown.Item>
-              <Dropdown.Item eventKey="Habits">Habits</Dropdown.Item>
-              <Dropdown.Item eventKey="Plaque control">Plaque control</Dropdown.Item>
-              <Dropdown.Item eventKey="Previous dental treatments">Previous dental treatments</Dropdown.Item>
-              <Dropdown.Item eventKey="Social history">Social history</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="some link">some link</Dropdown.Item>
-      </DropdownButton>
+                  >
+                    <Dropdown.Item eventKey="complaint" >History of the presenting complaint</Dropdown.Item>
+                    <Dropdown.Item eventKey="medicalH" >Medical history</Dropdown.Item>
+                    <Dropdown.Item eventKey="habits" >Habits</Dropdown.Item>
+                    <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
+                    <Dropdown.Item eventKey="dhistory" >Dietary history</Dropdown.Item>
+                    <Dropdown.Item eventKey="pretreate" >Previous dental treatments</Dropdown.Item>
+                    <Dropdown.Item eventKey="shistory" >Social history</Dropdown.Item>
+                    
+                    {/* <Dropdown.Divider />
+                    <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
+                  </DropdownButton>
+
+                  {Section==='complaint' ?
+          <label>History of the presenting complaint</label> :null}
+          {Section==='habits' ?
+          <label>Habits</label> :null}
+          {Section==='medicalH' ?
+          <label>Medical history</label> :null}
+          {Section==='plaque' ?
+          <label>Plaque control</label> :null}
+          {Section==='dhistory' ?
+          <label>Dietary history</label> :null}
+          {Section==='pretreate' ?
+          <label>Previous dental treatments</label> :null}
+           {Section==='shistory' ?
+          <label>Social history</label> :null}
+          
+          
+
+                  
                
             </div>
-                    <div>
+            <div>
                   <DropdownButton
-            alignRight
-            title="Select the question"
-            id="dropdown-menu-align-right"
-            onSelect={handleSelect}
-              >
-              <Dropdown.Item onClick={handleSelect} eventKey="Question-1">Question-1</Dropdown.Item>
-              <Dropdown.Item onClick={handleSelect} eventKey="Question-2">Question-2</Dropdown.Item>
-              <Dropdown.Item eventKey="Question-3">Question 3</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="some link">some link</Dropdown.Item>
-      </DropdownButton>
+                    alignRight
+                    title="Select the question"
+                    id="dropdown-menu-align-right"
+                    onSelect={handleSelect}
+                  >
+                    {questions.filter(question => question.cat.includes(Section)).map(filteredName => (
+                      <li>
+                         <Dropdown.Item onClick={handleSelect} eventKey={filteredName.id}>{filteredName.q}</Dropdown.Item>
+                      </li>
+                    ))}
+                   
+                    {/* <Dropdown.Item onClick={handleSelect} eventKey="Question-2">Question-2</Dropdown.Item>
+                    <Dropdown.Item eventKey="Question-3">Question 3</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
+                  </DropdownButton>
             </div>
                   </CardContent>
                 </CardActionArea>

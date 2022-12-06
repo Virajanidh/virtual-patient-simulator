@@ -13,6 +13,7 @@ import { useNavigate, Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import firebase from '../../Config/Config'
 
 function CaseSelect() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -25,11 +26,29 @@ function CaseSelect() {
     const {userInfomation} = useSelector((state) => state.user)
 
     const navigate = useNavigate();
+    const [cases,setCase]=useState([])
 
     const handleClick = () => {
       navigate('/page1');
       
     };
+
+    useEffect(() => {
+      console.log("hii")
+      fetchCase();
+    }, []);
+   
+  
+    const fetchCase=async()=>{
+      console.log("hii")
+      const snapshot = await firebase.firestore().collection('Cases').get()
+      const qArray= snapshot.docs.map(doc => doc.data())
+      console.log(qArray);
+      if(cases.length<qArray.length){
+      setCase(cases.concat(qArray));
+      }
+      console.log(cases);
+    }
    console.log(userInfomation.name)
     return (
       <div>
@@ -84,7 +103,7 @@ function CaseSelect() {
                           height="100"
                           alt="Case 1"
                           image="./case1.jpeg"
-                        />
+                        /> 
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
                             Case Name
@@ -111,10 +130,10 @@ function CaseSelect() {
                         />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
-                            Case Name
+                          Biginner case
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
-                            this is a brief description of the case
+                          A 38-year-old patient presents with a painful tooth on the right side upper arch.
                           </Typography>
                           <Typography>
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
