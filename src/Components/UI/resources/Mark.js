@@ -8,7 +8,7 @@ import { DentalSheetActions } from "../../../Actions/DentalSheet/DentalSheetActi
 import "./styles.css";
 import CheckBox from "./CheckBox";
 
-console.log(sheet); // /logo.84287d09.png
+//console.log(sheet); // /logo.84287d09.png
 
 export default function Mark() {
 
@@ -66,11 +66,19 @@ export default function Mark() {
 
   return (
     <div>
+      <div style={{position:'absolute',
+            left:'40%',
+            top:'75%',
+            fontSize:'40px',
+            fontWeight : 'bold',
+            color: '#b80000'
+            }}>Plaque Score</div>
+
       <div className="Dental_Sheet">
         <img src={sheet}/>
       </div>
 
-      <div className="app">
+      <div className="app1">
         <div className="checkList">
           <div className="title">Caries status:</div>
             <div className="list-container" style = {{flex:1, flexWrap: 'wrap'}}>
@@ -83,7 +91,7 @@ export default function Mark() {
           </div>
         </div>
 
-        <div>
+        <div className="listcont">
           {`Caries List: ${checkedItems}`}
         </div>
       </div>

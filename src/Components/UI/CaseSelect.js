@@ -14,6 +14,9 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import firebase from '../../Config/Config'
+import img1 from "../../Images/case1.png";
+import img2 from "../../Images/case2.jpg";
+import img3 from "../../Images/newBack.jpg";
 
 function CaseSelect() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -54,7 +57,7 @@ function CaseSelect() {
       <div>
         <Fragment>
           <div className ="app" style={{
-              backgroundImage: `url(${background})`,
+              backgroundImage: `url(${img3})`,
               height:'120vh',
               marginTop:'0px',
               fontSize:'50px',
@@ -86,10 +89,11 @@ function CaseSelect() {
                 </div>
               </nav>
               <div style={{position:'absolute',
-              left:'30%',
+              left:'35%',
               top:'20%',
-              fontSize:'70px',
-              fontWeight : 'bold'
+              fontSize:'50px',
+              fontWeight : 'bold',
+              color: '#FFF'
               }}>Case Selection 
 
               </div>
@@ -100,42 +104,18 @@ function CaseSelect() {
                       <CardActionArea>
                         <CardMedia
                           component="img"
-                          height="100"
+                          height="200"
                           alt="Case 1"
-                          image="./case1.jpeg"
-                        /> 
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            Case Name
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            this is a brief description of the case
-                          </Typography>
-                          <Typography>
-                              <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </div>
-                </Grid>
-                <Grid Item xs={6}>
-                  <div className='cards'>
-                    <Card sx={{ maxWidth: 445 }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          height="100"
-                          alt="Case 1"
+                          image={img1}
                         />
                         <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                          Biginner case
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                          A 38-year-old patient presents with a painful tooth on the right side upper arch.
-                          </Typography>
-                          <Typography>
+                        <div className='case'>
+                    Case 001
+                    </div>
+                    <div className='casedes'>
+                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    </div>
+                          <Typography className="caseBtn">
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
                           </Typography>
                         </CardContent>
@@ -143,6 +123,31 @@ function CaseSelect() {
                     </Card>
                   </div>
               </Grid>
+              <Grid Item xs={6}>
+                  <div className='cards'>
+                    <Card sx={{ maxWidth: 445 }}>
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          height="250"
+                          alt="Case 1"
+                          image={img2}
+                        /> 
+                        <CardContent>
+                        <div className='case'>
+                    Case 002
+                    </div>
+                    <div className='casedes'>
+                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    </div>
+                          <Typography className="caseBtn">
+                              <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </div>
+                </Grid>
               </Grid>
           </div>
 

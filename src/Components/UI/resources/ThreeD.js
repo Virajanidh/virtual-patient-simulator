@@ -48,13 +48,15 @@ function ThreeD() {
   return (
 
 <Suspense fallback={<Loader />}>
-   <Canvas dpr={[1,2]} shadows camera={{fov: 45}} style={{"position":"absolute"}}>
+   {/* <Canvas dpr={[1,2]} shadows camera={{fov: 45}} style={{"position":"absolute"}}> */}
+   <Canvas dpr={[1,2]} shadows camera={{fov: 45, position: [30, 0, 0]}} style={{"position":"absolute"}}>
     <color attach="background" args={["#101010"]} />
-    <PresentationControls speed={.5} global zoom={.5} polar={[-0.1, Math.PI / 4]}> 
+    {/* <PresentationControls speed={.5} global zoom={.5} polar={[-0.1, Math.PI / 4]}>  */}
+    <PresentationControls speed={.5} global zoom={1.5} polar={[0, Math.PI / 2]}> 
       <Stage environment={null}>
         {/* <Model scale={0.01}/> */}
         
-        <Model scale={1.0}/>
+        <Model scale={1.5}/>
         
       </Stage>
 

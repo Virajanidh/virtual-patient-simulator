@@ -26,16 +26,15 @@ function SignIn(){
         var userObject = jwt_decode(response.credential);
         console.log(userObject.email.length)
         var text =userObject.email
-        if(text.match("@eng.pdn.ac.lk")){
+        if(text.match("pdn.ac.lk")){
             setUser(userObject)
             dispatch(UserActions.getCurrentUserDetails(userObject))
-          //  document.getElementById("signInDiv").hidden=true
+          
         }
         else{
-           // alert("Login Failed. Use your Dental student account to login!");
-           // swal("Login Failed!", "Use your Dental student account to login");
+          
            showAlert();
-           // document.getElementById("errorM").innerHTML= "Login Failed. Use your Dental student account to login"
+           
         }
     }
 

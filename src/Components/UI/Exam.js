@@ -17,53 +17,12 @@ import Investigation from './resources/Investigation';
 import Mark from './resources/Mark'
 import Xray  from './resources/Xray';
 import Instructions from './resources/Instructions';
-
-{/*
-const Exam = () => {
-    const [imageClicked, setImageClicked] = useState({
-        first: false,
-        second: false,
-        ground: false
-      });
-
-      const handleClick = (order) => {
-        const resetImages = {
-          first: false,
-          second: false,
-          ground: false
-        };
-        setImageClicked({
-          ...resetImages,
-          [order]: true
-        });
-      };
-    return(
-        <div className ="app" style={{
-            backgroundImage: `url(${background})`,
-            height:'100vh',
-            marginTop:'0px',
-            fontSize:'50px',
-            backgroundSize: 'cover',
-            }}>
-            <div className="justify-content-end">
-                <ButtonGroup size="lg" className="mb-2">
-                    <button onClick={handleClick} className="ground">Radiographs</button>
-                    <Button>Lab Reports</Button>
-                    <Button>Tests</Button>
-                </ButtonGroup>
-                <div className="image">
-                    {imageClicked.ground && <img src={background} alt="ground" />}
-                    
-                </div>
-            </div> 
-        </div>
-    )
-}*/}
-
-
-
+import img2 from "../../Images/examBck.jpg";
+import img3 from "../../Images/newBack.jpg";
+import Grid from '@mui/material/Grid';
 
 const Exam = () => {
+  const navigate = useNavigate();
   const [imageClicked, setImageClicked] = useState({
     first: false,
     second: false,
@@ -113,17 +72,23 @@ const Exam = () => {
     })
   };
   const onClickHandler5 = () => {
-    console.log("button clicked")
-    setexam_inv({
-      intra: false,
-    radio: false,
-    lab: false,
-    mark: false,
-    xray : true,
-    help: false
-    })
+    // console.log("button clicked")
+    // setexam_inv({
+    //   intra: false,
+    // radio: false,
+    // lab: false,
+    // mark: false,
+    // xray : true,
+    // help: false
+    // })
+    navigate('/page3');
   };
-
+  const handleClick = () => {
+    navigate('/page5');  
+  };
+  const handleClick1 = () => {
+    navigate('/page4');  
+  };
   const onClickHandler6 = () => {
     console.log("button clicked")
     setexam_inv({
@@ -149,30 +114,61 @@ const Exam = () => {
   };
   return (
     <div className ="app" style={{
-        backgroundImage: `url(${background})`,
-        height:'100vh',
+        backgroundImage: `url(${img3})`,
+        height:'200vh',
         marginTop:'0px',
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
-      <div className="Ccontainer">
-      <ButtonGroup size="lg" className="mb-2">
-            <Button onClick={() => onClickHandler2()} className="ground">
+          <div>
+                <Grid container spacing={20}>
+                <Grid item xs={4}>
+                  <div className='backbtn'>
+                    <button className="back"  size="medium" onClick={handleClick1}>Back</button>
+                  </div>
+                  </Grid>
+                  <Grid item xs={4}>
+                  <div className="exmbtn">
+                    <button className="exmchip" size="medium" onClick={handleClick}>Next</button>
+                    </div>
+                  </Grid>
+                </Grid>
+            </div>
+          <div style={{position:'absolute',
+              left:'35%',
+              top:'20%',
+              fontSize:'50px',
+              fontWeight : 'bold',
+              color: '#FFF'
+              }}>Investigation
+
+              </div>
+              <div className='instr'>
+        {
+          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
+        }
+        </div>
+      <div className="Examsect">
+        
+        <ButtonGroup size="lg" className="mb-2">
+            {/* <Button onClick={() => onClickHandler2()} className="ground">
             Intra-Oral-View
-            </Button>
-            <Button onClick={() => onClickHandler3()} className="ground">
-            Mark Sheet
-            </Button>
+            </Button> */}
+            {/* <Button onClick={() => onClickHandler3()} className="ground">
+            Dental Chart
+            </Button> */}
             <Button onClick={() => onClickHandler5()} className="ground">
             Radiographs
             </Button>
             <Button onClick={() => onClickHandler4()} className="ground">
-            Laboratary Investigations
+            Laboratory Investigations
             </Button>
             <Button onClick={() => onClickHandler6()} className="ground">
             Help
             </Button>
         </ButtonGroup>
+        </div>
+        <div className='contThr'>
         {exam_inv.intra ?
            <ThreeD /> :
            null
@@ -193,9 +189,7 @@ const Exam = () => {
            <Instructions/> :
            null
         }
-        {
-          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
-        }
+        
 
       </div>
       <div className="image">

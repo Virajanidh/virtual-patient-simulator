@@ -1,9 +1,15 @@
-function Instructions() {
+import './App.css'
+import React from 'react';
 
-  
+function Instructions() {
     return (
-     <div><h1>Instructions</h1></div>
-    );
+      <div className="title1">
+        Choose the resources you want from the given tabs and use for the patient investigations
+      </div>
+        
+        
+      
+    )
   }
   
   export default Instructions;
