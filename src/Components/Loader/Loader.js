@@ -1,12 +1,17 @@
 import React from 'react'
-import spinner from './spinner.gif'
-
+import spinner from './spinner2.gif'
+import './Load.css'
 function Loader() {
   return (
-    <div>
+    <div className='spin'>
+      <div>
+        <h5>
+3D-view is loading
+        </h5>
+      </div>
       <img
         src={spinner}
-        style={{ width: '200px', margin: 'auto', display: 'block' }}
+        style={{ width: '50px', height: '50px', margin: 'auto', display: 'block', top: '80%' }}
         alt="Loading..."
       />
     </div>

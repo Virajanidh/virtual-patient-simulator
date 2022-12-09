@@ -1,0 +1,92 @@
+
+.contOne{
+    padding-top: 150px;
+    align-items: center;
+    padding-left: 500px;
+}
+.contTwo{
+    padding-top: 50px;
+    align-items: center;
+    padding-left: 100px;
+}
+.contThr{
+    padding-top: 10px;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.contFr{
+    padding-top: 10px;
+    align-items: center;
+    padding-left: 500px;
+}
+.sect{
+    text-align: center;
+    font-size: 30px;
+    color: brown;
+    font-weight: bold;
+    padding-top: 5px;
+    
+}
+
+.caseBtn{
+    padding-top: 25px;
+}
+
+.back{
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    width: 100px;
+    border-radius: 50px;
+    background-color: rgb(26, 91, 189);
+    border-color: blue;
+}
+
+.backbtn{
+    padding-left: 30px;
+}
+
+.exambtn{
+    padding-right: 10px;
+    padding-left: 900px;
+    padding-top: 100px;
+}
+
+.exmchip{
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    width: 400px;
+    border-radius: 50px;
+    background-color: rgb(26, 91, 189);
+    border-color: blue;
+}
+
+.Examsect{
+    padding-top: 100px;
+    padding-left: 350px;
+}
+
+.record{
+    padding-top: 50px;
+    font-size: 40px;
+}
+
+.btnGrp{
+    background-color: brown;
+    fill: aqua;
+}
+
+.nextInExam{
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    width: 100px;
+    border-radius: 50px;
+    background-color: rgb(26, 91, 189);
+    border-color: blue;
+}

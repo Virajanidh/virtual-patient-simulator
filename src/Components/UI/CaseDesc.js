@@ -22,12 +22,15 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { maxHeight } from '@mui/system';
-import img1 from "../../Images/images.jpeg";
-import img2 from "../../Images/Img2.jpg";
+import img1 from "../../Images/case1.png";
+import img2 from "../../Images/newBack.jpg";
 import { QuestionAnswer } from '@mui/icons-material';
 import firebase from '../../Config/Config'
 import Qcard from './questionCards/Qcard';
 import QcardPack from './questionCards/QcardPack';
+import { useDispatch } from "react-redux";
+import {historyTakingActions} from '../../Actions/historyTakingQ/historyTakingActions'
+
 
 const useStyles = makeStyles({
     label: {
@@ -53,6 +56,9 @@ function CaseDesc() {
   const [ans,setAns] = useState('');
   const [selectedQ,setSelectedQ]=useState('');
 
+  const {selectedQdata} =useSelector((state) => state.historyQ)
+  const dispatch = useDispatch()
+
   const initialState = {};
   const resetState = () => {
     setQuestions(initialState);
@@ -69,7 +75,8 @@ function CaseDesc() {
 
   useEffect(() => {
     console.log("hii")
-    fetchQuestions();
+    setSelectedQ(selectedQdata)
+    fetchQuestions(selectedQdata);
   }, []);
 
   const fetchQuestions=async()=>{
@@ -97,6 +104,7 @@ function CaseDesc() {
           item // and one new item at the end
         ]
         );
+        dispatch(historyTakingActions.addselectedQdata(item));
       }
     }
     console.log(selectedQ)
@@ -132,7 +140,10 @@ function CaseDesc() {
 
 
   const handleClick = () => {
-    navigate('/page2');  
+    navigate('/page4');  
+  };
+  const handleClick1 = () => {
+    navigate('/page1');  
   };
   console.log(userInfomation.name)
 
@@ -144,13 +155,12 @@ function CaseDesc() {
     color: theme.palette.text.secondary,
   }));
 
-    
     return (
       <div>
         <Fragment>
           <div className ="app" style={{
                 backgroundImage: `url(${img2})`,
-                height:'100vh',
+                height:'200vh',
                 width: '100vw',
                 marginTop:'0px',
                 fontSize:'50px',
@@ -183,33 +193,56 @@ function CaseDesc() {
                 </div>
               </div>
             </nav>
+            <div>
+                <Grid container spacing={20}>
+                <Grid item xs={4}>
+                  <div className='backbtn'>
+                    <button className="back"  size="medium" onClick={handleClick1}>Back</button>
+                  </div>
+                  </Grid>
+                  <Grid item xs={4}>
+                  <div className="exmbtn">
+                    <button className="exmchip" size="medium" onClick={handleClick}>Next</button>
+                    </div>
+                  </Grid>
+                </Grid>
+            </div>
             <div style={{position:'absolute',
-            left:'45%',
-            top:'10%',
-            fontSize:'70px',
+            left:'35%',
+            top:'25%',
+            fontSize:'45px',
             fontWeight : 'bold',
             color: '#FFF'
-            }}>Case 1
+            }}>Patient History Taking
+
+            </div>
+            <div style={{position:'absolute',
+            left:'10%',
+            top:'35%',
+            fontSize:'30px',
+            fontWeight : 'bold',
+            color: '#FFF'
+            }}>Case ID: 001
 
             </div>
             <Grid container spacing={1}>
               <Grid Item xs={6}>
-            <div className='cardDesc'>
+            <div className="cardDesc">
               <Card sx={{ maxWidth: 500 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="100"
+                    height="200"
                     alt="Case Description"
-                    image="./case1.jpeg"
+                    image={img1}
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                    Biginner case
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <div className='case'>
+                    Case 001
+                    </div>
+                    <div className='casedes'>
                     A 38-year-old patient presents with a painful tooth on the right side upper arch.
-                    </Typography>
+                    </div>
                   
                   </CardContent>
                 </CardActionArea>
@@ -225,9 +258,9 @@ function CaseDesc() {
                     alt="Case Description"
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Your Questions
-                    </Typography>
+                  <div className='case'>
+                    Your Questions
+                    </div>
                       <QcardPack questionList={selectedQ}/>
                     {/* {Section && qId ?  
                     <Typography variant="body2" color="text.secondary">
@@ -260,21 +293,19 @@ function CaseDesc() {
                     title="Select the Section"
                     id="dropdown-menu-align-right"
                     onSelect={handleSection}
-                   
-            
                   >
                     <Dropdown.Item eventKey="complaint" >History of the presenting complaint</Dropdown.Item>
                     <Dropdown.Item eventKey="medicalH" >Medical history</Dropdown.Item>
                     <Dropdown.Item eventKey="habits" >Habits</Dropdown.Item>
                     <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
-                    <Dropdown.Item eventKey="dhistory" >Dietary history</Dropdown.Item>
+                    <Dropdown.Item eventKey="history" >Dietary history</Dropdown.Item>
                     <Dropdown.Item eventKey="pretreate" >Previous dental treatments</Dropdown.Item>
                     <Dropdown.Item eventKey="shistory" >Social history</Dropdown.Item>
                     
                     {/* <Dropdown.Divider />
                     <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
                   </DropdownButton>
-
+          <div className='sect'>
                   {Section==='complaint' ?
           <label>History of the presenting complaint</label> :null}
           {Section==='habits' ?
@@ -289,11 +320,7 @@ function CaseDesc() {
           <label>Previous dental treatments</label> :null}
            {Section==='shistory' ?
           <label>Social history</label> :null}
-          
-          
-
-                  
-               
+</div>
             </div>
             <div>
                   <DropdownButton
@@ -318,9 +345,6 @@ function CaseDesc() {
                 </CardActionArea>
               </Card>
             </div>
-            <Typography className="NextChip">
-              <Chip className="chips" label= 'Examination and Investigation' color="primary" size="medium" onClick={handleClick}/>
-            </Typography>
           </div>
             </Fragment>
       </div>

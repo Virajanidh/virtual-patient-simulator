@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { DentalSheetActions } from "../../../Actions/DentalSheet/DentalSheetActions";
 
-import "./styles.css";
+import "./App.css";
 
 function CheckBox (){
     const restoration_checkList = ["1A", "1B", "1C", "1D","2A", "2B", "2C", "2D","3A", "3B", "3C", "3D","4A", "4B", "4C", "4D",
@@ -44,7 +44,7 @@ const handleCheck = (event) => {
     return(
         
 
-        <div className="app">
+        <div className="app1">
         <div className="checkList">
           <div className="title">Restoration status:</div>
             <div className="list-container" style = {{flex:1, flexWrap: 'wrap'}}>
@@ -57,7 +57,7 @@ const handleCheck = (event) => {
           </div>
         </div>
 
-        <div>
+        <div className="listcont">
           {`Restoration List: ${checkedItems}`}
         </div>
       </div>

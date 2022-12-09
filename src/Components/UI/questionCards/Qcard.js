@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-
+import './Qna.css'
 
 export class ProductCard extends Component {
     render() {
@@ -10,7 +10,8 @@ export class ProductCard extends Component {
 
       return(
        
-        <Typography variant="body2" color="text.secondary">
+        <div>
+        {/*<div className='section'>
                    {oneQuestion.cat==='complaint' ?
           <h4>History of the presenting complaint</h4> :null}
           {oneQuestion.cat==='habits' ?
@@ -25,11 +26,11 @@ export class ProductCard extends Component {
           <h4>Previous dental treatments</h4> :null}
            {oneQuestion.cat==='shistory' ?
           <h4>Social history</h4> :null}
+      </div>*/}
+        <div className='qns'>{oneQuestion.q}</div>
+        <div className='ans'>{oneQuestion.a}</div>
         
-        <h4>{oneQuestion.q}</h4>
-        <h4>{oneQuestion.a}</h4>
-        </Typography>
-      
+        </div>
       );
     }
   }

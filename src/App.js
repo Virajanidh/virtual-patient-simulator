@@ -6,6 +6,9 @@ import Exam from "./Components/UI/Exam"
 import store from './store';
 import { Provider } from 'react-redux';
 import CaseSelect from "./Components/UI/CaseSelect";
+import Radio from "./Components/UI/Radiographs/Radio";
+import Invest from "./Components/UI/Invest/Invest";
+import Diagnosis from "./Components/UI/Diagnosis/Diagnosis"
 //import PrivateRoute from "./Components/auth/PrivateRoute";
 
 function App() {
@@ -19,6 +22,9 @@ function App() {
                     <Route path="/case" element={<CaseSelect/>}/>
                     <Route path="/page1" element={<CaseDesc/>}/>
                     <Route path="/page2" element={<Exam/>}/>
+                    <Route path="/page3" element={<Radio/>}/>
+                    <Route path="/page4" element={<Invest/>}/>
+                    <Route path="/page5" element={<Diagnosis/>}/>
                 </Routes>
             </Router>
             </Provider>

@@ -1,13 +1,13 @@
 import {historyTakingQTypes} from '../types'; 
   const initialState = {
-    data:{}
+    selectedQdata:[]
   };
 
   const HistoryTakingQReducer = (state = initialState, action)=> {
     switch (action.type) {
       case historyTakingQTypes.CREATE_CASE_Q:
           return {
-            data : action.data
+            selectedQdata : [...state.selectedQdata, action.data]
             
           };
       
