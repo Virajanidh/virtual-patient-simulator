@@ -8,13 +8,21 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import { useNavigate, Link} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+// import Button from 'react-bootstrap/Button';
+// import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+
 import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
+import Instructions from './Instructions';
+
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
+
+import ToothGIF from './ToothGIF';
+
 
 
 const Invest = () => {
@@ -36,8 +44,15 @@ const Invest = () => {
     setexam_inv({
         
         intra: false,
-    extra: true
+      extra: true,
+      help: false
     })
+    const btn1 = document.getElementById('help');
+    btn1.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn2 = document.getElementById('intra');
+    btn2.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn3 = document.getElementById('extra');
+    btn3.style.backgroundColor =  'rgb(95,129,182)';
   };
 
 
@@ -45,9 +60,38 @@ const Invest = () => {
     console.log("button clicked")
     setexam_inv({
         intra: true,
-        extra: false
+        extra: false,
+        help: false
     })
+    const btn1 = document.getElementById('help');
+    btn1.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn2 = document.getElementById('intra');
+    btn2.style.backgroundColor = 'rgb(95,129,182)';
+    const btn3 = document.getElementById('extra');
+    btn3.style.backgroundColor =  'rgb(9, 105, 239)';
   };
+
+  const onClickHandler5= () => {
+    setexam_inv({
+        intra: false,
+        extra: false,
+        help: true
+    })
+    const btn1 = document.getElementById('help');
+    btn1.style.backgroundColor = 'rgb(95,129,182)';
+    const btn2 = document.getElementById('intra');
+    btn2.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn3 = document.getElementById('extra');
+    btn3.style.backgroundColor =  'rgb(9, 105, 239)';
+
+
+  };
+
+  if(exam_inv.help && !exam_inv.intra && !exam_inv.extra){
+    const btn1 = document.getElementById('help');
+    btn1.style.backgroundColor = 'rgb(95,129,182)';
+  }
+
   
   return (
     <div className ="app" style={{
@@ -97,6 +141,7 @@ const Invest = () => {
                   </Grid>
                   
                 </Grid>
+                
             </div>
              <div style={{position:'absolute',
               left:'35%',
@@ -108,16 +153,36 @@ const Invest = () => {
 
               </div>
       <div className="contOne">
-      <ButtonGroup size="lg" className="mb-2">
-            <Button onClick={() => onClickHandler2()} className="ground">
+        <ButtonGroup size="large" aria-label="large button group">
+            <button id= 'extra' button type="button" class="btn btn-primary" onClick={() => onClickHandler2()} >
             Extra Oral
-            </Button>
-            <Button onClick={() => onClickHandler4()} className="ground">
+            </button>
+            <button id= 'intra' type="button" class="btn btn-secondary" onClick={() => onClickHandler4()}>
             Intra Oral
-            </Button>
+            </button>
+            <button id= 'help' onClick={() => onClickHandler5()}  button type="button" class="btn btn-primary">
+            Help
+            </button>
         </ButtonGroup>
+        
+        </div> 
+     
+        {/* <div className='contsix'>
+              <div class="grid-container">
+                <div class="grid-item item1">
+                  {
+                      !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
+                  }           
+              </div>
+              <div class="grid-item item2">
+                  {
+                      !exam_inv.intra && !exam_inv.extra || exam_inv.extra  ? <ToothGIF/> : null
+                  }
+               </div>
+              </div>
+              
+        </div>  */}
 
-        </div>
         <div className='contThr'>
         {exam_inv.intra ?
            <Intra /> :
@@ -125,14 +190,19 @@ const Invest = () => {
         }
         </div>
         <div className='contFr'>
-        {exam_inv.extra ?
+        {/* {exam_inv.extra ?
            <Extra/> :
            null
+        } */}
+        {exam_inv.help ?
+           <Instructions/> :
+           null
         }
-        
+        <div className='setExtra'>
         {
-          !exam_inv.intra && !exam_inv.extra  ? <Extra/> : null
+          !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
         }
+        </div>
 
       </div>
 

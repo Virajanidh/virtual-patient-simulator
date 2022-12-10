@@ -1,9 +1,12 @@
+import NoRecord from "../../NoRecord.js";
+
 function Soft() {
 
   
     return (
-      <div className="record">No Records !
-      <span role="img" aria-label="confused-face">😕</span></div>
+      <div>
+<NoRecord/>
+      </div>
      
     );
   }
