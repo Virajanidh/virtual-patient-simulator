@@ -197,12 +197,12 @@ function CaseDesc() {
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
-                    <button className="back"  size="medium" onClick={handleClick1}>Back</button>
+                    <button className="back"  size="medium" onClick={handleClick1}>  {'<<'} Back </button>
                   </div>
                   </Grid>
                   <Grid item xs={4}>
                   <div className="exmbtn">
-                    <button className="exmchip" size="medium" onClick={handleClick}>Next</button>
+                    <button className="back" size="medium" onClick={handleClick}> Next {'>>'} </button>
                     </div>
                   </Grid>
                 </Grid>

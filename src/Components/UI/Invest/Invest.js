@@ -15,6 +15,7 @@ import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
 import Grid from '@mui/material/Grid';
 
+
 const Invest = () => {
   const navigate = useNavigate();
   const handleClick1 = () => {
