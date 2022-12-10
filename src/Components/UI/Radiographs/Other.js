@@ -1,8 +1,10 @@
+import './Case.css'
 function Other() {
 
   
     return (
-     <div><h1>Other Records</h1></div>
+      <div className="record1" align='center'>No Records !
+      <span role="img" aria-label="confused-face">😕</span></div>
     );
   }
   

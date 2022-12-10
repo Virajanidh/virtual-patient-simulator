@@ -202,7 +202,7 @@ function CaseDesc() {
                   </Grid>
                   <Grid item xs={4}>
                   <div className="exmbtn">
-                    <button className="exmchip" size="medium" onClick={handleClick}>Next</button>
+                    <button className="back" size="medium" onClick={handleClick}>Next</button>
                     </div>
                   </Grid>
                 </Grid>

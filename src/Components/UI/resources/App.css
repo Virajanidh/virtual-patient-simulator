@@ -15,7 +15,16 @@
   font-size: 30px;
   padding-left: 30px;
   padding-bottom: 0;
-  color: darkorange;
+  color: rgb(24, 9, 92);
+  padding-top: 20px;
+  
+}
+
+.invest{
+  font-size: 30px;
+  padding-left: 470px;
+  padding-bottom: 0;
+  color:rgb(24, 9, 92);
   padding-top: 20px;
   
 }

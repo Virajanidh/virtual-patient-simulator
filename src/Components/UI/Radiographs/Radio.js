@@ -14,10 +14,12 @@ import IOPG from "./IOPG"
 import Bitewing from "./Bitewing"
 import OPG from "./OPG"
 import Other from "./Other"
-import img3 from "../../../Images/newBack.jpg"
+import img3 from "../../../Images/radioBck.jpg"
 import Grid from '@mui/material/Grid';
+import { useSelector} from "react-redux";
 
 const Radio = () => {
+  const {userInfomation} = useSelector((state) => state.user)
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/page2');  
@@ -92,11 +94,38 @@ const Radio = () => {
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" style={{
+                  fontSize: ' 20px',
+                }}href="#">Hi {userInfomation.name}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav" style={{
+                  fontSize: ' 20px',
+                }} >
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
             <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
-                    <button className="back"  size="medium" onClick={handleClick}>Back</button>
+                    <button className="back1" size="medium" onClick={handleClick}>Back</button>
                   </div>
                   </Grid>
                   
@@ -104,28 +133,30 @@ const Radio = () => {
             </div>
              <div style={{position:'absolute',
               left:'40%',
-              top:'15%',
+              top:'25%',
               fontSize:'50px',
               fontWeight : 'bold',
-              color: '#FFF'
+              color: '#FF5'
               }}>Radiographs
 
               </div>
+
+
       <div className="contOnes">
       <ButtonGroup size="lg" className="mb-2">
-            <Button onClick={() => onClickHandler2()} className="ground">
+            <Button id='OPG' onClick={() => onClickHandler2()} className="ground">
             OPG
             </Button>
             {/* <Button onClick={() => onClickHandler3()} className="ground">
             Dental Chart
             </Button> */}
-            <Button onClick={() => onClickHandler4()} className="ground">
+            <Button id='IOPA' onClick={() => onClickHandler4()} className="ground">
             IOPA
             </Button>
-            <Button onClick={() => onClickHandler5()} className="ground">
+            <Button id='Bitewing' onClick={() => onClickHandler5()} className="ground">
             Bitewing
             </Button>
-            <Button onClick={() => onClickHandler6()} className="ground">
+            <Button id='Other' onClick={() => onClickHandler6()} className="ground">
             Other
             </Button>
         </ButtonGroup>

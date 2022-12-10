@@ -14,8 +14,10 @@ import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
 import Grid from '@mui/material/Grid';
+import { useSelector} from "react-redux";
 
 const Invest = () => {
+  const {userInfomation} = useSelector((state) => state.user)
   const navigate = useNavigate();
   const handleClick1 = () => {
     navigate('/page1');  
@@ -54,12 +56,43 @@ const Invest = () => {
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" style={{
+                  fontSize: ' 20px',
+                }}href="#">Hi {userInfomation.name}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav" style={{
+                  fontSize: ' 20px',
+                }} >
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
             <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
                     <button className="back"  size="medium" onClick={handleClick1}>Back</button>
                   </div>
+                  </Grid>
+                  <Grid item xs={4}>
+                  <div className="exmbtn">
+                    <button className="back" size="medium" onClick={handleClick2}>Next</button>
+                    </div>
                   </Grid>
                   
                 </Grid>
@@ -101,13 +134,7 @@ const Invest = () => {
         }
 
       </div>
-      <div>
-      <Grid item xs={4}>
-                  <div className="exambtn">
-                    <button className="nextInExam" size="medium" onClick={handleClick2}>Next</button>
-                    </div>
-                  </Grid>
-      </div>
+
     </div>
   );
 };
