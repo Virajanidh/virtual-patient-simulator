@@ -68,7 +68,7 @@ export default function Mark() {
     <div>
       <div style={{position:'absolute',
             left:'40%',
-            top:'75%',
+            top:'82%',
             fontSize:'40px',
             fontWeight : 'bold',
             color: '#b80000'

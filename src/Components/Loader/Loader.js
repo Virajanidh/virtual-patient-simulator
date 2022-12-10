@@ -5,7 +5,7 @@ function Loader() {
   return (
     <div className='spin'>
       <div>
-        <h5>
+        <h5 className='textF'>
 3D-view is loading
         </h5>
       </div>
