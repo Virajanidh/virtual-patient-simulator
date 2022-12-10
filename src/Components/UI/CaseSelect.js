@@ -58,8 +58,12 @@ function CaseSelect() {
         <Fragment>
           <div className ="app" style={{
               backgroundImage: `url(${img3})`,
-              height:'120vh',
-              marginTop:'0px',
+              // height:'120vh',
+              // marginTop:'0px',
+              height:'200vh',
+                width: '100vw',
+                marginTop:'0px',
+
               fontSize:'50px',
               backgroundSize: 'cover',
               }}>
@@ -112,6 +116,9 @@ function CaseSelect() {
                         <div className='case'>
                     Case 001
                     </div>
+                    <div className='casesubheading'>
+                    A painful tooth!
+                    </div>
                     <div className='casedes'>
                     A 38-year-old patient presents with a painful tooth on the right side upper arch.
                     </div>
@@ -131,7 +138,7 @@ function CaseSelect() {
                           component="img"
                           height="250"
                           alt="Case 1"
-                          image={img2}
+                          image={img1}
                         /> 
                         <CardContent>
                         <div className='case'>
