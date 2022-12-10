@@ -30,6 +30,7 @@ import Qcard from './questionCards/Qcard';
 import QcardPack from './questionCards/QcardPack';
 import { useDispatch } from "react-redux";
 import {historyTakingActions} from '../../Actions/historyTakingQ/historyTakingActions'
+import Navbar from '../Navbar';
 
 
 const useStyles = makeStyles({
@@ -168,7 +169,8 @@ function CaseDesc() {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'repeat'
           }}>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div className='navText'>
+            {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
                 <a class="navbar-brand" style={{
                   fontSize: ' 20px',
@@ -192,7 +194,9 @@ function CaseDesc() {
                   </ul>
                 </div>
               </div>
-            </nav>
+            </nav> */}
+            <Navbar/>
+            </div>
             <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>

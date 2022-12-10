@@ -16,7 +16,7 @@ function Instructions() {
          In Extra-oral view it contains, how the patient look like
         </li>
         <li>
-         Under intra-oral view, there are subsection for  that you can choose for examination
+         Under intra-oral , there are subsection for intra-oral view, Periodental chart, Plaque chart and soft tissue assesment that you can choose for examination
         </li>
         </div>
       </div>

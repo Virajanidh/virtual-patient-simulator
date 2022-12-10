@@ -99,7 +99,7 @@
 
 .exmbtn{
 
-    padding-left: 700px;
+    padding-left: 200%;
 
     
 }
@@ -116,7 +116,7 @@
 }
 
 .Examsect{
-    padding-top: 10px;
+    padding-top: 50px;
     padding-left: 100px;
 }
 
@@ -134,4 +134,14 @@
 .invGif{
     
     padding-left: 400px;
+}
+
+.navText{
+    font-size: 20px;
+}
+
+.contOne{
+    padding-top: 100px;
+    align-items: center;
+    padding-left: 450px;
 }
