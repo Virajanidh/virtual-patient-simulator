@@ -17,11 +17,15 @@ import Investigation from './resources/Investigation';
 import Mark from './resources/Mark'
 import Xray  from './resources/Xray';
 import Instructions from './resources/Instructions';
-import img2 from "../../Images/examBck.jpg";
+import img2 from "../../Images/invBck2.webp";
 import img3 from "../../Images/newBack.jpg";
 import Grid from '@mui/material/Grid';
+import { useSelector} from "react-redux";
+import giphy from '../../Images/giphy.gif';
+
 
 const Exam = () => {
+  const {userInfomation} = useSelector((state) => state.user)
   const navigate = useNavigate();
   const [imageClicked, setImageClicked] = useState({
     first: false,
@@ -114,41 +118,67 @@ const Exam = () => {
   };
   return (
     <div className ="app" style={{
-        backgroundImage: `url(${img3})`,
+        backgroundImage: `url(${img2})`,
         height:'200vh',
         marginTop:'0px',
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" style={{
+                  fontSize: ' 20px',
+                }}href="#">Hi {userInfomation.name}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav" style={{
+                  fontSize: ' 20px',
+                }} >
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
           <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
-                    <button className="back"  size="medium" onClick={handleClick1}>Back</button>
+                    <button  className="back"  size="medium" onClick={handleClick1}>Back</button>
                   </div>
                   </Grid>
                   <Grid item xs={4}>
                   <div className="exmbtn">
-                    <button className="exmchip" size="medium" onClick={handleClick}>Next</button>
+                    <button className="back" size="medium" onClick={handleClick}>Next</button>
                     </div>
                   </Grid>
                 </Grid>
             </div>
           <div style={{position:'absolute',
+              textAlign: "center",
               left:'35%',
               top:'20%',
               fontSize:'50px',
               fontWeight : 'bold',
-              color: '#FFF'
+              color: 'darkblue',
               }}>Investigation
 
               </div>
-              <div className='instr'>
+              {/* <div className='instr'>
         {
           !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
         }
-        </div>
-      <div className="Examsect">
+        </div> */}
+      <div className="Examsect" >
         
         <ButtonGroup size="lg" className="mb-2">
             {/* <Button onClick={() => onClickHandler2()} className="ground">
@@ -157,13 +187,13 @@ const Exam = () => {
             {/* <Button onClick={() => onClickHandler3()} className="ground">
             Dental Chart
             </Button> */}
-            <Button onClick={() => onClickHandler5()} className="ground">
+            <Button id='Radio' onClick={() => onClickHandler5()} className="ground">
             Radiographs
             </Button>
-            <Button onClick={() => onClickHandler4()} className="ground">
+            <Button id='Invest' onClick={() => onClickHandler4()} className="ground">
             Laboratory Investigations
             </Button>
-            <Button onClick={() => onClickHandler6()} className="ground">
+            <Button id='Help' onClick={() => onClickHandler6()} className="ground">
             Help
             </Button>
         </ButtonGroup>
@@ -181,10 +211,10 @@ const Exam = () => {
            <Mark /> :
            null
         }
-        {exam_inv.xray ?
+        {/* {exam_inv.xray ?
            <Xray/> :
            null
-        }
+        } */}
         {exam_inv.help ?
            <Instructions/> :
            null
@@ -192,6 +222,7 @@ const Exam = () => {
         
 
       </div>
+      <img src={giphy} className="invGif" />
       <div className="image">
         {imageClicked.ground && <img src={background} alt="ground" />}
         {imageClicked.first && <img src={img1} alt="first" />}

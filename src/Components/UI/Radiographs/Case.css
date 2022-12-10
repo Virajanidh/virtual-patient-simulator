@@ -105,4 +105,23 @@
     padding-top: 10px;
     align-items: center;
     padding-left: 30px;
+    color: rgb(221, 233, 53);
+}
+.record1{
+    color: rgb(221, 233, 53);
+    text-align: center;
+    align-items:'center';
+}
+
+.back1{
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    font-weight : bold;
+    color: rgb(15, 15, 15);
+    width: 100px;
+    border-radius: 50px;
+    border-width: 4px;
+    background-color: rgb(221, 233, 53);
+    border-color: rgb(221, 233, 53);
 }

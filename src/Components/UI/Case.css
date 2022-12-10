@@ -98,7 +98,9 @@
 }
 
 .exmbtn{
-    padding-left: 600px;
+
+    padding-left: 700px;
+
     
 }
 
@@ -107,7 +109,7 @@
     height: 10px;
     font-size: 20px;
     color: rgb(255, 255, 255);
-    width: 50px;
+    width: 100px;
     border-radius: 50px;
     background-color: rgb(26, 91, 189);
     border-color: blue;
@@ -115,7 +117,7 @@
 
 .Examsect{
     padding-top: 10px;
-    padding-left: 50px;
+    padding-left: 100px;
 }
 
 .instr{
@@ -126,4 +128,10 @@
     padding-top: 10px;
     align-items: center;
     padding-left: 30px;
+    color: rgb(29, 94, 105);
+}
+
+.invGif{
+    
+    padding-left: 400px;
 }

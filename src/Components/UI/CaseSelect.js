@@ -136,7 +136,7 @@ function CaseSelect() {
                       <CardActionArea>
                         <CardMedia
                           component="img"
-                          height="250"
+                          height="200"
                           alt="Case 1"
                           image={img1}
                         /> 
