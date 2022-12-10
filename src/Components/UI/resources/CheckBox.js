@@ -1,3 +1,4 @@
+import { rgbToHex } from "@material-ui/core";
 import React, { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { DentalSheetActions } from "../../../Actions/DentalSheet/DentalSheetActions";
@@ -50,7 +51,7 @@ const handleCheck = (event) => {
             <div className="list-container" style = {{flex:1, flexWrap: 'wrap'}}>
               {restoration_checkList.map((item1, index) => (
               <div key={index} >
-              <input value={item1} type="checkbox" onChange={handleCheck} />
+              <input value={item1} style ={{color:'#e6f9ff'}} type="checkbox" onChange={handleCheck} />
               <span className={isChecked(item1)}>{item1}</span>
             </div>
             ))}

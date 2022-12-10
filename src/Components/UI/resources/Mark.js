@@ -95,7 +95,7 @@ export default function Mark() {
           {`Caries List: ${checkedItems}`}
         </div>
       </div>
-      <div>
+      <div className="checkboxclass">
         <CheckBox/>
       </div>
     </div>
