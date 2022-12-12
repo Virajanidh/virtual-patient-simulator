@@ -178,7 +178,7 @@ const Radio = () => {
             </div>
              <div style={{position:'absolute',
               left:'40%',
-              top:'25%',
+              top:'20%',
               fontSize:'50px',
               fontWeight : 'bold',
               color: '#FF5'

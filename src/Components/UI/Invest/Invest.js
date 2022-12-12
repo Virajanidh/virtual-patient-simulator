@@ -172,10 +172,12 @@ const Invest = () => {
            <Extra/> :
            null
         } */}
+        <div className='setExtra2'>
         {exam_inv.help ?
            <Instructions/> :
            null
         }
+        </div>
         <div className='setExtra'>
         {
           !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
