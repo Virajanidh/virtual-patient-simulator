@@ -47,7 +47,7 @@
 }
 
 .ddown{
-    height: 200px;
+    height: 20px;
     padding-top: 0px;
     padding-left: 0px;
 }
@@ -70,6 +70,15 @@
 }
 
 .sect{
+    text-align: center;
+    font-size: 30px;
+    color: brown;
+    font-weight: bold;
+    padding-top: 5px;
+    
+}
+
+.sect1{
     text-align: center;
     font-size: 30px;
     color: brown;
@@ -117,7 +126,8 @@
 
 .Examsect{
     padding-top: 50px;
-    padding-left: 100px;
+    align-items: center;
+    padding-left: 50%;
 }
 
 .instr{

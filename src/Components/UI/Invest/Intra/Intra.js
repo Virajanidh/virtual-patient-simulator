@@ -125,7 +125,7 @@ const Intra = () => {
             </Button>
         </ButtonGroup>
         </div>
-        <div className='contThr'>
+        <div className='contThr1'>
         {exam_inv.perio ?
           
            <Periodental /> :
@@ -140,10 +140,12 @@ const Intra = () => {
            <Mark/> :
            null
         }
+        <div style={{font:"black"}}>
         {exam_inv.intraview ?
            <ThreeD/> :
            null
         }
+        </div>
        
         {
           !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview ? <ThreeD/> : null

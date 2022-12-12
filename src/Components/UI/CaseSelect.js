@@ -124,9 +124,9 @@ function CaseSelect() {
                     <div className='casesubheading'>
                     A painful tooth!
                     </div>
-                    <div className='casedes'>
+                    {/* <div className='casedes'>
                     A 38-year-old patient presents with a painful tooth on the right side upper arch.
-                    </div>
+                    </div> */}
                           <Typography className="caseBtn">
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
                           </Typography>
@@ -143,15 +143,18 @@ function CaseSelect() {
                           component="img"
                           height="200"
                           alt="Case 1"
-                          image={img1}
+                          image={img2}
                         /> 
                         <CardContent>
                         <div className='case'>
                     Case 002
                     </div>
-                    <div className='casedes'>
-                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    <div className='casesubheading'>
+                    A painful tooth!
                     </div>
+                    {/* <div className='casedes'>
+                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    </div> */}
                           <Typography className="caseBtn">
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
                           </Typography>
