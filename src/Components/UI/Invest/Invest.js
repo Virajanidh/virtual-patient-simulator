@@ -135,11 +135,11 @@ const Invest = () => {
             <button id= 'extra' button type="button" class="btn btn-primary" onClick={() => onClickHandler2()} >
             Extra Oral
             </button>
-            <button id= 'intra' type="button" class="btn btn-secondary" onClick={() => onClickHandler4()}>
+            <button id= 'intra' type="button" class="btn btn-primary" onClick={() => onClickHandler4()}>
             Intra Oral
             </button>
             <button id= 'help' onClick={() => onClickHandler5()}  button type="button" class="btn btn-primary">
-            Help
+            Guide
             </button>
         </ButtonGroup>
         
@@ -168,10 +168,10 @@ const Invest = () => {
         }
         </div>
         <div className='contFr'>
-        {/* {exam_inv.extra ?
+        {exam_inv.extra ?
            <Extra/> :
            null
-        } */}
+        }
         <div className='setExtra2'>
         {exam_inv.help ?
            <Instructions/> :
@@ -180,7 +180,7 @@ const Invest = () => {
         </div>
         <div className='setExtra'>
         {
-          !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
+          !exam_inv.intra && !exam_inv.extra && !exam_inv.help ? <Instructions/> : null
         }
         </div>
 

@@ -182,7 +182,8 @@ const Exam = () => {
             {/* <Button onClick={() => onClickHandler3()} className="ground">
             Dental Chart
             </Button> */}
-            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }} id='Radio' type="button" class="btnGrp" onClick={() => onClickHandler5()} className="ground">
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }} 
+            id='Radio' type="button" class="btnGrp" onClick={() => onClickHandler5()} className="ground">
             Radiographs
             </Button>
             <Button style={{ border: " 2px  solid blue", borderColor:"#002966", buttonRadius:"50px" }} id='Invest'  type="button" class="btnGrp" onClick={() => onClickHandler4()} className="ground">
@@ -190,7 +191,7 @@ const Exam = () => {
             </Button>
             <Button style={{ border: " 2px solid blue", borderColor:"#002966", buttonRadius:"50px" }}
             id='Help'type="button" class="btnGrp" onClick={() => onClickHandler6()} className="ground">
-            Help
+          Guide
             </Button>
         </ButtonGroup>
         </div>
@@ -214,6 +215,9 @@ const Exam = () => {
         {exam_inv.help ?
            <Instructions/> :
            null
+        }
+        {
+          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
         }
         
 
