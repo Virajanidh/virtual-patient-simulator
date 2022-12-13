@@ -30,6 +30,7 @@ import Qcard from './questionCards/Qcard';
 import QcardPack from './questionCards/QcardPack';
 import { useDispatch } from "react-redux";
 import {historyTakingActions} from '../../Actions/historyTakingQ/historyTakingActions'
+import Navbar from '../Navbar';
 
 
 const useStyles = makeStyles({
@@ -168,7 +169,8 @@ function CaseDesc() {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'repeat'
           }}>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div className='navText'>
+            {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
                 <a class="navbar-brand" style={{
                   fontSize: ' 20px',
@@ -192,12 +194,14 @@ function CaseDesc() {
                   </ul>
                 </div>
               </div>
-            </nav>
+            </nav> */}
+            <Navbar/>
+            </div>
             <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
-                    <button className="back"  size="medium" onClick={handleClick1}>  {'<<'} Back </button>
+                    <button className="back"  size="medium" onClick={handleClick1}>  Back </button>
                   </div>
                   </Grid>
                   <Grid item xs={4}>
@@ -250,7 +254,7 @@ function CaseDesc() {
               </Card>
             </div>
             </Grid>
-            <Grid Item xs={6}>
+            <Grid Item xs={5}>
             <div className='qna'>
               <Card sx={{ maxWidth: 600 }}>
                 <CardActionArea>
@@ -287,7 +291,7 @@ function CaseDesc() {
             <div className="cardsd">
               <Card sx={{ maxWidth: 500, maxHeight: 1000}}>
                 <CardActionArea>
-                  <CardContent sx={{maxHeight: 1000}} >
+                  <CardContent sx={{maxHeight: 500}} >
                     <div className='ddown'>
                   <DropdownButton
                     alignRight
@@ -306,22 +310,23 @@ function CaseDesc() {
                     {/* <Dropdown.Divider />
                     <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
                   </DropdownButton>
-          <div className='sect'>
+                <div className='sect1'>
                   {Section==='complaint' ?
-          <label>History of the presenting complaint</label> :null}
-          {Section==='habits' ?
-          <label>Habits</label> :null}
-          {Section==='medicalH' ?
-          <label>Medical history</label> :null}
-          {Section==='plaque' ?
-          <label>Plaque control</label> :null}
-          {Section==='dhistory' ?
-          <label>Dietary history</label> :null}
-          {Section==='pretreate' ?
-          <label>Previous dental treatments</label> :null}
-           {Section==='shistory' ?
-          <label>Social history</label> :null}
-</div>
+                      <label>History of the presenting complaint</label> :null}
+                      {Section==='habits' ?
+                      <label>Habits</label> :null}
+                      {Section==='medicalH' ?
+                      <label>Medical history</label> :null}
+                      {Section==='plaque' ?
+                      <label>Plaque control</label> :null}
+                      {Section==='dhistory' ?
+                      <label>Dietary history</label> :null}
+                      {Section==='pretreate' ?
+                      <label>Previous dental treatments</label> :null}
+                      {Section==='shistory' ?
+                      <label>Social history</label> :null}
+                    </div>
+
             </div>
             <div>
                   <DropdownButton

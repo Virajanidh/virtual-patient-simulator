@@ -35,6 +35,14 @@ const Intra = () => {
       mark: false,
       intraview : true
     })
+    const btn1 = document.getElementById('perio');
+    btn1.style.backgroundColor = 'brown';
+    const btn2 = document.getElementById('soft');
+    btn2.style.backgroundColor = 'brown';
+    const btn3 = document.getElementById('plaq');
+    btn3.style.backgroundColor =  'brown';
+    const btn4 = document.getElementById('intrav');
+    btn4.style.backgroundColor =  '#660000';
   };
 
   const onClickHandler2 = () => {
@@ -46,6 +54,14 @@ const Intra = () => {
       mark: false,
       intraview : false
     })
+    const btn1 = document.getElementById('perio');
+    btn1.style.backgroundColor = '#660000';
+    const btn2 = document.getElementById('soft');
+    btn2.style.backgroundColor = 'brown';
+    const btn3 = document.getElementById('plaq');
+    btn3.style.backgroundColor =  'brown';
+    const btn4 = document.getElementById('intrav');
+    btn4.style.backgroundColor =  'brown';
   };
 
 
@@ -57,6 +73,14 @@ const Intra = () => {
       mark: false,
       intraview : false
     })
+    const btn1 = document.getElementById('perio');
+    btn1.style.backgroundColor = 'brown';
+    const btn2 = document.getElementById('soft');
+    btn2.style.backgroundColor = '#660000';
+    const btn3 = document.getElementById('plaq');
+    btn3.style.backgroundColor =  'brown';
+    const btn4 = document.getElementById('intrav');
+    btn4.style.backgroundColor =  'brown';
   };
   const onClickHandler5 = () => {
     console.log("button clicked")
@@ -66,6 +90,14 @@ const Intra = () => {
       mark: true,
       intraview : false
     })
+    const btn1 = document.getElementById('perio');
+    btn1.style.backgroundColor = 'brown';
+    const btn2 = document.getElementById('soft');
+    btn2.style.backgroundColor = 'brown';
+    const btn3 = document.getElementById('plaq');
+    btn3.style.backgroundColor =  '#660000';
+    const btn4 = document.getElementById('intrav');
+    btn4.style.backgroundColor =  'brown';
   };
   
   return (
@@ -79,21 +111,21 @@ const Intra = () => {
              
       <div className="contTwo">
       <ButtonGroup size="lg" className="btnGrp">
-            <Button onClick={() => onClickHandler1()} className="btnGrp">
+            <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
             Intra-Oral view
             </Button>
-            <Button onClick={() => onClickHandler2()} className="btnGrp">
+            <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
             Periodental Chart
             </Button>
-            <Button onClick={() => onClickHandler4()} className="btnGrp">
+            <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
             Soft Tissue Assesment
             </Button>
-            <Button onClick={() => onClickHandler5()} className="btnGrp">
+            <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
             Plaque Chart
             </Button>
         </ButtonGroup>
         </div>
-        <div className='contThr'>
+        <div className='contThr1'>
         {exam_inv.perio ?
           
            <Periodental /> :
@@ -108,10 +140,12 @@ const Intra = () => {
            <Mark/> :
            null
         }
+        <div style={{font:"black"}}>
         {exam_inv.intraview ?
            <ThreeD/> :
            null
         }
+        </div>
        
         {
           !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview ? <ThreeD/> : null

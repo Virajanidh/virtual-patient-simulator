@@ -17,6 +17,7 @@ import firebase from '../../Config/Config'
 import img1 from "../../Images/case1.png";
 import img2 from "../../Images/case2.jpg";
 import img3 from "../../Images/newBack.jpg";
+import Navbar from '../Navbar';
 
 function CaseSelect() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -55,6 +56,9 @@ function CaseSelect() {
    console.log(userInfomation.name)
     return (
       <div>
+        <div className='navText'>
+              <Navbar/>
+              </div>
         <Fragment>
           <div className ="app" style={{
               backgroundImage: `url(${img3})`,
@@ -67,7 +71,7 @@ function CaseSelect() {
               fontSize:'50px',
               backgroundSize: 'cover',
               }}>
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" style={{
                        fontSize: ' 20px',
@@ -91,7 +95,8 @@ function CaseSelect() {
                         </ul>
                     </div>
                 </div>
-              </nav>
+              </nav> */}
+              
               <div style={{position:'absolute',
               left:'35%',
               top:'20%',
@@ -119,9 +124,9 @@ function CaseSelect() {
                     <div className='casesubheading'>
                     A painful tooth!
                     </div>
-                    <div className='casedes'>
+                    {/* <div className='casedes'>
                     A 38-year-old patient presents with a painful tooth on the right side upper arch.
-                    </div>
+                    </div> */}
                           <Typography className="caseBtn">
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
                           </Typography>
@@ -138,15 +143,18 @@ function CaseSelect() {
                           component="img"
                           height="200"
                           alt="Case 1"
-                          image={img1}
+                          image={img2}
                         /> 
                         <CardContent>
                         <div className='case'>
                     Case 002
                     </div>
-                    <div className='casedes'>
-                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    <div className='casesubheading'>
+                    A painful tooth!
                     </div>
+                    {/* <div className='casedes'>
+                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                    </div> */}
                           <Typography className="caseBtn">
                               <Chip label= 'Select Case' color="primary" size="medium" onClick={handleClick}/>
                           </Typography>

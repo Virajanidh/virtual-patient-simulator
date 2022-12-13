@@ -22,6 +22,7 @@ import img3 from "../../Images/newBack.jpg";
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
 import giphy from '../../Images/giphy.gif';
+import Navbar from '../Navbar';
 
 
 const Exam = () => {
@@ -74,6 +75,14 @@ const Exam = () => {
     xray : false,
     help: false
     })
+    const btn1 = document.getElementById('Help');
+    btn1.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn2 = document.getElementById('Radio');
+    btn2.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn3 = document.getElementById('Invest');
+    btn3.style.backgroundColor =  'rgb(95,129,182)';
+
+
   };
   const onClickHandler5 = () => {
     // console.log("button clicked")
@@ -103,6 +112,14 @@ const Exam = () => {
     xray : true,
     help: true
     })
+    const btn1 = document.getElementById('Help');
+    btn1.style.backgroundColor = 'rgb(95,129,182)';
+    const btn2 = document.getElementById('Radio');
+    btn2.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn3 = document.getElementById('Invest');
+    btn3.style.backgroundColor =  'rgb(9, 105, 239)';
+
+
   };
 
   const onClickHandler = (order) => {
@@ -124,31 +141,9 @@ const Exam = () => {
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="container-fluid">
-                <a class="navbar-brand" style={{
-                  fontSize: ' 20px',
-                }}href="#">Hi {userInfomation.name}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav" style={{
-                  fontSize: ' 20px',
-                }} >
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Logout</a>
-                    </li>
-                  </ul>
-                </div>
+        <div className='navText'>
+              <Navbar/>
               </div>
-            </nav>
           <div>
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
@@ -180,21 +175,23 @@ const Exam = () => {
         </div> */}
       <div className="Examsect" >
         
-        <ButtonGroup size="lg" className="mb-2">
+        <ButtonGroup size="lg" className="btnGrp">
             {/* <Button onClick={() => onClickHandler2()} className="ground">
             Intra-Oral-View
             </Button> */}
             {/* <Button onClick={() => onClickHandler3()} className="ground">
             Dental Chart
             </Button> */}
-            <Button id='Radio' onClick={() => onClickHandler5()} className="ground">
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }} 
+            id='Radio' type="button" class="btnGrp" onClick={() => onClickHandler5()} className="ground">
             Radiographs
             </Button>
-            <Button id='Invest' onClick={() => onClickHandler4()} className="ground">
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966", buttonRadius:"50px" }} id='Invest'  type="button" class="btnGrp" onClick={() => onClickHandler4()} className="ground">
             Laboratory Investigations
             </Button>
-            <Button id='Help' onClick={() => onClickHandler6()} className="ground">
-            Help
+            <Button style={{ border: " 2px solid blue", borderColor:"#002966", buttonRadius:"50px" }}
+            id='Help'type="button" class="btnGrp" onClick={() => onClickHandler6()} className="ground">
+          Guide
             </Button>
         </ButtonGroup>
         </div>
@@ -218,6 +215,9 @@ const Exam = () => {
         {exam_inv.help ?
            <Instructions/> :
            null
+        }
+        {
+          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
         }
         
 

@@ -18,6 +18,7 @@ import CaseSelect from '../UI/CaseSelect'
 function SignIn(){
 
     const [user,setUser]= useState({});
+    const {isSignIn} =useSelector((state) => state.user)
     
     const dispatch = useDispatch()
 
@@ -65,7 +66,7 @@ function SignIn(){
         google.accounts.id.prompt();
     } ,[]);
 
-    if(Object.keys(user).length==0 ){
+    if(Object.keys(user).length==0 || !isSignIn){
     return(
         <Fragment> 
         <div className ="app" style={{
@@ -86,7 +87,7 @@ function SignIn(){
                     Virtual Patient<br/>Simulator for<br/>Skill Training<br/> in Dentistry
 
                 <Button     className= "relative"
-                 id="signInDiv" variant="light">Sign In2</Button>
+                 id="signInDiv" variant="light"></Button>
 
                  <p id="errorM"></p>
             </div>

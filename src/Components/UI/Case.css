@@ -47,7 +47,7 @@
 }
 
 .ddown{
-    height: 200px;
+    height: 20px;
     padding-top: 0px;
     padding-left: 0px;
 }
@@ -78,6 +78,15 @@
     
 }
 
+.sect1{
+    text-align: center;
+    font-size: 30px;
+    color: brown;
+    font-weight: bold;
+    padding-top: 5px;
+    
+}
+
 .caseBtn{
     padding-top: 25px;
 }
@@ -99,7 +108,7 @@
 
 .exmbtn{
 
-    padding-left: 700px;
+    padding-left: 200%;
 
     
 }
@@ -116,8 +125,9 @@
 }
 
 .Examsect{
-    padding-top: 10px;
-    padding-left: 100px;
+    padding-top: 50px;
+    align-items: center;
+    padding-left: 50%;
 }
 
 .instr{
@@ -134,4 +144,14 @@
 .invGif{
     
     padding-left: 400px;
+}
+
+.navText{
+    font-size: 20px;
+}
+
+.contOne{
+    padding-top: 100px;
+    align-items: center;
+    padding-left: 450px;
 }

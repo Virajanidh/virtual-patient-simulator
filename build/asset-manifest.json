@@ -1,18 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.45a251a6.css",
-    "main.js": "/static/js/main.658c6baa.js",
+    "main.css": "/static/css/main.789019fe.css",
+    "main.js": "/static/js/main.bb493cf9.js",
+    "static/media/giphy.gif": "/static/media/giphy.0d7a1a57dd652eabfbf8.gif",
     "static/media/80.png": "/static/media/80.811a97b7b7e1296be6e8.png",
+    "static/media/toothForExam.gif": "/static/media/toothForExam.00d17cd4bac6691838f0.gif",
+    "static/media/help.gif": "/static/media/help.cd131b39c54c25e94ac6.gif",
     "static/media/200.png": "/static/media/200.49ef815cc52e0ce38643.png",
+    "static/media/invBck2.webp": "/static/media/invBck2.3f38f079fb8153e5c1c3.webp",
     "static/media/spinner2.gif": "/static/media/spinner2.f53aa23fcdfc7bd67f43.gif",
     "static/media/DentistryBackgound.jpg": "/static/media/DentistryBackgound.bd13094cb29dc8e3e8da.jpg",
+    "static/media/case2.jpg": "/static/media/case2.7caa8ef6f7a774764e32.jpg",
     "static/media/Dental_sheet.PNG": "/static/media/Dental_sheet.e238c74f2d2e27796301.PNG",
+    "static/media/radioBck.jpg": "/static/media/radioBck.d13ad7c39e7d621717e6.jpg",
     "index.html": "/index.html",
-    "main.45a251a6.css.map": "/static/css/main.45a251a6.css.map",
-    "main.658c6baa.js.map": "/static/js/main.658c6baa.js.map"
+    "main.789019fe.css.map": "/static/css/main.789019fe.css.map",
+    "main.bb493cf9.js.map": "/static/js/main.bb493cf9.js.map"
   },
   "entrypoints": [
-    "static/css/main.45a251a6.css",
-    "static/js/main.658c6baa.js"
+    "static/css/main.789019fe.css",
+    "static/js/main.bb493cf9.js"
   ]
 }

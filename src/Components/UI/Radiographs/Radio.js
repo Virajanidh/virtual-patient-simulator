@@ -17,6 +17,8 @@ import Other from "./Other"
 import img3 from "../../../Images/radioBck.jpg"
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
+import Navbar from '../../Navbar';
+import CBCT from './CBCT';
 
 const Radio = () => {
   const {userInfomation} = useSelector((state) => state.user)
@@ -35,7 +37,6 @@ const Radio = () => {
     bitewing: false,
     other: false
   });
-
   const onClickHandler2 = () => {
     console.log("button clicked")
     setexam_inv({
@@ -44,6 +45,16 @@ const Radio = () => {
         bitewing: false,
         other: false
     })
+    const btn1 = document.getElementById('OPG');
+    btn1.style.backgroundColor = '#999900';
+    const btn2 = document.getElementById('IOPA');
+    btn2.style.backgroundColor = '#e6e600';
+    const btn3 = document.getElementById('Bitewing');
+    btn3.style.backgroundColor =  '#e6e600';
+    const btn4 = document.getElementById('Other');
+    btn4.style.backgroundColor =  '#e6e600';
+    const btn5 = document.getElementById('cbct');
+    btn5.style.backgroundColor =  '#e6e600';
   };
 
 
@@ -53,16 +64,38 @@ const Radio = () => {
         iopg: true,
         opg: false,
         bitewing: false,
-        other: false
+        other: false,
+        cbct:false
     })
+    const btn1 = document.getElementById('OPG');
+    btn1.style.backgroundColor = '#e6e600';
+    const btn2 = document.getElementById('IOPA');
+    btn2.style.backgroundColor = '#999900';
+    const btn3 = document.getElementById('Bitewing');
+    btn3.style.backgroundColor =  '#e6e600';
+    const btn4 = document.getElementById('Other');
+    btn4.style.backgroundColor =  '#e6e600';
+    const btn5 = document.getElementById('cbct');
+    btn5.style.backgroundColor =  '#e6e600';
   };
   const onClickHandler5 = () => {
     setexam_inv({
         iopg: false,
         opg: false,
         bitewing: true,
-        other: false
+        other: false,
+        cbct:false
     })
+    const btn1 = document.getElementById('OPG');
+    btn1.style.backgroundColor = '#e6e600';
+    const btn2 = document.getElementById('IOPA');
+    btn2.style.backgroundColor = '#e6e600';
+    const btn3 = document.getElementById('Bitewing');
+    btn3.style.backgroundColor =  '#999900';
+    const btn4 = document.getElementById('Other');
+    btn4.style.backgroundColor =  '#e6e600';
+    const btn5 = document.getElementById('cbct');
+    btn5.style.backgroundColor =  '#e6e600';
   };
 
   const onClickHandler6 = () => {
@@ -71,15 +104,50 @@ const Radio = () => {
         iopg: false,
         opg: false,
         bitewing: false,
-        other: true
+        other: true,
+        cbct:false
     })
+    const btn1 = document.getElementById('OPG');
+    btn1.style.backgroundColor = '#e6e600';
+    const btn2 = document.getElementById('IOPA');
+    btn2.style.backgroundColor = '#e6e600';
+    const btn3 = document.getElementById('Bitewing');
+    btn3.style.backgroundColor =  '#e6e600';
+    const btn4 = document.getElementById('Other');
+    btn4.style.backgroundColor =  '#999900';
+    const btn5 = document.getElementById('cbct');
+    btn5.style.backgroundColor =  '#e6e600';
+
+  };
+  const onClickHandler7 = () => {
+    console.log("button clicked")
+    setexam_inv({
+        iopg: false,
+        opg: false,
+        bitewing: false,
+        other:false,
+        cbct:true
+    })
+    const btn1 = document.getElementById('OPG');
+    btn1.style.backgroundColor = '#e6e600';
+    const btn2 = document.getElementById('IOPA');
+    btn2.style.backgroundColor = '#e6e600';
+    const btn3 = document.getElementById('Bitewing');
+    btn3.style.backgroundColor =  '#e6e600';
+    const btn4 = document.getElementById('Other');
+    btn4.style.backgroundColor =  '#e6e600';
+    const btn5 = document.getElementById('cbct');
+    btn5.style.backgroundColor =  '#999900';
+
   };
 
   const onClickHandler = (order) => {
     const resetImages = {
       first: false,
       second: false,
-      ground: false
+      ground: false,
+      
+          
     };
     setImageClicked({
       ...resetImages,
@@ -94,32 +162,9 @@ const Radio = () => {
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="container-fluid">
-                <a class="navbar-brand" style={{
-                  fontSize: ' 20px',
-                }}href="#">Hi {userInfomation.name}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav" style={{
-                  fontSize: ' 20px',
-                }} >
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Logout</a>
-                    </li>
-                  </ul>
-                </div>
+<div className='navText'>
+              <Navbar/>
               </div>
-            </nav>
 
             <div>
                 <Grid container spacing={20}>
@@ -133,7 +178,7 @@ const Radio = () => {
             </div>
              <div style={{position:'absolute',
               left:'40%',
-              top:'25%',
+              top:'20%',
               fontSize:'50px',
               fontWeight : 'bold',
               color: '#FF5'
@@ -144,19 +189,24 @@ const Radio = () => {
 
       <div className="contOnes">
       <ButtonGroup size="lg" className="mb-2">
-            <Button id='OPG' onClick={() => onClickHandler2()} className="ground">
+            <Button style={{ border: " 2px  solid gray", background:"#e6e600", color:'black' }} 
+            id='OPG' onClick={() => onClickHandler2()} className="ground">
             OPG
             </Button>
-            {/* <Button onClick={() => onClickHandler3()} className="ground">
-            Dental Chart
-            </Button> */}
-            <Button id='IOPA' onClick={() => onClickHandler4()} className="ground">
+            <Button style={{ border: " 2px  solid gray",background:"#e6e600" , color:'black'}} 
+            id='IOPA' onClick={() => onClickHandler4()} className="ground">
             IOPA
             </Button>
-            <Button id='Bitewing' onClick={() => onClickHandler5()} className="ground">
+            <Button style={{ border: " 2px  solid gray",background:"#e6e600", color:'black' }} 
+            id='Bitewing' onClick={() => onClickHandler5()} className="ground">
             Bitewing
             </Button>
-            <Button id='Other' onClick={() => onClickHandler6()} className="ground">
+            <Button style={{ border: " 2px  solid gray",background:"#e6e600", color:'black' }} 
+            id='cbct' onClick={() => onClickHandler7()} className="ground">
+            CBCT
+            </Button>
+            <Button style={{ border: " 2px  solid gray", background:"#e6e600", color:'black' }} 
+            id='Other' onClick={() => onClickHandler6()} className="ground">
             Other
             </Button>
         </ButtonGroup>
@@ -178,9 +228,13 @@ const Radio = () => {
            <Other/> :
            null
         }
+         {exam_inv.cbct ?
+           <CBCT/> :
+           null
+        }
         
         {
-          !exam_inv.iopg && !exam_inv.opg && !exam_inv.bitewing && !exam_inv.other ? <IOPG/> : null
+          !exam_inv.iopg && !exam_inv.opg && !exam_inv.bitewing && !exam_inv.other && !exam_inv.cbct ? <IOPG/> : null
         }
 
       </div>

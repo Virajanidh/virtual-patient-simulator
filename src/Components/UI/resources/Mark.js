@@ -66,13 +66,14 @@ export default function Mark() {
 
   return (
     <div>
-      <div style={{position:'absolute',
+      {/* <div style={{position:'absolute',
             left:'40%',
-            top:'75%',
+            top:'62%',
             fontSize:'40px',
             fontWeight : 'bold',
             color: '#b80000'
-            }}>Plaque Score</div>
+            }}>Plaque Score
+            </div> */}
 
       <div className="Dental_Sheet">
         <img src={sheet}/>
@@ -95,7 +96,7 @@ export default function Mark() {
           {`Caries List: ${checkedItems}`}
         </div>
       </div>
-      <div>
+      <div className="checkboxclass">
         <CheckBox/>
       </div>
     </div>
