@@ -7,7 +7,7 @@ function IOPG() {
     return (
       <div className ="contPics"
         
-       ><img src={img3} height={300} width={200} border ='15px solid #021a40'/></div>
+       ><img src={img3} height={300} width={200} /></div>
     );
   }
   

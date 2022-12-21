@@ -7,7 +7,7 @@ function OPG() {
     return (
       <div className ="contPic"
         
-       ><img src={img3} height={300} width={600}  border ='15px solid #021a40'/></div>
+       ><img src={img3} height={300} width={600}  /></div>
     );
   }
   

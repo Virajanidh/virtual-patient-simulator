@@ -23,7 +23,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { maxHeight } from '@mui/system';
 import img1 from "../../Images/case1.png";
-import img2 from "../../Images/newBack.jpg";
+import img2 from "../../Images/invBck2.webp";
 import { QuestionAnswer } from '@mui/icons-material';
 import firebase from '../../Config/Config'
 import Qcard from './questionCards/Qcard';
@@ -157,12 +157,9 @@ function CaseDesc() {
   }));
 
     return (
-      <div>
-        <Fragment>
           <div className ="app" style={{
                 backgroundImage: `url(${img2})`,
                 height:'200vh',
-                width: '100vw',
                 marginTop:'0px',
                 fontSize:'50px',
                 backgroundSize: 'cover',
@@ -217,7 +214,7 @@ function CaseDesc() {
             top:'25%',
             fontSize:'45px',
             fontWeight : 'bold',
-            color: '#FFF'
+            color: '#000'
             }}>Patient History Taking
 
             </div>
@@ -226,7 +223,7 @@ function CaseDesc() {
             top:'35%',
             fontSize:'30px',
             fontWeight : 'bold',
-            color: '#FFF'
+            color: '#000'
             }}>Case ID: 001
 
             </div>
@@ -292,7 +289,7 @@ function CaseDesc() {
               <Card sx={{ maxWidth: 500, maxHeight: 1000}}>
                 <CardActionArea>
                   <CardContent sx={{maxHeight: 500}} >
-                    <div className='ddown'>
+                    <div className='ddown1'>
                   <DropdownButton
                     alignRight
                     title="Select the Section"
@@ -328,7 +325,7 @@ function CaseDesc() {
                     </div>
 
             </div>
-            <div>
+            <div className='ddown1'>
                   <DropdownButton
                     alignRight
                     title="Select the question"
@@ -352,8 +349,6 @@ function CaseDesc() {
               </Card>
             </div>
           </div>
-            </Fragment>
-      </div>
     );
 }
 export default CaseDesc;

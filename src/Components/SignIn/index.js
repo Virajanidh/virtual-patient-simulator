@@ -68,13 +68,12 @@ function SignIn(){
 
     if(Object.keys(user).length==0 || !isSignIn){
     return(
-        <Fragment> 
         <div className ="app" style={{
             backgroundImage: `url(${background})`,
             height:'120vh',
             marginTop:'0px',
-          
             backgroundSize: 'cover',
+            backgroundPosition: 'center'
             }}>
               
               
@@ -94,7 +93,7 @@ function SignIn(){
             
 
         </div>
-        </Fragment>
+       
     )
             }
             else{
