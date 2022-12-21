@@ -33,23 +33,22 @@ function CaseSelect() {
     const [cases,setCase]=useState([])
 
     const handleClick = () => {
+    console.log("  button clicked")
       navigate('/page1');
       
     };
 
     useEffect(() => {
-      console.log("hii")
       fetchCase();
     }, []);
    
   
     const fetchCase=async()=>{
-      console.log("hii")
       const snapshot = await firebase.firestore().collection('Cases').get()
       const qArray= snapshot.docs.map(doc => doc.data())
       console.log(qArray);
       if(cases.length<qArray.length){
-      setCase(cases.concat(qArray));
+      setCase(qArray);
       }
       console.log(cases);
     }
