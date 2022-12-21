@@ -144,7 +144,7 @@ function CaseDesc() {
     navigate('/page4');  
   };
   const handleClick1 = () => {
-    navigate('/page1');  
+    navigate('/caseSelect');  
   };
   console.log(userInfomation.name)
 
@@ -332,7 +332,7 @@ function CaseDesc() {
                     id="dropdown-menu-align-right"
                     onSelect={handleSelect}
                   >
-                    {questions.filter(question => question.cat.includes(Section)).map(filteredName => (
+                    {Section && questions.filter(question => question.cat.includes(Section)).map(filteredName => (
                       <li>
                          <Dropdown.Item onClick={handleSelect} eventKey={filteredName.id}>{filteredName.q}</Dropdown.Item>
                       </li>

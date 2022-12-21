@@ -19,7 +19,7 @@ function App() {
                     {/* <Route exact path="/home" element={<Home/>}/> */}
                     <Route exact path="/" element={<SignIn/>}/>
                     <Route path="*" element={<NotFound/>}/>
-                    <Route path="/case" element={<CaseSelect/>}/>
+                    <Route path="/caseSelect" element={<CaseSelect/>}/>
                     <Route path="/page1" element={<CaseDesc/>}/>
                     <Route path="/page2" element={<Exam/>}/>
                     <Route path="/page3" element={<Radio/>}/>
