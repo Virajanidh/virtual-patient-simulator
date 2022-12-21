@@ -19,6 +19,7 @@ import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
 import Navbar from '../../Navbar';
 import CBCT from './CBCT';
+import img2 from "../../../Images/invBck2.webp";
 
 const Radio = () => {
   const {userInfomation} = useSelector((state) => state.user)
@@ -46,15 +47,15 @@ const Radio = () => {
         other: false
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#999900';
+    btn1.style.backgroundColor = '#110E61';
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#e6e600';
+    btn2.style.backgroundColor = '#002966';
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor =  '#e6e600';
+    btn3.style.backgroundColor =  '#002966';
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor =  '#e6e600';
+    btn4.style.backgroundColor =  '#002966';
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor =  '#e6e600';
+    btn5.style.backgroundColor =  '#002966';
   };
 
 
@@ -68,15 +69,15 @@ const Radio = () => {
         cbct:false
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#e6e600';
+    btn1.style.backgroundColor = "#002966";
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#999900';
+    btn2.style.backgroundColor = '#110E61';
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor =  '#e6e600';
+    btn3.style.backgroundColor =  "#002966";
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor =  '#e6e600';
+    btn4.style.backgroundColor =  "#002966";
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor =  '#e6e600';
+    btn5.style.backgroundColor =  "#002966";
   };
   const onClickHandler5 = () => {
     setexam_inv({
@@ -87,15 +88,15 @@ const Radio = () => {
         cbct:false
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#e6e600';
+    btn1.style.backgroundColor = "#002966";
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#e6e600';
+    btn2.style.backgroundColor = "#002966";
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor =  '#999900';
+    btn3.style.backgroundColor =  '#110E61';
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor =  '#e6e600';
+    btn4.style.backgroundColor =  "#002966";
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor =  '#e6e600';
+    btn5.style.backgroundColor =  "#002966";
   };
 
   const onClickHandler6 = () => {
@@ -108,15 +109,15 @@ const Radio = () => {
         cbct:false
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#e6e600';
+    btn1.style.backgroundColor = "#002966";
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#e6e600';
+    btn2.style.backgroundColor = "#002966";
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor =  '#e6e600';
+    btn3.style.backgroundColor =  "#002966";
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor =  '#999900';
+    btn4.style.backgroundColor =  '#110E61';
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor =  '#e6e600';
+    btn5.style.backgroundColor =  "#002966";
 
   };
   const onClickHandler7 = () => {
@@ -129,15 +130,15 @@ const Radio = () => {
         cbct:true
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#e6e600';
+    btn1.style.backgroundColor = "#002966";
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#e6e600';
+    btn2.style.backgroundColor = "#002966";
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor =  '#e6e600';
+    btn3.style.backgroundColor =  "#002966";
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor =  '#e6e600';
+    btn4.style.backgroundColor =  "#002966";
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor =  '#999900';
+    btn5.style.backgroundColor =  '#110E61';
 
   };
 
@@ -156,7 +157,7 @@ const Radio = () => {
   };
   return (
     <div className ="app" style={{
-        backgroundImage: `url(${img3})`,
+        backgroundImage: `url(${img2})`,
         height:'200vh',
         marginTop:'0px',
         fontSize:'50px',
@@ -170,7 +171,7 @@ const Radio = () => {
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
-                    <button className="back1" size="medium" onClick={handleClick}>Back</button>
+                    <button className="back" size="medium" onClick={handleClick}>Back</button>
                   </div>
                   </Grid>
                   
@@ -181,7 +182,7 @@ const Radio = () => {
               top:'20%',
               fontSize:'50px',
               fontWeight : 'bold',
-              color: '#FF5'
+              color: 'darkblue'
               }}>Radiographs
 
               </div>
@@ -189,23 +190,23 @@ const Radio = () => {
 
       <div className="contOnes">
       <ButtonGroup size="lg" className="mb-2">
-            <Button style={{ border: " 2px  solid gray", background:"#e6e600", color:'black' }} 
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }}
             id='OPG' onClick={() => onClickHandler2()} className="ground">
             OPG
             </Button>
-            <Button style={{ border: " 2px  solid gray",background:"#e6e600" , color:'black'}} 
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }}
             id='IOPA' onClick={() => onClickHandler4()} className="ground">
             IOPA
             </Button>
-            <Button style={{ border: " 2px  solid gray",background:"#e6e600", color:'black' }} 
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }}
             id='Bitewing' onClick={() => onClickHandler5()} className="ground">
             Bitewing
             </Button>
-            <Button style={{ border: " 2px  solid gray",background:"#e6e600", color:'black' }} 
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }}
             id='cbct' onClick={() => onClickHandler7()} className="ground">
             CBCT
             </Button>
-            <Button style={{ border: " 2px  solid gray", background:"#e6e600", color:'black' }} 
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966" , buttonRadius:"50px" }}
             id='Other' onClick={() => onClickHandler6()} className="ground">
             Other
             </Button>

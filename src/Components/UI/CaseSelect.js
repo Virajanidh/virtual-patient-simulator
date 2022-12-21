@@ -55,22 +55,16 @@ function CaseSelect() {
     }
    console.log(userInfomation.name)
     return (
-      <div>
-        <div className='navText'>
-              <Navbar/>
-              </div>
-        <Fragment>
           <div className ="app" style={{
               backgroundImage: `url(${img3})`,
-              // height:'120vh',
-              // marginTop:'0px',
-              height:'200vh',
-                width: '100vw',
+                height:'200vh',
                 marginTop:'0px',
-
               fontSize:'50px',
               backgroundSize: 'cover',
               }}>
+                <div className='navText'>
+              <Navbar/>
+              </div>
               {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" style={{
@@ -165,9 +159,6 @@ function CaseSelect() {
                 </Grid>
               </Grid>
           </div>
-
-            </Fragment>
-        </div>
     );
 }
 
