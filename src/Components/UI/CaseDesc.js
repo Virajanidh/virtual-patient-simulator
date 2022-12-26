@@ -58,6 +58,7 @@ function CaseDesc() {
   const [selectedQ,setSelectedQ]=useState('');
 
   const {selectedQdata} =useSelector((state) => state.historyQ)
+  const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
   const dispatch = useDispatch()
 
   const initialState = {};
@@ -75,30 +76,25 @@ function CaseDesc() {
   }
 
   useEffect(() => {
-    console.log("hii")
     setSelectedQ(selectedQdata)
     fetchQuestions(selectedQdata);
   }, []);
 
   const fetchQuestions=async()=>{
-    console.log("hii")
-    const snapshot = await firebase.firestore().collection('C001').get()
+    console.log(selectedCaseDetails.caseId)
+    const snapshot = await firebase.firestore().collection(selectedCaseDetails.caseId).get()
     const qArray= snapshot.docs.map(doc => doc.data())
-    console.log(qArray);
     if(questions.length<qArray.length){
     setQuestions(questions.concat(qArray));
     }
-    console.log(questions);
   }
 
   const handleSelect=(e)=>{
-    console.log(e);
     setValue(e)
     setIdOfQ(e);
     for (let item of questions){
       let num= e.toString()
       if(item.id == e.toString()){
-        console.log(item)
         setSelectedQ( // Replace the state
         [ // with a new array
           ...selectedQ, // that contains all the old items
@@ -108,7 +104,6 @@ function CaseDesc() {
         dispatch(historyTakingActions.addselectedQdata(item));
       }
     }
-    console.log(selectedQ)
     setSelectedQId( // Replace the state
     [ // with a new array
       ...selectedQId, // that contains all the old items
@@ -127,13 +122,10 @@ function CaseDesc() {
 
   const displayq=(e)=>{
     const QList= questions;
-    console.log("QList",QList)
-    
 
   }
 
   const handleSection=(e)=>{
-    console.log(e)
     setSection(e)
     displayq(e)
   }
@@ -224,7 +216,7 @@ function CaseDesc() {
             fontSize:'30px',
             fontWeight : 'bold',
             color: '#000'
-            }}>Case ID: 001
+            }}>Case ID: {selectedCaseDetails.caseId}
 
             </div>
             <Grid container spacing={1}>
@@ -236,14 +228,14 @@ function CaseDesc() {
                     component="img"
                     height="200"
                     alt="Case Description"
-                    image={img1}
+                    image={selectedCaseDetails.frontImage}
                   />
                   <CardContent>
                     <div className='case'>
-                    Case 001
+                    Case {selectedCaseDetails.name}
                     </div>
                     <div className='casedes'>
-                    A 38-year-old patient presents with a painful tooth on the right side upper arch.
+                   {selectedCaseDetails.description}
                     </div>
                   
                   </CardContent>
@@ -297,10 +289,10 @@ function CaseDesc() {
                     onSelect={handleSection}
                   >
                     <Dropdown.Item eventKey="complaint" >History of the presenting complaint</Dropdown.Item>
-                    <Dropdown.Item eventKey="medicalH" >Medical history</Dropdown.Item>
                     <Dropdown.Item eventKey="habits" >Habits</Dropdown.Item>
-                    <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
                     <Dropdown.Item eventKey="history" >Dietary history</Dropdown.Item>
+                    <Dropdown.Item eventKey="medicalH" >Medical history</Dropdown.Item>
+                    <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
                     <Dropdown.Item eventKey="pretreate" >Previous dental treatments</Dropdown.Item>
                     <Dropdown.Item eventKey="shistory" >Social history</Dropdown.Item>
                     

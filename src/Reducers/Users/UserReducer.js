@@ -2,7 +2,7 @@
   import {userTypes} from '../types'; 
   const initialState = {
     userInfomation:{},
-    isSignIn :true
+    isSignIn :false
   };
 
   const UserReducer = (state = initialState, action)=> {

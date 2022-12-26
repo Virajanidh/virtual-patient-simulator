@@ -4,6 +4,7 @@ import { firestoreReducer } from 'redux-firestore';
 import HistoryTakingQReducer from './HistoryTakingQ/HistoryTakingQReducer';
 import DentalSheetcariesReducer from './DentalSheet/DentalSheetcariesReducer';
 import DentalSheetResReducer from './DentalSheet/DentalSheetResReducer';
+import CaseReducer from './Case/CaseReducer';
 
 
 import {
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   historyQ : HistoryTakingQReducer,
   cariesDentalMarking :DentalSheetcariesReducer,
   resDentalMarking:DentalSheetResReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  caseSelected:CaseReducer
   
 });
 export default rootReducer;
