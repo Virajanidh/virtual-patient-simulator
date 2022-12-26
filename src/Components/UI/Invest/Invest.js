@@ -30,7 +30,7 @@ const Invest = () => {
   const {userInfomation} = useSelector((state) => state.user)
   const navigate = useNavigate();
   const handleClick1 = () => {
-    navigate('/page1');  
+    navigate('/historyTaking');  
   };
   const handleClick2 = () => {
     navigate('/page2');  

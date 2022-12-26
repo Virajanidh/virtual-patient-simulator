@@ -10,6 +10,8 @@ import Radio from "./Components/UI/Radiographs/Radio";
 import Invest from "./Components/UI/Invest/Invest";
 import Diagnosis from "./Components/UI/Diagnosis/Diagnosis"
 //import PrivateRoute from "./Components/auth/PrivateRoute";
+import AdminSignIn from "./Components/Admin/AdminSignIn"
+import PrivateRoute from "./auth/PrivateRout"
 
 function App() {
     return (
@@ -19,12 +21,29 @@ function App() {
                     {/* <Route exact path="/home" element={<Home/>}/> */}
                     <Route exact path="/" element={<SignIn/>}/>
                     <Route path="*" element={<NotFound/>}/>
-                    <Route path="/caseSelect" element={<CaseSelect/>}/>
-                    <Route path="/page1" element={<CaseDesc/>}/>
-                    <Route path="/page2" element={<Exam/>}/>
+                    <Route path="/adminSignIn" element={<AdminSignIn/>}/>
+                    <Route path="/enterCase" element={<Invest/>}/> 
+                    <Route exact path="/caseSelect" element={<PrivateRoute><CaseSelect/></PrivateRoute>}/>
+                    <Route exact path="/historyTaking" element={<PrivateRoute><CaseDesc/></PrivateRoute>}/>
+                    <Route exact path="/page2" element={<PrivateRoute><Exam/></PrivateRoute>}/>
+                    <Route exact path="/page3" element={<PrivateRoute><Radio/></PrivateRoute>}/>
+                    <Route exact path="/page4" element={<PrivateRoute><Invest/></PrivateRoute>}/>
+                    <Route exact path="/page5" element={<PrivateRoute><Diagnosis/></PrivateRoute>}/>
+                    {/* <Route exact path="/adminSignIn" element={<PrivateRoute><AdminSignIn/></PrivateRoute>}/> */}
+                    {/* <Route exact path="/enterCase" element={<PrivateRoute><Invest/></PrivateRoute>}/> */}
+
+
+
+                    {/* <Route path="/caseSelect" element={<CaseSelect/>}/>
+                    <Route path="/historyTaking" element={<CaseDesc/>}/> {/*page1*/}
+                    {/* <Route path="/page2" element={<Exam/>}/>
                     <Route path="/page3" element={<Radio/>}/>
                     <Route path="/page4" element={<Invest/>}/>
                     <Route path="/page5" element={<Diagnosis/>}/>
+                    <Route path="/adminSignIn" element={<AdminSignIn/>}/>
+                    <Route path="/enterCase" element={<Invest/>}/> */} 
+                   
+                   
                 </Routes>
             </Router>
             </Provider>

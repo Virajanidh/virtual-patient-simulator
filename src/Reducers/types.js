@@ -13,3 +13,7 @@ export const DentalSheetTypes ={
     CARIES :'CARIES',
     RESTORATION :'RESTORATION'
 }
+export const caseTypes ={
+    SETCASE :'SETCASE',
+    SETALLCASES :'SETALLCASES'
+}

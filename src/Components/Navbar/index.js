@@ -5,6 +5,7 @@ import {logout, UserLogoutActions} from '../../Actions/User/UserLogoutActions'
 import { useNavigate, Link} from 'react-router-dom';
 import './nav.css'
 
+
 function Navbar(){
 
    const {userInfomation} = useSelector((state) => state.user)
@@ -31,6 +32,9 @@ function Navbar(){
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+          <Link class="nav-link" to="/caseSelect">Home</Link>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Previous Feedback
             <span class="visually-hidden">(current)</span>
@@ -38,6 +42,10 @@ function Navbar(){
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          {/* <a class="nav-link" href="/adminSignIn">Admin</a> */}
+          <Link class="nav-link" to="/adminSignIn">Admin</Link>
         </li>
       </ul>
       <form class="d-flex">

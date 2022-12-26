@@ -19,6 +19,7 @@
   import firebase from 'firebase/compat/app';
   import 'firebase/compat/firestore';
   import 'firebase/compat/auth';
+  import "firebase/compat/storage";
   
   // Replace this with your own config details
   var config = {
@@ -32,4 +33,5 @@
   };
   firebase.initializeApp(config);
   firebase.firestore().settings({ timestampsInSnapshots: true });
+  firebase.storage()
   export default firebase;
