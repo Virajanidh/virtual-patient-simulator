@@ -93,7 +93,8 @@ function CaseDesc() {
     setValue(e)
     setIdOfQ(e);
     for (let item of questions){
-      let num= e.toString()
+      console.log(e)
+     // let num= e.toString()
       if(item.id == e.toString()){
         setSelectedQ( // Replace the state
         [ // with a new array

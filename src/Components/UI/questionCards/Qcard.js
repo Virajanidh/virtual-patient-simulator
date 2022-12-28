@@ -29,6 +29,7 @@ export class ProductCard extends Component {
       </div>*/}
         <div className='qns'>{oneQuestion.q}</div>
         <div className='ans'>{oneQuestion.a}</div>
+      { oneQuestion.image ? <img src={oneQuestion.image} height={150} width={300}  /> : null}
         
         </div>
       );

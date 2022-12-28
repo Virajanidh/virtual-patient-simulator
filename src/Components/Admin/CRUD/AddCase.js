@@ -12,7 +12,7 @@ export default function AddCase(){
         <div>
             <form>
               <fieldset>
-              <legend>Legend</legend>
+              <legend>Create new case</legend>
                 <div class="form-group row">
                   <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                   <div class="col-sm-10">
