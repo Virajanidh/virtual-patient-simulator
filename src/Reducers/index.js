@@ -5,6 +5,7 @@ import HistoryTakingQReducer from './HistoryTakingQ/HistoryTakingQReducer';
 import DentalSheetcariesReducer from './DentalSheet/DentalSheetcariesReducer';
 import DentalSheetResReducer from './DentalSheet/DentalSheetResReducer';
 import CaseReducer from './Case/CaseReducer';
+import DiagnosisReducer from './Diagnosis/DiagnosisReducer';
 
 
 import {
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   cariesDentalMarking :DentalSheetcariesReducer,
   resDentalMarking:DentalSheetResReducer,
   firestore: firestoreReducer,
-  caseSelected:CaseReducer
+  caseSelected:CaseReducer,
+  diagnosisQ : DiagnosisReducer
   
 });
 export default rootReducer;
