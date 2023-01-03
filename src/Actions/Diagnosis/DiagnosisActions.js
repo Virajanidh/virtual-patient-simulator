@@ -4,7 +4,8 @@ export const DiagnosisActions = {
     setCorrectDiagnosisQ,
     setSelectedAnsForDQ,
     setDiagnosisAllQ,
-    setWrongDiagnosisQ
+    setWrongDiagnosisQ,
+    setDiagnosisSubmit
 };
 
 function  setDiagnosisAllQ(data){
@@ -37,6 +38,22 @@ function setSelectedAnsForDQ(data){
         return {type: diagnosisTypes.SELECTEDANSFORDQ,data}
     }
 }
+
+function setDiagnosisSubmit(data){
+    return async dispatch => {
+        try {
+            console.log(data)
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success(data) {
+        return {type: diagnosisTypes.ISSUBMITDIAGNOSIS,data}
+    }
+}
+
 
 function  setCorrectDiagnosisQ(data){
     return async dispatch => {

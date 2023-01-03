@@ -11,7 +11,8 @@ import Invest from "./Components/UI/Invest/Invest";
 import Diagnosis from "./Components/UI/Diagnosis/Diagnosis"
 //import PrivateRoute from "./Components/auth/PrivateRoute";
 import AdminSignIn from "./Components/Admin/AdminSignIn"
-import PrivateRoute from "./auth/PrivateRout"
+import PrivateRoute from "./auth/PrivateRout";
+import FeedbackEval from "./Components/UI/FeedbackEval/FeedbackEval";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     <Route exact path="/page3" element={<PrivateRoute><Radio/></PrivateRoute>}/>
                     <Route exact path="/page4" element={<PrivateRoute><Invest/></PrivateRoute>}/>
                     <Route exact path="/page5" element={<PrivateRoute><Diagnosis/></PrivateRoute>}/>
+                    <Route exact path="/feedback" element={<PrivateRoute><FeedbackEval/></PrivateRoute>}/>
                     {/* <Route exact path="/adminSignIn" element={<PrivateRoute><AdminSignIn/></PrivateRoute>}/> */}
                     {/* <Route exact path="/enterCase" element={<PrivateRoute><Invest/></PrivateRoute>}/> */}
 

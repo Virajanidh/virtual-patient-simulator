@@ -49,6 +49,7 @@ function CaseDesc() {
   const [questions,setQuestions]=useState([])
   const [selectedQId,setSelectedQId] =useState([])
   const {userInfomation} = useSelector((state) => state.user)
+  const {sectionOrder} = useSelector((state) => state.historyQ)
   const classes = useStyles();
   const navigate = useNavigate();
   const [qId,setIdOfQ]=useState('');
@@ -84,6 +85,7 @@ function CaseDesc() {
     console.log(selectedCaseDetails.caseId)
     const snapshot = await firebase.firestore().collection(selectedCaseDetails.caseId).get()
     const qArray= snapshot.docs.map(doc => doc.data())
+    dispatch(historyTakingActions.addAllHTQdata(qArray))
     if(questions.length<qArray.length){
     setQuestions(questions.concat(qArray));
     }
@@ -129,6 +131,7 @@ function CaseDesc() {
   const handleSection=(e)=>{
     setSection(e)
     displayq(e)
+    dispatch(historyTakingActions.setSelectionOrder(e));
   }
 
 
@@ -291,7 +294,7 @@ function CaseDesc() {
                   >
                     <Dropdown.Item eventKey="complaint" >History of the presenting complaint</Dropdown.Item>
                     <Dropdown.Item eventKey="habits" >Habits</Dropdown.Item>
-                    <Dropdown.Item eventKey="history" >Dietary history</Dropdown.Item>
+                    <Dropdown.Item eventKey="dhistory" >Dietary history</Dropdown.Item>
                     <Dropdown.Item eventKey="medicalH" >Medical history</Dropdown.Item>
                     <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
                     <Dropdown.Item eventKey="pretreate" >Previous dental treatments</Dropdown.Item>
