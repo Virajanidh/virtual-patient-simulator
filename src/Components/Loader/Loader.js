@@ -11,7 +11,7 @@ function Loader() {
       </div>
       <img
         src={spinner}
-        style={{ width: '50px', height: '50px', margin: 'auto', display: 'block', top: '80%' }}
+        style={{ width: '50px', height: '50px', marginLeft: '500' , display: 'block', top: '80%' }}
         alt="Loading..."
       />
     </div>

@@ -97,7 +97,7 @@ const Invest = () => {
   return (
     <div className ="app" style={{
         backgroundImage: `url(${img3})`,
-        height:'200vh',
+        height:'400vh',
         marginTop:'0px',
         fontSize:'50px',
         backgroundSize: 'cover',

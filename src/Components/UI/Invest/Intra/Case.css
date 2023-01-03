@@ -28,26 +28,12 @@
     height: '1000px';
 }
 
-.cardDesc{
-    padding-top: 150px;
+.cardDesc1{
+    padding-top: 185px;
     text-align: center;
     align-self: center;
-    padding-left: 100px;
+    padding-left: 90px;
     max-width: '50rem';
-}
-.dropdown{
-    padding-top: 10px;
-    text-align: center;
-    padding-right: 100px;
-}
-
-.ddown{
-    height: 200px;
-    padding-top: 0px;
-}
-.NextChip{
-    padding-right: 10px;
-    padding-left: 900px;
 }
 
 .chips{
@@ -59,18 +45,45 @@
     fill: blue;
 }
 
-.qna{
-    max-width: 200rem;
-    padding-right: 0px;
-    padding-top: 150px;
+.chart{
+    padding-top: 50px;
+    padding-left: 15px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.caries{
+    padding-top: 40px;
+    padding-left: 130px;
+}
+.cariesCard{
+    padding-top: 30px;
+    padding-left: 250px;
+}
+.dd{
+    font-size: 15px;
+    padding-top: 15px;
+}
+.dd1{
+    font-size: 15px;
+    fill: none;
+    height: 50px;
+    padding-top: 0px;
 }
 
-.middletext{
-    text-align: center;
-    padding: 20px;
-    
+.mainqs{
+    font-size: 20px;
+    font-weight: 10px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+.NextChip{
+    padding-right: 10px;
+    padding-left: 900px;
 }
 
+.qs{
+    padding-left: 50px;
+}
 .sect{
     text-align: center;
     font-size: 30px;
@@ -78,6 +91,11 @@
     font-weight: bold;
     padding-top: 5px;
     
+}
+
+.softcard{
+    padding-top: 20px;
+    padding-right: 20px;
 }
 
 .caseBtn{
@@ -89,3 +107,16 @@
     padding-left: 20%;
 }
 
+.tool{
+    padding-top: 30px;
+}
+
+.quest{
+    color: firebrick;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ans{
+    color: black;
+}

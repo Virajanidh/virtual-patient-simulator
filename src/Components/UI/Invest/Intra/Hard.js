@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Picker from 'emoji-picker-react';
-import NoRecord from '../../NoRecord.js';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -11,8 +9,10 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { green, red } from '@mui/material/colors';
-
-function Periodental() {
+import CariesDD from './CariesDD'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+function Hard() {
 
   const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -24,14 +24,14 @@ function Periodental() {
               fontSize:'40px',
               fontWeight : 'bold',
               color: '#198A1E'
-              }}>Periodental Screening</div>
+              }}>Hard Tissue Assesment</div>
         <div style={{position:'absolute',
               left:'5%',
               top:'60%',
               fontSize:'30px',
               fontWeight : 'bold',
               color: '#000'
-              }}>Tool selection</div>
+              }}>1. Tool selection</div>
         <div style={{position:'absolute',
               left:'5%',
               top:'70%',
@@ -239,10 +239,85 @@ function Periodental() {
           </Grid>
           </div>
         </div>
-        <div className='chart'>Chart</div>
-     </div>
+        <div className='chart'>2. Dental Chart</div>
+        <div className='chart'>3. Caries status</div>
+        <div style={{position:'absolute',
+              left:'6%',
+              top:'215%',
+              fontSize:'20px',
+              fontWeight : '10px',
+              color: '#000'
+              }}>Are there any Caries?</div>
+        <div className='caries'><CariesDD/></div>
+        <div className='cariesCard'>
+        <Card sx={{ maxWidth: 500 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    paddingLeft="50px"
+                  />
+                  {/* <CardContent>
+                    <div className='case'>
+                          Case {selectedCaseDetails.name}
+                          </div>
+                          <div className='casedes'>
+                        {selectedCaseDetails.description}
+                    </div>
+                        
+                  </CardContent> */}
+                </CardActionArea>
+              </Card></div>
+        <div className='chart'>4. Restorations</div>
+        <div className='caries'><CariesDD/></div>
+        <div className='cariesCard'>
+        <Card sx={{ maxWidth: 500 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    paddingLeft="50px"
+                  />
+                  {/* <CardContent>
+                    <div className='case'>
+                          Case {selectedCaseDetails.name}
+                          </div>
+                          <div className='casedes'>
+                        {selectedCaseDetails.description}
+                    </div>
+                        
+                  </CardContent> */}
+                </CardActionArea>
+              </Card></div>
+              <div className='chart'>4. Answer the Questions</div>
+              <div className='mainqs'>What is the plaque score?</div>
+              <div className='qs'>
+              <Box
+                component="form"
+                sx={{
+                  '& > :not(style)': { m: 1, width: '20ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField id="standard-basic" label="Your answer" variant="standard" />
+              </Box></div>
+              <div className='mainqs'>What is the bleeding score?</div>
+              <div className='qs'>
+              <Box
+                  component="form"
+                  sx={{
+                    '& > :not(style)': { m: 1, width: '20ch' },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField id="standard-basic" label="Your answer" variant="standard" />
+                </Box></div>
+              </div>
+     
     );
   }
   
-  export default Periodental;
+  export default Hard;
   

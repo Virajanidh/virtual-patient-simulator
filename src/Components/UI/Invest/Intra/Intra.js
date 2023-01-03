@@ -6,15 +6,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import Chip from '@mui/material/Chip';
 import { useNavigate, Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Soft from './Soft'
 import Periodental from './Periodental'
-import Mark from '../../resources/Mark'
+import Hard from './Hard'
 import img3 from "../../../../Images/examBck.jpg"
 import ThreeD from '../../resources/ThreeD';
+import Grid from '@mui/material/Grid';
 
 const Intra = () => {
   const navigate = useNavigate();
@@ -23,7 +23,8 @@ const Intra = () => {
     perio: false,
     soft: false,
     mark: false,
-    intraview : false
+    intraview : false,
+    ging: false
   });
 
   const onClickHandler1 = () => {
@@ -33,7 +34,8 @@ const Intra = () => {
       perio: false,
       soft: false,
       mark: false,
-      intraview : true
+      intraview : true,
+      ging: false
     })
     const btn1 = document.getElementById('perio');
     btn1.style.backgroundColor = 'brown';
@@ -43,6 +45,8 @@ const Intra = () => {
     btn3.style.backgroundColor =  'brown';
     const btn4 = document.getElementById('intrav');
     btn4.style.backgroundColor =  '#660000';
+    const btn5 = document.getElementById('ging');
+    btn5.style.backgroundColor =  'brown';
   };
 
   const onClickHandler2 = () => {
@@ -52,7 +56,8 @@ const Intra = () => {
       perio: true,
       soft: false,
       mark: false,
-      intraview : false
+      intraview : false,
+      ging: false
     })
     const btn1 = document.getElementById('perio');
     btn1.style.backgroundColor = '#660000';
@@ -62,6 +67,8 @@ const Intra = () => {
     btn3.style.backgroundColor =  'brown';
     const btn4 = document.getElementById('intrav');
     btn4.style.backgroundColor =  'brown';
+    const btn5 = document.getElementById('ging');
+    btn5.style.backgroundColor =  'brown';
   };
 
 
@@ -71,7 +78,8 @@ const Intra = () => {
       perio: false,
       soft: true,
       mark: false,
-      intraview : false
+      intraview : false,
+      ging: false
     })
     const btn1 = document.getElementById('perio');
     btn1.style.backgroundColor = 'brown';
@@ -81,6 +89,8 @@ const Intra = () => {
     btn3.style.backgroundColor =  'brown';
     const btn4 = document.getElementById('intrav');
     btn4.style.backgroundColor =  'brown';
+    const btn5 = document.getElementById('ging');
+    btn5.style.backgroundColor =  'brown';
   };
   const onClickHandler5 = () => {
     console.log("button clicked")
@@ -88,7 +98,8 @@ const Intra = () => {
       perio: false,
       soft: false,
       mark: true,
-      intraview : false
+      intraview : false,
+      ging: false
     })
     const btn1 = document.getElementById('perio');
     btn1.style.backgroundColor = 'brown';
@@ -98,6 +109,28 @@ const Intra = () => {
     btn3.style.backgroundColor =  '#660000';
     const btn4 = document.getElementById('intrav');
     btn4.style.backgroundColor =  'brown';
+    const btn5 = document.getElementById('ging');
+    btn5.style.backgroundColor =  'brown';
+  };
+  const onClickHandler6 = () => {
+    console.log("button clicked")
+    setexam_inv({
+      perio: false,
+      soft: false,
+      mark: false,
+      intraview : false,
+      ging: true
+    })
+    const btn1 = document.getElementById('perio');
+    btn1.style.backgroundColor = 'brown';
+    const btn2 = document.getElementById('soft');
+    btn2.style.backgroundColor = 'brown';
+    const btn3 = document.getElementById('plaq');
+    btn3.style.backgroundColor =  'brown';
+    const btn4 = document.getElementById('intrav');
+    btn4.style.backgroundColor =  'brown';
+    const btn5 = document.getElementById('intrav');
+    btn5.style.backgroundColor =  '#660000';
   };
   
   return (
@@ -109,49 +142,133 @@ const Intra = () => {
         backgroundSize: 'cover',
         }}>
              
-      <div className="contTwo">
-      <ButtonGroup size="lg" className="btnGrp">
-            <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
-            Intra-Oral view
-            </Button>
-            <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
-            Periodental Chart
-            </Button>
-            <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-            Soft Tissue Assesment
-            </Button>
-            <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-            Plaque Chart
-            </Button>
-        </ButtonGroup>
-        </div>
         <div className='contThr1'>
-        {exam_inv.perio ?
+          {exam_inv.perio ?
+            <Grid item xs={12}>
+            <Periodental /> </Grid> :
+            null
+          }
+          {exam_inv.soft ?
+          <Grid container spacing={10}>
+            <Grid item xs={9}>
+            <ThreeD/></Grid>
+            <Grid item xs={3}>
+                <ButtonGroup size="lg" className="btnGrp" vertical>
+                      <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                      Intra-Oral view
+                      </Button>
+                      <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                      Periodental Screening
+                      </Button>
+                      <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                      Soft Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                      Hard Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      Gingivel Assesment
+                      </Button>
+                  </ButtonGroup>
+                  <div className='softcard'> 
+                    <Card>
+                      <div className='quest'>
+                        Oral Mucosa
+                      </div>
+                      <div className='ans'>
+                        Normal in color and texture
+                      </div>
+                    </Card>
+                  </div>
+            </Grid>
+          </Grid>: 
+            null
+          }
           
-           <Periodental /> :
-           null
+          {exam_inv.mark ?
+            <Hard/> :
+            null
+          }
           
-        }
-        {exam_inv.soft ?
-           <Soft/> :
-           null
-        }
-        {exam_inv.mark ?
-           <Mark/> :
-           null
-        }
-        <div style={{font:"black"}}>
-        {exam_inv.intraview ?
-           <ThreeD/> :
-           null
-        }
-        </div>
-       
-        {
-          !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview ? <ThreeD/> : null
-        }
+          
+          {exam_inv.intraview ?
+          <Grid item xs={9}>
+            <ThreeD/></Grid>:
+            null
+            
+          }
+          
+          {exam_inv.ging ?
+          <Grid container spacing={5}>
+            <Grid item xs={9}>
+            <ThreeD/></Grid>
+            <Grid item xs={3}>
+                <ButtonGroup size="lg" className="btnGrp" vertical>
+                      <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                      Intra-Oral view
+                      </Button>
+                      <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                      Periodental Screening
+                      </Button>
+                      <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                      Soft Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                      Hard Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      Gingivel Assesment
+                      </Button>
+                  </ButtonGroup>
+                  <div className='softcard'> 
+                    <Card>
+                      <div className='quest'>
+                        Color
+                      </div>
+                      <div className='ans'>
+                        Pinkish red
+                      </div>
+                      <div className='quest'>
+                        Inflammatory status
+                      </div>
+                      <div className='ans'>
+                      Mild & marginal  inflammation
+                      </div>
 
-</div>
+                    </Card>
+                  </div>
+            </Grid>
+          </Grid>: 
+            null
+          }
+          
+          {
+            !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview && !exam_inv.ging ? <Grid container spacing={5}>
+            <Grid item xs={9}>
+            <ThreeD/></Grid>
+            <Grid item xs={3}>
+                <ButtonGroup size="lg" className="btnGrp" vertical>
+                      <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                      Intra-Oral view
+                      </Button>
+                      <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                      Periodental Screening
+                      </Button>
+                      <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                      Soft Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                      Hard Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      Gingivel Assesment
+                      </Button>
+                  </ButtonGroup>
+              
+            </Grid>
+          </Grid>: null
+          }
+        </div>
       
     </div>
   );
