@@ -19,7 +19,7 @@ export class Qcard extends Component {
 
     handleEvent(e){
 
-      if(e.target !== undefined && !this.state.isSubmit ){
+      if(e.target !== undefined && !this.state.isSubmit && !this.props.isSubmitDiagnosis){
         console.log(e.target.id)
         console.log(e.target.innerHTML)
         const id =e.target.id
@@ -79,7 +79,7 @@ export class Qcard extends Component {
     render() {
       const {oneQuestion} = this.props;
       this.state.question=oneQuestion[0]
-      this.state.isSubmit=oneQuestion[1]
+      this.state.isSubmit=oneQuestion[1] | this.props.isSubmitDiagnosis
       console.log(this.state.isSubmit)
       
       
@@ -119,7 +119,8 @@ export class Qcard extends Component {
     correctDiagnosisQ : state.diagnosisQ.correctDiagnosisQ,
     wrongDiagnosisQ : state.diagnosisQ.wrongDiagnosisQ,
     allDignosisQ : state.diagnosisQ.allDignosisQ,
-    selectedAnsForDiagnosisQ : state.diagnosisQ.selectedAnsForDiagnosisQ
+    selectedAnsForDiagnosisQ : state.diagnosisQ.selectedAnsForDiagnosisQ,
+    isSubmitDiagnosis:state.diagnosisQ.isSubmitDiagnosis
     // error_msg : state.products.error_msg
   });
 
@@ -128,6 +129,7 @@ export class Qcard extends Component {
     setCorrectDiagnosisQ : DiagnosisActions.setCorrectDiagnosisQ,
     setWrongDiagnosisQ:DiagnosisActions.setWrongDiagnosisQ,
     setSelectedAnsForDQ:DiagnosisActions. setSelectedAnsForDQ
+ 
   }
   
   export default connect(

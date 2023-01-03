@@ -3,7 +3,8 @@ import {diagnosisTypes} from '../types';
     allDignosisQ:[],
     correctDiagnosisQ:[],
     wrongDiagnosisQ:[],
-    selectedAnsForDiagnosisQ:[]
+    selectedAnsForDiagnosisQ:[],
+    isSubmitDiagnosis:false
   };
 
   const setCorrectDiagnosisQ=(array1,item)=>{
@@ -84,6 +85,12 @@ import {diagnosisTypes} from '../types';
                 ...state,
               selectedAnsForDiagnosisQ : setSelectedAnsForDiagnosis(state.selectedAnsForDiagnosisQ,action.data)
                   
+            };
+        case diagnosisTypes.ISSUBMITDIAGNOSIS:
+            return{
+                  ...state,
+                isSubmitDiagnosis : true
+                    
             };
       
       

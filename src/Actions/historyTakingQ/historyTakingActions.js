@@ -1,7 +1,9 @@
 import {historyTakingQTypes} from '../../Reducers/types';
 
 export const historyTakingActions = {
-    addselectedQdata
+    addselectedQdata,
+    addAllHTQdata,
+    setSelectionOrder
 };
 
 // export const addselectedQdata = (data) =>{
@@ -34,6 +36,42 @@ function  addselectedQdata(data){
         return {type: historyTakingQTypes.CREATE_CASE_Q,data}
     }
 
+}
+
+function  addAllHTQdata(data){
+    return async dispatch => {
+        try {
+            console.log(data)
+            dispatch(success(data));
+            dispatch(setCount(data))
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success(data) {
+        return {type: historyTakingQTypes.ALLHISTORYTAKINGQ,data}
+    }
+    function setCount(data) {
+        return {type: historyTakingQTypes.SETCOUNT,data}
+    }
+
+}
+
+function  setSelectionOrder(data){
+    return async dispatch => {
+        try {
+            console.log(data)
+            dispatch(success(data));
+           
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success(data) {
+        return {type: historyTakingQTypes.SECTIONORDER,data}
+    }
 }
 
 

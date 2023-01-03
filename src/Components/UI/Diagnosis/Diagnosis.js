@@ -12,9 +12,11 @@ function Diagnosis() {
 
   const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
   const {selectedAnsForDiagnosisQ} = useSelector((state) => state.diagnosisQ)
+  const {isSubmitDiagnosis} = useSelector((state) => state.diagnosisQ)
   const navigate = useNavigate();
   const [DiagQuestions,setDiagQuestions]=useState([])
   const [isSubmit,setIsSubmit]=useState(false)
+  const [isFeedback,setFeedback]=useState(false)
   const dispatch = useDispatch()
 
   useEffect(()=> {
@@ -32,8 +34,15 @@ function Diagnosis() {
   }
 
   const handleClick = () => {
-    navigate('/page4');  
+    navigate('/page2');  
   };
+  const handdleFeedback = ()=>{
+    navigate('/feedback'); 
+  }
+  const setSubmit =()=>{
+    setIsSubmit(true)
+    dispatch(DiagnosisActions.setDiagnosisSubmit(true))
+  }
 
   const content = [];
   if (DiagQuestions !== undefined)
@@ -50,9 +59,10 @@ function Diagnosis() {
     // else{
     //   document.getElementById("warningMsg").disabled = false;
     // }
+    const checkSubmit =isSubmit|isSubmitDiagnosis
   return(
    <div  >
-   {isSubmit ?
+   {checkSubmit ?
     <div id='warningMsg'>
     <div  class="alert alert-dismissible alert-danger">
           <strong>Allready submitted the answers.</strong> Can not modify Answers.
@@ -75,8 +85,15 @@ function Diagnosis() {
     <label>If you submit the answers, you can no longer edit the answers</label>
     <div>
     <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-     onClick={()=>setIsSubmit(true)}>submit</button>
+     onClick={setSubmit}>submit</button>
      </div>
+     
+      { checkSubmit ?
+      <div>
+    <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
+     onClick={handdleFeedback}>View Evaluation and Feedback</button>
+     </div> : null }
+     
     </div>
 
     );
