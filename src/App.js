@@ -29,7 +29,7 @@ function App() {
                     <Route exact path="/page2" element={<PrivateRoute><Exam/></PrivateRoute>}/>
                     <Route exact path="/page3" element={<PrivateRoute><Radio/></PrivateRoute>}/>
                     <Route exact path="/page4" element={<PrivateRoute><Invest/></PrivateRoute>}/>
-                    <Route exact path="/page5" element={<PrivateRoute><Diagnosis/></PrivateRoute>}/>
+                    <Route exact path="/diagnosis" element={<PrivateRoute><Diagnosis/></PrivateRoute>}/>
                     <Route exact path="/feedback" element={<PrivateRoute><FeedbackEval/></PrivateRoute>}/>
                     {/* <Route exact path="/adminSignIn" element={<PrivateRoute><AdminSignIn/></PrivateRoute>}/> */}
                     {/* <Route exact path="/enterCase" element={<PrivateRoute><Invest/></PrivateRoute>}/> */}

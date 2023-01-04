@@ -60,6 +60,7 @@ function CaseDesc() {
 
   const {selectedQdata} =useSelector((state) => state.historyQ)
   const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
+  const {isSubmitDiagnosis} = useSelector((state) => state.diagnosisQ)
   const dispatch = useDispatch()
 
   const initialState = {};
@@ -95,9 +96,8 @@ function CaseDesc() {
     setValue(e)
     setIdOfQ(e);
     for (let item of questions){
-      console.log(e)
      // let num= e.toString()
-      if(item.id == e.toString()){
+      if(item.id == e.toString()&& !isSubmitDiagnosis){
         setSelectedQ( // Replace the state
         [ // with a new array
           ...selectedQ, // that contains all the old items
@@ -131,7 +131,9 @@ function CaseDesc() {
   const handleSection=(e)=>{
     setSection(e)
     displayq(e)
-    dispatch(historyTakingActions.setSelectionOrder(e));
+    if(!isSubmitDiagnosis){
+      dispatch(historyTakingActions.setSelectionOrder(e));
+    }
   }
 
 
@@ -190,7 +192,10 @@ function CaseDesc() {
             </nav> */}
             <Navbar/>
             </div>
+      
             <div>
+            
+        
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
@@ -223,6 +228,14 @@ function CaseDesc() {
             }}>Case ID: {selectedCaseDetails.caseId}
 
             </div>
+
+            {isSubmitDiagnosis ?
+    <div id='warningMsg'>
+    <div  class="alert alert-dismissible alert-danger">
+          <strong>Allready submitted the answers.</strong> Can not modify Answers.
+        </div>
+        </div> : null }
+
             <Grid container spacing={1}>
               <Grid Item xs={6}>
             <div className="cardDesc">

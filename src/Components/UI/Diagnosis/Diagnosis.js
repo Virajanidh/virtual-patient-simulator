@@ -7,6 +7,7 @@ import Qcard from "./questions/Qcard";
 import React, { useEffect,useState, Fragment } from 'react';
 import { useDispatch } from "react-redux";
 import { DiagnosisActions } from "../../../Actions/Diagnosis/DiagnosisActions";
+import { ScoreActions } from '../../../Actions/Score/ScoreActions';
 
 function Diagnosis() {
 
@@ -18,6 +19,9 @@ function Diagnosis() {
   const [isSubmit,setIsSubmit]=useState(false)
   const [isFeedback,setFeedback]=useState(false)
   const dispatch = useDispatch()
+
+  const {allDignosisQ}=useSelector((state) => state.diagnosisQ)
+  const {diagScore}=useSelector((state) => state.score)
 
   useEffect(()=> {
     fetchDQuestions();
@@ -42,6 +46,31 @@ function Diagnosis() {
   const setSubmit =()=>{
     setIsSubmit(true)
     dispatch(DiagnosisActions.setDiagnosisSubmit(true))
+    calculateScore();
+  }
+
+  const calculateScore=()=>{
+    let correctCount=0
+    let inCorrectCount=0
+    let TotalScore=0
+    const weightForDiag = 3
+    for(let i=0;i<selectedAnsForDiagnosisQ.length;i++){
+      if(selectedAnsForDiagnosisQ[i].correctness){
+        correctCount ++
+      }
+      else{
+        inCorrectCount++
+      }
+    }
+    if(correctCount>inCorrectCount){
+      correctCount=correctCount-inCorrectCount
+      TotalScore = 100*(weightForDiag/10)*(correctCount/allDignosisQ.length)
+    }
+    else if(correctCount<=inCorrectCount){
+      TotalScore = 0
+    }
+    //TotalScore = 100*(weightForDiag/10)*(correctCount/allDignosisQ.length)
+    dispatch(ScoreActions.setDiagScore(TotalScore))
   }
 
   const content = [];
