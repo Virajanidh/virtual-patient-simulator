@@ -97,7 +97,7 @@ const Exam = () => {
     navigate('/page3');
   };
   const handleClick = () => {
-    navigate('/page5');  
+    navigate('/diagnosis');  
   };
   const handleClick1 = () => {
     navigate('/page4');  

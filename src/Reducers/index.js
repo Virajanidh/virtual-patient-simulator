@@ -6,6 +6,7 @@ import DentalSheetcariesReducer from './DentalSheet/DentalSheetcariesReducer';
 import DentalSheetResReducer from './DentalSheet/DentalSheetResReducer';
 import CaseReducer from './Case/CaseReducer';
 import DiagnosisReducer from './Diagnosis/DiagnosisReducer';
+import ScoreReducer from './Score/ScoreReducer';
 
 
 import {
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   resDentalMarking:DentalSheetResReducer,
   firestore: firestoreReducer,
   caseSelected:CaseReducer,
-  diagnosisQ : DiagnosisReducer
+  diagnosisQ : DiagnosisReducer,
+  score:ScoreReducer
   
 });
 export default rootReducer;
