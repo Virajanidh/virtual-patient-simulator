@@ -7,7 +7,9 @@ import DentalSheetResReducer from './DentalSheet/DentalSheetResReducer';
 import CaseReducer from './Case/CaseReducer';
 import DiagnosisReducer from './Diagnosis/DiagnosisReducer';
 import ScoreReducer from './Score/ScoreReducer';
-
+import ExaminationReducer from './Examination/ExaminationReducer';
+import InvestigationReducer from './Investigation/InvestigationReducer';
+import TimeReducer from './Time/TimeReducer';
 
 import {
   firebaseReducer
@@ -21,7 +23,10 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer,
   caseSelected:CaseReducer,
   diagnosisQ : DiagnosisReducer,
-  score:ScoreReducer
+  score:ScoreReducer,
+  examination:ExaminationReducer, 
+  investigation: InvestigationReducer,
+  time:TimeReducer
   
 });
 export default rootReducer;

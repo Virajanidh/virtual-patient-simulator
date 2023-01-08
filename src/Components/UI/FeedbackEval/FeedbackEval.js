@@ -4,6 +4,8 @@ import { useSelector,useDispatch } from 'react-redux';
 import { ScoreActions } from '../../../Actions/Score/ScoreActions';
 import { useNavigate, Link} from 'react-router-dom';
 
+import firebase from '../../../Config/Config'
+
 
 function FeedbackEval() {
 
@@ -14,23 +16,62 @@ function FeedbackEval() {
   const {wrongDiagnosisQ} = useSelector((state) => state.diagnosisQ)
   const {correctDiagnosisQ}=useSelector((state) => state.diagnosisQ)
   const {diagScore}=useSelector((state) => state.score) //01.Systematic thinking
-
+  const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
+  const {userInfomation} = useSelector((state) => state.user)
     //History Taking
   // 100 × (total number of selected correct history
   //   questions, examinations, diagnoses)/ (total
   //   number of correct history questions,
   //   examinations, diagnoses)
-  const {histScore}=useSelector((state) => state.score)
   const {selectedQdata} = useSelector((state)=> state.historyQ)
   const {allHistoryTakingQ} = useSelector((state)=> state.historyQ)
   const {sectionOrder} = useSelector((state)=> state.historyQ) 
   const [ScoreHistory,setScoreHistory]=useState(0)
+  const [newStudentScore,setNewStudentScore]=useState(0)
+  const [duration,setTimeDuration]=useState('')
+
+  const {periodentalScreeningScore}= useSelector((state) => state.score)
+  const {hardTissueScore}= useSelector((state) => state.score)
+  const {cariesScore}= useSelector((state) => state.score)
+  const {restorationScore}= useSelector((state) => state.score)
+  const {plaqueScore}= useSelector((state) => state.score)
+  const {bleedingScore}= useSelector((state) => state.score)
+  const {plaqueToolScore}= useSelector((state) => state.score)
+  const {bleedingToolScore}= useSelector((state) => state.score)
+  const {radioScore}= useSelector((state) => state.score)
+  const {start_time}=useSelector((state) => state.time)
+  const {countCorrectHistoryTaking}= useSelector((state)=> state.historyQ)
+
 
 
   useEffect(() => {
-    calculateHistoryScore()
+    //calculateHistoryScore()
+    addData()
 
   }, []);
+
+  const setDuration =()=>{
+    let currentTime=new Date()
+    let utc1 =start_time.getTime()
+    let utc2 = currentTime.getTime()
+    let ts = (utc2-utc1) / 1000;
+    console.log(currentTime)
+    var d = Math.floor(ts / (3600*24));
+    var h = Math.floor(ts % (3600*24) / 3600);
+    var m = Math.floor(ts % 3600 / 60);
+    var s = Math.floor(ts % 60);
+    let duration1=''
+    if(d>0){
+      duration1= d+"days and "+h+":"+m+":"+s+"hrs"
+    }
+    else{
+      duration1= h+":"+m+":"+s+"hrs"
+    }
+    console.log(duration1)
+    setTimeDuration(duration1)
+    return duration1
+
+  }
 
   const calculateHistoryScore=()=>{
     setScoreHistory(histScore)
@@ -47,9 +88,10 @@ function FeedbackEval() {
         inCorrectCount++
       }
     }
+    console.log(correctCount,"counts",inCorrectCount,"len",countCorrectHistoryTaking.length)
     if(correctCount>inCorrectCount){
       correctCount=correctCount-inCorrectCount
-      TotalScore = 100*(weightForHis/10)*(correctCount/allHistoryTakingQ.length)*0.75
+      TotalScore = 100*(weightForHis/10)*(correctCount/countCorrectHistoryTaking)*0.75
     }
     else if(correctCount<=inCorrectCount){
       TotalScore = 0
@@ -103,17 +145,97 @@ function FeedbackEval() {
     if(isWrongMedicalH){
       orderScore=orderScore-100*0.25*(weightForHis/10)*(1/10)
     }
-    console.log(orderScore)
+    console.log(orderScore,':',TotalScore)
+    let historyScore=0
     if(orderScore>0){
       dispatch(ScoreActions.setHisScore(TotalScore+orderScore))
+      historyScore=TotalScore+orderScore
     }
+    
+    
+    const StudentScore=historyScore+diagScore+periodentalScreeningScore+hardTissueScore+cariesScore+restorationScore+ plaqueScore+bleedingScore+plaqueToolScore+bleedingToolScore+radioScore
+    const Systematic_thinking=StudentScore-diagScore
+    const expansion_of_knowledge =  diagScore
 
+    setNewStudentScore(StudentScore)
+    return historyScore
+    //addData()
+  }
+
+ const{selectedPerodentalTools} = useSelector((state) => state.examination)
+ const{cariesSelected}= useSelector((state) => state.examination)
+ const{restorationsSelected}= useSelector((state) => state.examination)
+ const{plaqueValue}= useSelector((state) => state.examination)
+ const{bleedingValue}= useSelector((state) => state.examination)
+ const{radioSelections}= useSelector((state) => state.investigation)
+ console.log(radioSelections)
+
+ const getRadioSelections=()=>{
+  let array=[]
+  for(let key in radioSelections){
+    console.log(key, radioSelections[key])
+    if(radioSelections[key]){
+      array.push(key)
+    }
+  }
+  return array
+ }
+//  const {periodentalScreeningScore}= useSelector((state) => state.score)
+//  const {hardTissueScore}= useSelector((state) => state.score)
+//  const {cariesScore}= useSelector((state) => state.score)
+//  const {restorationScore}= useSelector((state) => state.score)
+//  const {plaqueScore}= useSelector((state) => state.score)
+//  const {bleedingScore}= useSelector((state) => state.score)
+//  const {plaqueToolScore}= useSelector((state) => state.score)
+//  const {bleedingToolScore}= useSelector((state) => state.score)
+//  const {radioScore}= useSelector((state) => state.score)
+ const {selectedAnsForDiagnosisQ}=useSelector((state) => state.diagnosisQ)
+ const {histScore}=useSelector((state) => state.score)
+
+
+
+
+  const addData =async()=>{
+    var historyScore=calculateHistoryScore()
+    var path = 'StudentsRecord'+selectedCaseDetails.caseId
+    var tutorialsRef = firebase.firestore().collection(path);
+    console.log(selectedQdata,periodentalScreeningScore,'kk',diagScore,'nn',getRadioSelections())
+    tutorialsRef.add({
+      id:userInfomation.email,
+      allHistoryTakingQ:selectedQdata,
+      sectionOrder:sectionOrder,
+      historyQMarks:historyScore,
+      selectedPerodentalTools:selectedPerodentalTools,
+      bleedingValue:bleedingValue,
+      cariesSelected:cariesSelected,
+      restorationsSelected:restorationsSelected,
+      plaqueValue:plaqueValue,
+      radioSelections:getRadioSelections(),
+      periodentalScreeningScore: periodentalScreeningScore,
+      hardTissueScore: hardTissueScore,
+      cariesScore: cariesScore,
+      restorationScore: restorationScore,
+      plaqueScore: plaqueScore,
+      bleedingScore: bleedingScore,
+      plaqueToolScore: plaqueToolScore,
+      bleedingToolScore: bleedingToolScore,
+      radioScore:radioScore,
+      diagScore:diagScore,
+      selectedAnsForDiagnosisQ:selectedAnsForDiagnosisQ,
+      duration:setDuration()
+
+
+    })
+    .then(function(docRef) {
+        console.log("Tutorial created with ID: ", docRef.id);
+    })
   }
 
   const navigate = useNavigate();
   const handleClick1 = () => {
     navigate('/diagnosis');  
   };
+
 
   
     return (
@@ -123,10 +245,20 @@ function FeedbackEval() {
                   </div>
      
                   Feedback:..
-                  {diagScore}
-                  
-                
+                  <div>
+                Your Score :   {newStudentScore}</div>
+                <div>  Your Systematic thinking Score :  {newStudentScore-diagScore}</div>
+                 <div>Score based on expansion of knowledge : {diagScore} </div> 
+                <div>   Your Spent time :   {duration}</div>
+                <div>History Taking part:</div>
+                <div>Incorrect Selections:</div>
+                {/* {selectedQdata ? selectedQdata.map(que=>
+                {
+                  !que.correctness ? <div>{que.q}</div> : null
+                }
+                )
 
+                :<div>No</div>} */}
      
     </div>
     );

@@ -230,7 +230,7 @@ function CaseDesc() {
             </div>
 
             {isSubmitDiagnosis ?
-    <div id='warningMsg'>
+    <div id='warningMsg'style={{fontSize:'15px'}} >
     <div  class="alert alert-dismissible alert-danger">
           <strong>Allready submitted the answers.</strong> Can not modify Answers.
         </div>

@@ -43,12 +43,12 @@ import React from "react";
 
 const options = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,26, 27, 28, 29, 30, 31, 32,];
 
-class CariesDD extends React.Component {
+class Resto extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        tooth: "1",
-        selectedList:['12','0']
+        tooth: "",
+        selectedList:[]
       };
   
       this.handleChange = this.handleChange.bind(this);
@@ -57,13 +57,17 @@ class CariesDD extends React.Component {
     }
     clearList(){
       this.setState({ selectedList: [] });
-      this.props.clearCaries()
-      this.props.setCariesScore(0)
+      this.props.clearResto()
+      this.props.setRestorationScore(0)
     }
     componentDidMount(){
       this.setState({
-        selectedList: this.props.cariesSelected }
+        selectedList: this.props.restorationsSelected}
       )
+      console.log(this.props.selectedCaseDetails.restorationsList)
+      if(this.props.selectedCaseDetails.restorationsList.length==0){
+        this.props.setRestorationScore(2.5)
+      }
     }
   
     handleChange(e) {
@@ -73,12 +77,12 @@ class CariesDD extends React.Component {
       this.setState(prevState => ({
         selectedList: [...prevState.selectedList, e.target.value]
       }))
-      this.props.setSelectedCaries(e.target.value)
+      this.props.setSelectedRestorations(e.target.value)
       this.calculateScore(val)
 
     }
     calculateScore(val){
-      const answers=this.props.selectedCaseDetails.cariesList
+      const answers=this.props.selectedCaseDetails.restorationsList
 
       let count=0
       let wrongCount=0
@@ -114,11 +118,11 @@ class CariesDD extends React.Component {
       
       if(count==answers.length){
         let score = 100*(weightExam/10)*(1/3)
-        this.props.setCariesScore(score)
+        this.props.setRestorationScore(score)
       }
       else if(count<answers.length){
         let score = 100*(weightExam/10)*(1/3)*(count/answers.length)
-        this.props.setCariesScore(score)
+        this.props.setRestorationScore(score)
       }
     }
   
@@ -135,7 +139,7 @@ class CariesDD extends React.Component {
               ))}
             </select>
             </FormControl>
-            {this.props.cariesSelected? this.props.cariesSelected.map(number=> (
+            {this.props.restorationsSelected? this.props.restorationsSelected.map(number=> (
 
             <label>{number} &nbsp;</label>
   
@@ -153,19 +157,19 @@ class CariesDD extends React.Component {
 
 const mapStateToProps = state => ({
     ... state,
-    cariesSelected : state.examination.cariesSelected,
+    restorationsSelected : state.examination.restorationsSelected,
     selectedCaseDetails:state.caseSelected.selectedCaseDetails
     
     // error_msg : state.products.error_msg
   });
 
 const mapActionsToProps={
-    setSelectedCaries: ExaminationActions.setSelectedCaries,
-    clearCaries:ExaminationActions.clearCaries,
-    setCariesScore:ScoreActions.setCriesScore
+    setSelectedRestorations: ExaminationActions.setSelectedRestorations,
+    clearResto:ExaminationActions.clearResto,
+    setRestorationScore:ScoreActions.setRestorationScore
   }
 
   export default connect(
     mapStateToProps,
     mapActionsToProps
-    )(CariesDD);
+    )(Resto);

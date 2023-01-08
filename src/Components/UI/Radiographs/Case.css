@@ -98,7 +98,8 @@
 }
 
 .contOnes{
-    padding-top: 80px;
+    /* padding-top: 80px; */
+    padding-top: 2px;
     align-items: center;
     padding-left: 35%;
 }
