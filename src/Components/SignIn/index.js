@@ -13,6 +13,7 @@ import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
 //import Dashboard from '../Home/Dashboard';
 import CaseSelect from '../UI/CaseSelect' 
+import { TimeActions } from '../../Actions/Time/TimeActions';
 
 
 function SignIn(){
@@ -30,6 +31,7 @@ function SignIn(){
         if(text.match("pdn.ac.lk")){
             setUser(userObject)
             dispatch(UserActions.getCurrentUserDetails(userObject))
+            dispatch(TimeActions.setStartTime())
           
         }
         else{
