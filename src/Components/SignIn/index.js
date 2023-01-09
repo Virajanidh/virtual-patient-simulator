@@ -1,26 +1,18 @@
 import React, { useEffect,useState, Fragment } from 'react'
-import { Component } from "react";
-import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
-import background from "../../Images/DentistryBackgound.jpg";
+import background from "../../Images/dental_pg.png";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header1 from "../Headers/Header1"
-import { alignPropType } from 'react-bootstrap/esm/types';
 import './style.css'
 import { useSelector,useDispatch} from "react-redux";
 import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
-//import Dashboard from '../Home/Dashboard';
 import CaseSelect from '../UI/CaseSelect' 
 import { TimeActions } from '../../Actions/Time/TimeActions';
 
-
 function SignIn(){
-
     const [user,setUser]= useState({});
     const {isSignIn} =useSelector((state) => state.user)
-    
     const dispatch = useDispatch()
 
     function handleCallbackResponse(response){
@@ -35,9 +27,7 @@ function SignIn(){
           
         }
         else{
-          
            showAlert();
-           
         }
     }
 
@@ -63,39 +53,25 @@ function SignIn(){
     })
         google.accounts.id.renderButton(
             document.getElementById("signInDiv"),
-            {theme:'outline' , size:'large' }
+            {theme:'outline' , size: 'extra-larger' }
         )
         google.accounts.id.prompt();
     } ,[]);
 
     if(Object.keys(user).length==0 || !isSignIn){
     return(
-        <div className ="app" style={{
-            backgroundImage: `url(${background})`,
-            height:'120vh',
-            marginTop:'0px',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-            }}>
-              
-              
-            <div style={{position:'absolute',
-                left:'60%',
-                top:'20%',
-                fontSize:'70px',
-                fontWeight : 'bold'
-            }}>
-                    Virtual Patient<br/>Simulator for<br/>Skill Training<br/> in Dentistry
-
-                <Button     className= "relative"
-                 id="signInDiv" variant="light"></Button>
-
+        <div className ="backd"   xs={8} md={12}>
+            <div xs={4} md={12} className='topic1'>
+                    Virtual Patient Simulator <br/></div>
+            <div xs={4} md={12} className='topic2'>
+                    for Skill Training in </div>
+            <div xs={3} md={12} className='topic3'>
+                    Dentistry</div>
+            <div className='authent'>
+                <Button className= "relative" id="signInDiv" variant="light"></Button>
                  <p id="errorM"></p>
             </div>
-            
-
         </div>
-       
     )
             }
             else{

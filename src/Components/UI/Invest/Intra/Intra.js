@@ -190,7 +190,6 @@ const Intra = () => {
             null
           }
           
-          
           {exam_inv.intraview ?
           <Grid item xs={9}>
             <ThreeD/></Grid>:
@@ -264,7 +263,6 @@ const Intra = () => {
                       Gingivel Assesment
                       </Button>
                   </ButtonGroup>
-              
             </Grid>
           </Grid>: null
           }

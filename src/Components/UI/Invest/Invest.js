@@ -1,30 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import React, { useEffect,useState, Fragment } from 'react';
 import './Case.css'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import Chip from '@mui/material/Chip';
 import { useNavigate, Link} from 'react-router-dom';
-// import Button from 'react-bootstrap/Button';
-// import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
 import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
 import Instructions from './Instructions';
-
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
 import Navbar from '../../Navbar';
-
-import ToothGIF from './ToothGIF';
-
-
 
 const Invest = () => {
   const {userInfomation} = useSelector((state) => state.user)
