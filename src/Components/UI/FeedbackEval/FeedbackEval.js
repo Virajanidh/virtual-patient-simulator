@@ -3,9 +3,15 @@ import Picker from 'emoji-picker-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ScoreActions } from '../../../Actions/Score/ScoreActions';
 import { useNavigate, Link } from 'react-router-dom';
-import DiagCard from './feedbacks/DiagCard';
+import DiagnosisFCard from './feedbacks/DiagnosisFCard';
 import firebase from '../../../Config/Config'
-
+import Table from 'react-bootstrap/Table';
+import { historyTakingActions } from '../../../Actions/historyTakingQ/historyTakingActions';
+import { CaseActions } from '../../../Actions/Case/CaseActions';
+import { DiagnosisActions } from '../../../Actions/Diagnosis/DiagnosisActions';
+import { ExaminationActions } from '../../../Actions/Examination/ExaminationActions';
+import { InvestigationActions } from '../../../Actions/Investigation/InvestigationActions';
+import {TimeActions} from '../../../Actions/Time/TimeActions';
 
 function FeedbackEval() {
 
@@ -18,7 +24,7 @@ function FeedbackEval() {
   const { diagScore } = useSelector((state) => state.score) //01.Systematic thinking
   const { selectedCaseDetails } = useSelector((state) => state.caseSelected)
   const { userInfomation } = useSelector((state) => state.user)
- 
+
   //History Taking
   // 100 × (total number of selected correct history
   //   questions, examinations, diagnoses)/ (total
@@ -42,21 +48,34 @@ function FeedbackEval() {
   const { radioScore } = useSelector((state) => state.score)
   const { start_time } = useSelector((state) => state.time)
   const { countCorrectHistoryTaking } = useSelector((state) => state.historyQ)
+  const { radioSelections } = useSelector((state) => state.investigation)
+
+  const { submitedHardTissueTools } = useSelector((state) => state.examination)
 
   const [correctHistoryQ, setcorrectHistoryQ] = useState([])
   const [wrongHistoryQ, setwrongHistoryQ] = useState([])
 
   const [perioselectedTool, setperioselectedTool] = useState([])
-  const [hardselectedTool, setselectedTool] = useState([])
+  const [hardselectedTool, sethardselectedTool] = useState([])
   const [perioselectedToolAns, setperioselectedToolAns] = useState([])
-  const [hardselectedToolAns, setselectedToolAns] = useState([])
+  const [hardselectedToolAns, sethardselectedToolAns] = useState([])
+
+  const [radio, setradio] = useState([])
+  const [radioAns, setradioAns] = useState([])
 
 
 
   useEffect(() => {
     //calculateHistoryScore()
     addData()
-   // getCorrectHistoryQ()
+    setperioselectedTool(setTools(selectedPerodentalTools))
+    sethardselectedTool(setTools(submitedHardTissueTools))
+    setperioselectedToolAns(setAnsTools(selectedCaseDetails.intraOralTools))
+    sethardselectedToolAns(setAnsTools(selectedCaseDetails.hardTissueTools))
+    console.log(radioSelections)
+    setradio(setRadioArray(getRadioSelections2(radioSelections)))
+    setradioAns(setRadioArray(selectedCaseDetails.radiograph_type))
+    // getCorrectHistoryQ()
 
 
   }, []);
@@ -64,10 +83,10 @@ function FeedbackEval() {
   const getCorrectHistoryQ = () => {
     for (let i = 0; i < selectedQdata.length; i++) {
       if (selectedQdata[i].correctness) {
-        setcorrectHistoryQ(correctHistoryQ.concat(selectedQdata[i].q) );
+        setcorrectHistoryQ(correctHistoryQ.concat(selectedQdata[i].q));
       }
       else {
-        setwrongHistoryQ(wrongHistoryQ.concat(selectedQdata[i].q) );
+        setwrongHistoryQ(wrongHistoryQ.concat(selectedQdata[i].q));
       }
     }
   }
@@ -104,8 +123,8 @@ function FeedbackEval() {
     let TotalScore = 0
     let inCorrectCount = 0
     const weightForHis = 4
-    let arra1=[]
-    let arra2=[]
+    let arra1 = []
+    let arra2 = []
     for (let i = 0; i < selectedQdata.length; i++) {
       if (selectedQdata[i].correctness) {
         correctCount++
@@ -198,7 +217,7 @@ function FeedbackEval() {
   const { restorationsSelected } = useSelector((state) => state.examination)
   const { plaqueValue } = useSelector((state) => state.examination)
   const { bleedingValue } = useSelector((state) => state.examination)
-  const { radioSelections } = useSelector((state) => state.investigation)
+  
   console.log(radioSelections)
 
 
@@ -212,6 +231,19 @@ function FeedbackEval() {
         array.push(key)
       }
     }
+    console.log(array)
+    return array
+  }
+
+  const getRadioSelections2 = (rad) => {
+    let array = []
+    for (let key in rad) {
+      console.log(key, rad[key])
+      if (rad[key]) {
+        array.push(key)
+      }
+    }
+    console.log(array)
     return array
   }
 
@@ -220,42 +252,94 @@ function FeedbackEval() {
     for (let key in array2) {
       console.log(key, array2[key])
       if (array2[key]) {
-        if(key=='intra_ToolA'){
-          array.push('intra_ToolA')
+        if (key == 'intra_ToolA') {
+          array.push('Tool_1 (Naber’s probe)')
         }
-        if(key=='intra_ToolB'){
-          array.push('intra_ToolB')
+        if (key == 'intra_ToolB') {
+          array.push('Tool_2 (Periodontal probe)')
         }
-        if(key=='intra_ToolC'){
-          array.push('intra_ToolC')
+        if (key == 'intra_ToolC') {
+          array.push('Tool_3 (Sharp probe)')
         }
-        
-        if(key=='intra_ToolD'){
-          array.push('intra_ToolD')
+
+        if (key == 'intra_ToolD') {
+          array.push('Tool_4 (Dental explorer)')
         }
-        if(key=='intra_ToolE'){
-          array.push('intra_ToolE')
+        if (key == 'intra_ToolE') {
+          array.push('Tool_5 (WHO/CPI probe)')
         }
-        if(key=='intra_ToolE'){
-          array.push('intra_ToolE')
+        if (key == 'intra_ToolF') {
+          array.push('Tool_6 (Mouth mirror)')
         }
-        if(key=='intra_ToolF'){
-          array.push('intra_ToolF')
-        }
-        array.push(key)
+
       }
     }
     return array
   }
-  //  const {periodentalScreeningScore}= useSelector((state) => state.score)
-  //  const {hardTissueScore}= useSelector((state) => state.score)
-  //  const {cariesScore}= useSelector((state) => state.score)
-  //  const {restorationScore}= useSelector((state) => state.score)
-  //  const {plaqueScore}= useSelector((state) => state.score)
-  //  const {bleedingScore}= useSelector((state) => state.score)
-  //  const {plaqueToolScore}= useSelector((state) => state.score)
-  //  const {bleedingToolScore}= useSelector((state) => state.score)
-  //  const {radioScore}= useSelector((state) => state.score)
+
+  const setAnsTools = (array2) => {
+    let array = []
+    for (let i = 0; i < array2.length; i++) {
+      if (array2[i] == 'intra_ToolA') {
+        array.push('Tool_1 (Naber’s probe)')
+      }
+      if (array2[i] == 'intra_ToolB') {
+        array.push('Tool_2 (Periodontal probe)')
+      }
+      if (array2[i] == 'intra_ToolC') {
+        array.push('Tool_3 (Sharp probe)')
+      }
+
+      if (array2[i] == 'intra_ToolD') {
+        array.push('Tool_4 (Dental explorer)')
+      }
+      if (array2[i] == 'intra_ToolE') {
+        array.push('Tool_5 (WHO/CPI probe)')
+      }
+      if (array2[i] == 'intra_ToolF') {
+        array.push('Tool_6 (Mouth mirror)')
+      }
+
+    }
+    return array
+  }
+
+  const setRadioArray = (array2) => {
+    let array = []
+    for (let i = 0; i < array2.length; i++) {
+      if (array2[i] == 'opg') {
+        array.push('DPT')
+      }
+      if (array2[i] == 'iopg') {
+        array.push('IOPA')
+      }
+      if (array2[i] == 'bitewing') {
+        array.push('Bitewing')
+      }
+
+      if (array2[i] == 'other') {
+        array.push('Other')
+      }
+      if (array2[i] == 'cbct') {
+        array.push('CBCT')
+      }
+
+    }
+    return array
+  }
+
+  const handleclickExit =()=>{
+    dispatch(ExaminationActions.clearhistory())
+    dispatch(CaseActions.clearhistory())
+    dispatch(DiagnosisActions.clearhistory())
+    dispatch(historyTakingActions.clearhistory())
+    dispatch(InvestigationActions.clearhistory())
+    dispatch(ScoreActions.clearhistory())
+    dispatch(TimeActions.clearhistory())
+    navigate('/caseSelect');
+  }
+
+
   const { selectedAnsForDiagnosisQ } = useSelector((state) => state.diagnosisQ)
   const { histScore } = useSelector((state) => state.score)
 
@@ -267,9 +351,9 @@ function FeedbackEval() {
     var path = 'StudentsRecord' + selectedCaseDetails.caseId
     var tutorialsRef = firebase.firestore().collection(path);
     console.log(selectedAnsForDiagnosisQ)
-    console.log(userInfomation,":",selectedQdata,":", sectionOrder,":", historyScore,":",selectedPerodentalTools,":", bleedingValue,":", cariesSelected,":",restorationsSelected,":",plaqueValue)
-  //  console.log(periodentalScreeningScore,":", hardTissueScore,":",cariesScore,":",restorationScore,":",plaqueScore,":",bleedingScore)
-     console.log(plaqueToolScore,":",bleedingToolScore, ":",radioScore,":", diagScore,":",selectedAnsForDiagnosisQ)
+    console.log(userInfomation, ":", selectedQdata, ":", sectionOrder, ":", historyScore, ":", selectedPerodentalTools, ":", bleedingValue, ":", cariesSelected, ":", restorationsSelected, ":", plaqueValue)
+    //  console.log(periodentalScreeningScore,":", hardTissueScore,":",cariesScore,":",restorationScore,":",plaqueScore,":",bleedingScore)
+    console.log(plaqueToolScore, ":", bleedingToolScore, ":", radioScore, ":", diagScore, ":", selectedAnsForDiagnosisQ)
     tutorialsRef.add({
       id: userInfomation.email,
       allHistoryTakingQ: selectedQdata,
@@ -297,31 +381,6 @@ function FeedbackEval() {
       selectedAnsForDiagnosisQ: selectedAnsForDiagnosisQ,
       //selectedAnsForDiagnosis:'hello',
       duration: setDuration()
-
-      // id: 'HELLO',
-      // allHistoryTakingQ:'HELLO',
-      // sectionOrder: 'HELLO',
-      // historyQMarks: historyScore,
-      // selectedPerodentalTools: 'HELLO',
-      // bleedingValue: 'HELLO',
-      // cariesSelected: 'HELLO',
-      // restorationsSelected: 'HELLO',
-      // plaqueValue: plaqueValue,
-      // radioSelections: 'HELLO',
-      // periodentalScreeningScore: 'HELLO',
-      // hardTissueScore: 'HELLO',
-      // cariesScore: 'HELLO',
-      // restorationScore:'HELLO',
-      // plaqueScore:'HELLO',
-      // bleedingScore:'HELLO',
-      // plaqueToolScore: 'HELLO',
-      // bleedingToolScore: 'HELLO',
-      // radioScore: 'HELLO',
-      // diagScore: 'HELLO',
-      // selectedAnsForDiagnosisQ: 'HELLO',
-      // duration: 'HELLO'
-
-
     })
       .then(function (docRef) {
         console.log("Tutorial created with ID: ", docRef.id);
@@ -349,31 +408,158 @@ function FeedbackEval() {
       <div>  Your Systematic thinking Score :  {newStudentScore - diagScore}</div>
       <div>Score based on expansion of knowledge : {diagScore} </div>
       <div>   Your Spent time :   {duration}</div>
-      <div>History Taking part:-----</div>
-      <div>correct Selections:</div>
-      {correctHistoryQ ? correctHistoryQ.map(que=>
-      <div>
-        {que}
-      </div>
-      ):null}
-      <div>Incorrect Selections:</div>
-      {wrongHistoryQ ? wrongHistoryQ.map(que=>
-      <div>
-        {que}
-      </div>
-      ):null}
-      <div>Diagnosis Part</div>
-      <div>
-      {/* {selectedAnsForDiagnosisQ ? selectedAnsForDiagnosisQ.map(que=>
-      <div>
-        <DiagCard oneQuestion={que}/>
-      </div>
-      ):null} */}
+      <div>History Taking====</div>
+      <div>Score: {histScore}/40.0</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Correct Selections</th>
+            <th>Not much related to case</th>
+          </tr>
+          <tr>
+            <td>
+              {correctHistoryQ ? correctHistoryQ.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+            <td>
+              {wrongHistoryQ ? wrongHistoryQ.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
 
-      </div>
- 
- 
+      <div>Examination and Investigation====</div>
+      <div>Score: {newStudentScore - diagScore-histScore}/30.0</div>
+      <div>Instruments need to carry out the periodontal screening</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Your Selections</th>
+            <th>Correct Answers</th>
+          </tr>
+          <tr>
+            <td>
+              {perioselectedTool ? perioselectedTool.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+            <td>
+              {perioselectedToolAns? perioselectedToolAns.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
 
+      <div>Tools need for the dental assessment</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Your Selections</th>
+            <th>Correct Answers</th>
+          </tr>
+          <tr>
+            <td>
+              {hardselectedTool ? hardselectedTool.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+            <td>
+              {hardselectedToolAns? hardselectedToolAns.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+
+      <div>Plaque Score</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Your answer</th>
+            <th>Correct Answers</th>
+          </tr>
+          <tr>
+            <td>
+              {plaqueValue}
+            </td>
+            <td>
+             {selectedCaseDetails.Hard_plaque_score}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+      <div>Bleeding Score</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Your answer</th>
+            <th>Correct Answers</th>
+          </tr>
+          <tr>
+            <td>
+              {bleedingValue}
+            </td>
+            <td>
+             {selectedCaseDetails.Hard_bleeding_score}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+
+      <div>Radiographs</div>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Your selections</th>
+            <th>Correct selections</th>
+          </tr>
+          <tr>
+          <td>
+              {radio ? radio.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+            <td>
+              {radioAns? radioAns.map(que =>
+                <div>
+                  {que}
+                </div>
+              ) : null}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
+
+<div>Diagnosis</div>
+<div>Diagnosis score : {diagScore}/30.0</div>
+{selectedAnsForDiagnosisQ ? selectedAnsForDiagnosisQ.map(que =>
+                <div>
+                  <DiagnosisFCard oneQuestion={que}/>
+                </div>
+              ) : null}
+
+<button onClick={handleclickExit} type="button" class="btn btn-primary btn-lg" fdprocessedid="6whgsi">Exit and back to Home</button>
+      
     </div>
   );
 }
