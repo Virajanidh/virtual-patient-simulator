@@ -13,15 +13,9 @@ function Extra() {
   
     return (
     <div>
-     {/* <div className='status'>
-     <Stack sx={{ width: '60%' }} spacing={2}>
-      <Alert severity="success">The patient looks fit & healthy!</Alert>
-    </Stack>
-    </div>   */}
-
-    <div className='contsix'>
-              <div class="grid-container">
-                <div class="grid-item item1">
+      <div className='contsix'>
+        <div class="grid-container">
+          <div class="grid-item item1">
                 <div className='status'>
                 <Stack sx={{ width: '50%' }} spacing={2}>
                   <Alert severity="success">The patient looks fit & healthy!</Alert>

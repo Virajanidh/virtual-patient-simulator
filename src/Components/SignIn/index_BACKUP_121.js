@@ -8,8 +8,7 @@ import { useSelector,useDispatch} from "react-redux";
 import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
 import CaseSelect from '../UI/CaseSelect' 
-import img3 from "../../Images/dental_pg.png"
-import {TimeActions} from  "../../Actions/Time/TimeActions.js"
+import { TimeActions } from '../../Actions/Time/TimeActions';
 
 function SignIn(){
     const [user,setUser]= useState({});
@@ -61,12 +60,7 @@ function SignIn(){
 
     if(Object.keys(user).length==0 || !isSignIn){
     return(
-        <div className ="backd" style={{
-            backgroundImage: `url(${img3})`,
-            height:'100vh',
-            marginTop:'0px',
-            fontSize:'50px',
-            backgroundSize: 'cover'}}>
+        <div className ="backd"   xs={8} md={12}>
             <div xs={4} md={12} className='topic1'>
                     Virtual Patient Simulator <br/></div>
             <div xs={4} md={12} className='topic2'>

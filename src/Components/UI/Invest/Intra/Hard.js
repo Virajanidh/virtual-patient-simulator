@@ -159,274 +159,250 @@ function Hard() {
          {isSubmitDiagnosis ?
     <div id='warningMsg' style={{fontSize:'15px'}}> 
     <div  class="alert alert-dismissible alert-danger">
-          <strong>Allready submitted the answers.</strong> Can not modify Answers.
-        </div>
-        </div> : null }
-      <div style={{
-        position: 'absolute',
-        left: '35%',
-        top: '50%',
-        fontSize: '40px',
-        fontWeight: 'bold',
-        color: '#198A1E'
-      }}>Hard Tissue Assesment</div>
-      <div style={{
-        position: 'absolute',
-        left: '5%',
-        top: '60%',
-        fontSize: '30px',
-        fontWeight: 'bold',
-        color: '#000'
-      }}>1. Tool selection</div>
-      <div style={{
-        position: 'absolute',
-        left: '5%',
-        top: '70%',
-        fontSize: '20px',
-        fontWeight: '10px',
-        color: '#000'
-      }}>1. Select the tools need for the
-        dental assessment
-        . Wrong selections will carry negative marks.</div>
-      <div className="cardDesc1">
-        <Grid container spacing={5}>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: 300 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="250"
-                  alt="Tool1"
-                  image={selectedCaseDetails.intra_ToolA}
-                />
-                {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
+      <strong>Allready submitted the answers.</strong> Can not modify Answers.
+    </div>
+  </div> : null }
+<div className='pTopic'>Hard Tissue Assesment</div>
+<div className='topic2'>Tool selection</div>
+<div className='topic3'>1. Select the most suitable tools. Wrong selections will carry negative marks.</div>
+<div className="tools">
+  <Grid container spacing={5}>
+    <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool1"
+              image={selectedCaseDetails.intra_ToolA}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
                     </div>
-                        
-                  </CardContent> */}
-              </CardActionArea>
-            </Card>
-            <FormControlLabel
-              label="Tool_1"
-              control={
-                <Checkbox
-                  onChange={isCheckedA}
-                  defaultChecked={submitedHardTissueTools['intra_ToolA']}
-                  id='0'
-                  {...label}
-                  sx={{
-                    '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                    '&.Mui-checked': {
-                      color: red[700], color: red[600],
-                    },
-                  }}
-                />} />
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: 300 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="250"
-                  alt="Tool2"
-                  image={selectedCaseDetails.intra_ToolB}
-                />
-                {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-              </CardActionArea>
-            </Card>
-            <FormControlLabel
-              label="Tool_2"
-              control={
-                <Checkbox
-                  id='1'
-                  onChange={isCheckedB}
-                  defaultChecked={submitedHardTissueTools['intra_ToolB']}
-                  {...label}
-                  sx={{
-                    '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                    '&.Mui-checked': {
-                      color: red[700], color: red[600],
-                    },
-                  }}
-                />} />
-          </Grid>
-          <Grid item xs={4}>
-            <Card sx={{ maxWidth: 300 }}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="250"
-                  alt="Tool3"
-                  image={selectedCaseDetails.intra_ToolC}
-                />
-                {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-              </CardActionArea>
-            </Card>
-            <FormControlLabel
-              label="Tool_3"
-              control={
-                <Checkbox
-                  id='2'
-                  onChange={isCheckedC}
-                  defaultChecked={submitedHardTissueTools['intra_ToolC']}
-                  {...label}
-                  sx={{
-                    '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                    '&.Mui-checked': {
-                      color: red[700], color: red[600],
-                    },
-                  }}
-                />} />
-          </Grid>
-        </Grid>
-        <div className="tool">
-          <Grid container spacing={5}>
-            <Grid item xs={4}>
-              <Card sx={{ maxWidth: 300 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    alt="Tool4"
-                    image={selectedCaseDetails.intra_ToolD}
-                  />
-                  {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-                </CardActionArea>
-              </Card>
-              <FormControlLabel
-                label="Tool_4"
-                control={
-                  <Checkbox
-                    id='3'
-                    onChange={isCheckedD}
-                    defaultChecked={submitedHardTissueTools['intra_ToolD']}
-                    {...label}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                      '&.Mui-checked': {
-                        color: red[700], color: red[600],
-                      },
-                    }}
-                  />} />
-            </Grid>
-            <Grid item xs={4}>
-              <Card sx={{ maxWidth: 300 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    alt="Tool5"
-                    image={selectedCaseDetails.intra_ToolE}
-                  />
-                  {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-                </CardActionArea>
-              </Card>
-              <FormControlLabel
-                label="Tool_5"
-                control={
-                  <Checkbox
-                    id='4'
-                    onChange={isCheckedE}
-                    defaultChecked={submitedHardTissueTools['intra_ToolE']}
-                    {...label}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                      '&.Mui-checked': {
-                        color: red[700], color: red[600],
-                      },
-                    }}
-                  />} />
-            </Grid>
-            <Grid item xs={4}>
-              <Card sx={{ maxWidth: 300 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    alt="Tool6"
-                    image={selectedCaseDetails.intra_ToolF}
-                  />
-                  {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-                </CardActionArea>
-              </Card>
-              <FormControlLabel
-                label="Tool_6"
-                control={
-                  <Checkbox
-                    id='5'
-                    onChange={isCheckedF}
-                    defaultChecked={submitedHardTissueTools['intra_ToolF']}
-                    {...label}
-                    sx={{
-                      '& .MuiSvgIcon-root': { fontSize: 28 }, color: "red",
-                      '&.Mui-checked': {
-                        color: red[700], color: red[600],
-                      },
-                    }}
-                  />} />
-            </Grid>
-          </Grid>
-        </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
       </div>
-      <label>If you submit the answers, you can no longer edit the answers</label>
-      <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-        onClick={setSubmit}>submit</button>
-      <label id="submitMsg"></label>
+        <FormControlLabel
+          label="Tool_1"
+          control={
+        <Checkbox
+        defaultChecked={submitedHardTissueTools['intra_ToolA']}
+        onChange={isCheckedA}
+        id='0'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+      <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool2"
+              image={selectedCaseDetails.intra_ToolB}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
+                    </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
+        </div>
+        <FormControlLabel
+          label="Tool_2"
+          control={
+        <Checkbox
+        onChange={isCheckedB}
+        defaultChecked={submit_hard_tools['intra_ToolB']}
+        id='1'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+      <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool3"
+              image={selectedCaseDetails.intra_ToolC}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
+                    </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
+        </div>
+        <FormControlLabel
+          label="Tool_3"
+          control={
+        <Checkbox
+        onChange={isCheckedC}
+        defaultChecked={submitedHardTissueTools['intra_ToolC']}
+        id='2'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+  </Grid>
+  <div className="tool">
+    <Grid container spacing={5}>
+      <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool4"
+              image={selectedCaseDetails.intra_ToolD}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
+                    </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
+        </div>
+        <FormControlLabel
+          label="Tool_4"
+          control={
+        <Checkbox
+        onChange={isCheckedD}
+        defaultChecked={submitedHardTissueTools['intra_ToolD']}
+        id='3'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+      <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool5"
+              image={selectedCaseDetails.intra_ToolE}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
+                    </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
+        </div>
+        <FormControlLabel
+          label="Tool_5"
+          control={
+        <Checkbox
+        onChange={isCheckedE}
+        defaultChecked={submitedHardTissueTools['intra_ToolE']}
+        id='4'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+      <Grid item xs={4}>
+      <div className="toolc">
+        <Card sx={{ maxWidth: 300 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="250"
+              alt="Tool6"
+              image={selectedCaseDetails.intra_ToolF}
+            />
+            {/* <CardContent>
+              <div className='case'>
+                    Case {selectedCaseDetails.name}
+                    </div>
+                    <div className='casedes'>
+                  {selectedCaseDetails.description}
+              </div>
+                  
+            </CardContent> */}
+          </CardActionArea>
+        </Card>
+        </div>
+        <FormControlLabel
+          label="Tool_6"
+          control={
+        <Checkbox
+        onChange={isCheckedF}
+        defaultChecked={submitedHardTissueTools['intra_ToolF']}
+        id='5'
+          {...label}
+          sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
+          '&.Mui-checked': {
+            color: red[700],color: red[600],
+          },
+        }}
+        />}/>
+      </Grid>
+  </Grid>
+<div>
+</div>
+</div>
+</div>
 
       <div className='chart'>2. Dental Chart</div>
+      <Grid container spacing={3}>
+      <Grid item xs={6}>
       <div className='chart'>3. Caries status</div>
-      <div style={{
-        position: 'absolute',
-        left: '6%',
-        top: '215%',
-        fontSize: '20px',
-        fontWeight: '10px',
-        color: '#000'
-      }}>Are there any Caries?</div>
+      <div className='cariesQ'>Are there any Caries?</div>
       <div className='caries'><CariesDD /></div>
       <div className='cariesCard'>
         <Card sx={{ maxWidth: 500 }}>
@@ -438,7 +414,8 @@ function Hard() {
                   />
                   {cariesSelected}
                 </CardActionArea> */}
-        </Card></div>
+        </Card></div></Grid>
+        <Grid item xs={6}>
       <div className='chart'>4. Restorations</div>
       <div className='caries'><Resto /></div>
       <div className='cariesCard'>
@@ -459,7 +436,7 @@ function Hard() {
                         
                   </CardContent> */}
           {/* </CardActionArea> */}
-        </Card></div>
+        </Card></div></Grid></Grid>
       <div className='chart'>5. Answer the Questions</div>
       <div className='mainqs'>What is the plaque score?</div>
       <div className='qs'>
@@ -476,7 +453,6 @@ function Hard() {
       <div className='mainqs'> Select the correct tool &nbsp;
         <select className="dd1" label="Select Tool" onChange={handleChange} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
-
           <option className="dd"></option>
           <option value='intra_ToolA' className="dd">Tool_1</option>
           <option value='intra_ToolB' className="dd">Tool_2</option>
@@ -484,8 +460,6 @@ function Hard() {
           <option value='intra_ToolD' className="dd">Tool_4</option>
           <option value='intra_ToolE' className="dd">Tool_5</option>
           <option value='intra_ToolF' className="dd">Tool_6</option>
-
-
         </select>
       </div>
 
@@ -513,13 +487,9 @@ function Hard() {
           <option value='intra_ToolE' className="dd">Tool_5</option>
           <option value='intra_ToolF' className="dd">Tool_6</option>
 
-
         </select>
       </div>
-
-
     </div>
-
   );
 }
 

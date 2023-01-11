@@ -82,7 +82,7 @@ const Invest = () => {
   return (
     <div className ="app" style={{
         backgroundImage: `url(${img3})`,
-        height:'400vh',
+        height:'500vh',
         marginTop:'0px',
         fontSize:'50px',
         backgroundSize: 'cover',
@@ -102,17 +102,9 @@ const Invest = () => {
                     <button className="back" size="medium" onClick={handleClick2}>Next</button>
                     </div>
                   </Grid>
-                  
                 </Grid>
-                
             </div>
-             <div style={{position:'absolute',
-              left:'35%',
-              top:'15%',
-              fontSize:'50px',
-              fontWeight : 'bold',
-              color: '#000'
-              }}>Examination
+             <div className='exmTopic'>Examination
 
               </div>
       <div className="contOne">
@@ -129,26 +121,9 @@ const Invest = () => {
         </ButtonGroup>
         
         </div> 
-     
-        {/* <div className='contsix'>
-              <div class="grid-container">
-                <div class="grid-item item1">
-                  {
-                      !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
-                  }           
-              </div>
-              <div class="grid-item item2">
-                  {
-                      !exam_inv.intra && !exam_inv.extra || exam_inv.extra  ? <ToothGIF/> : null
-                  }
-               </div>
-              </div>
-              
-        </div>  */}
-
         <div className='contThr'>
         {exam_inv.intra ?
-           <Intra /> :
+           <Intra/> :
            null
         }
         </div>
@@ -168,12 +143,9 @@ const Invest = () => {
           !exam_inv.intra && !exam_inv.extra && !exam_inv.help ? <Instructions/> : null
         }
         </div>
-
       </div>
-
     </div>
   );
 };
-
 
 export default Invest;

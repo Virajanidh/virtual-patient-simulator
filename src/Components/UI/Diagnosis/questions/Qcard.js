@@ -6,7 +6,6 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import {DiagnosisActions} from '../../../../Actions/Diagnosis/DiagnosisActions'
 import {connect} from 'react-redux'
 
-
 export class Qcard extends Component {
     constructor(props) {
         super(props);
@@ -155,8 +154,6 @@ export class Qcard extends Component {
       return(
        
         <div >
-          
-    
         <div className='qns'>{this.state.question.q}</div>
        
         <fieldset class="form-group">
@@ -175,7 +172,7 @@ export class Qcard extends Component {
        
       </fieldset>
 
-           
+
         </div>
       );
     }
