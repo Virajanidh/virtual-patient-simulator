@@ -1,7 +1,8 @@
 import {investTypes} from '../../Reducers/types';
 
 export const InvestigationActions = {
-   setRadioSelection
+   setRadioSelection,
+   clearhistory
 };
 
 function  setRadioSelection(data){
@@ -20,7 +21,18 @@ function  setRadioSelection(data){
 
 }
 
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            console.log()
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
+    function success() {
+        return {type: investTypes.CLEARHISTORYIT}
+    }
 
-
-
+}

@@ -13,7 +13,8 @@ export const ScoreActions = {
     setBleedingScore,
     setPlaqueToolScore,
     setBleedingToolScore,
-    setRadioScore
+    setRadioScore,
+    clearhistory
 };
 
 function  setDiagScore(data){
@@ -202,6 +203,19 @@ function  setRadioScore(data){
 
 }
 
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
+    function success() {
+        return {type: scoreTypes.CLEARHISTORYST}
+    }
+
+}
 
 

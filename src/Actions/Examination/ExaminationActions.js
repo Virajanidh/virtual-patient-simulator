@@ -12,7 +12,8 @@ export const ExaminationActions = {
     setPlaqueValue,
     setBleedingVal,
     addToolToPerioTools,
-    addToolToHardTools
+    addToolToHardTools,
+    clearhistory
 };
 
 function  setPerodetanlTools(data){
@@ -192,6 +193,21 @@ function  addToolToHardTools(data){
 
     function success() {
         return {type: examTypes.HARDTOOLCHECKBOX,data}
+    }
+
+}
+
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: examTypes.CLEARHISTORYET}
     }
 
 }

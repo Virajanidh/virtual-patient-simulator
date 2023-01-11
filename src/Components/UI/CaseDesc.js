@@ -29,8 +29,15 @@ import firebase from '../../Config/Config'
 import Qcard from './questionCards/Qcard';
 import QcardPack from './questionCards/QcardPack';
 import { useDispatch } from "react-redux";
-import {historyTakingActions} from '../../Actions/historyTakingQ/historyTakingActions'
+import {historyTakingActions} from '../../Actions/historyTakingQ/historyTakingActions';
 import Navbar from '../Navbar';
+import { ExaminationActions } from '../../Actions/Examination/ExaminationActions';
+import { CaseActions } from '../../Actions/Case/CaseActions';
+import { DiagnosisActions } from '../../Actions/Diagnosis/DiagnosisActions';
+import { DentalSheetActions } from '../../Actions/DentalSheet/DentalSheetActions';
+import { InvestigationActions } from '../../Actions/Investigation/InvestigationActions';
+import { ScoreActions } from '../../Actions/Score/ScoreActions';
+import { TimeActions } from '../../Actions/Time/TimeActions';
 
 
 const useStyles = makeStyles({
@@ -134,6 +141,16 @@ function CaseDesc() {
     if(!isSubmitDiagnosis){
       dispatch(historyTakingActions.setSelectionOrder(e));
     }
+    // if(isSubmitDiagnosis){
+    //   dispatch(ExaminationActions.clearhistory())
+    //   dispatch(CaseActions.clearhistory())
+    //   dispatch(DiagnosisActions.clearhistory())
+    //   dispatch(DentalSheetActions.clearhistory())
+    //   dispatch(historyTakingActions.clearhistory())
+    //   dispatch(InvestigationActions.clearhistory())
+    //   dispatch(ScoreActions.clearhistory())
+    //   dispatch(TimeActions.clearhistory())
+    // }
   }
 
 
@@ -142,7 +159,17 @@ function CaseDesc() {
     navigate('/page4');  
   };
   const handleClick1 = () => {
-    navigate('/caseSelect');  
+    navigate('/caseSelect'); 
+    if(isSubmitDiagnosis){
+      dispatch(ExaminationActions.clearhistory())
+      dispatch(CaseActions.clearhistory())
+      dispatch(DiagnosisActions.clearhistory())
+      dispatch(DentalSheetActions.clearhistory())
+      dispatch(historyTakingActions.clearhistory())
+      dispatch(InvestigationActions.clearhistory())
+      dispatch(ScoreActions.clearhistory())
+      dispatch(TimeActions.clearhistory())
+    } 
   };
   console.log(userInfomation.name)
 

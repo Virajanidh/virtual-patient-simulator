@@ -144,8 +144,20 @@ const ExaminationReducer = (state = initialState, action) => {
     case examTypes.HARDTOOLCHECKBOX:
       return {
         ...state,
-        submitedHardTissueTools : addHardTools(state.submitedHardTissueTools, action.data)
+        submitedHardTissueTools: addHardTools(state.submitedHardTissueTools, action.data)
 
+      };
+    case examTypes.CLEARHISTORYET:
+      return {
+        ...state,
+        selectedPerodentalTools: {},
+        submit_perio_tools: false,
+        submitedHardTissueTools: {},
+        submit_hard_tools: false,
+        cariesSelected: [],
+        restorationsSelected: [],
+        plaqueValue: '',
+        bleedingValue: ''
       };
 
     default:

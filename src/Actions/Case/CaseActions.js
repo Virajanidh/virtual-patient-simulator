@@ -2,7 +2,8 @@ import {caseTypes} from '../../Reducers/types';
 
 export const CaseActions = {
     setSelectedCase,
-    setAllCases
+    setAllCases,
+    clearhistory
 };
 
 function  setSelectedCase(data){
@@ -37,5 +38,19 @@ function  setAllCases(data){
 
 }
 
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            console.log()
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
 
+    function success() {
+        return {type: caseTypes.CLEARHISTORYCT}
+    }
+
+}
 
