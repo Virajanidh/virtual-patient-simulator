@@ -18,9 +18,11 @@ import Grid from '@mui/material/Grid';
 import Invest from '../Invest'
 import Extra from '../Extra'
 import Instructions from '../Instructions';
+import { useSelector} from "react-redux";
 
 const Intra = () => {
   const navigate = useNavigate();
+  const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
   
   const [exam_inv, setexam_inv] = useState({
     perio: false,
@@ -306,13 +308,13 @@ const Intra = () => {
                         Color
                       </div>
                       <div className='ans'>
-                        Pinkish red
+                        {selectedCaseDetails.gingival_color}
                       </div>
                       <div className='quest'>
                         Inflammatory status
                       </div>
                       <div className='ans'>
-                      Mild & marginal  inflammation
+                      {selectedCaseDetails.gingival_Inflammatory}
                       </div>
 
                     </Card>
@@ -335,13 +337,13 @@ const Intra = () => {
                       Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                      Soft Tissue Assesment
+                      Soft Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                      Hard Tissue Assesment
+                      Hard Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingival Assesment
+                      Gingival Assessment
                       </Button>
                   </ButtonGroup>
             </Grid>

@@ -117,7 +117,6 @@ const setSelectedAnsForDiagnosis = (array3, item) => {
       if (array3[i].id == item.id) {
         array3[i].studentCorrectAnswers = item.studentCorrectAnswers
         array3[i].studentWrongAnswers = item.studentWrongAnswers
-        array3[i].correctness = item.correctness//should remove
         return array3;
       }
     }

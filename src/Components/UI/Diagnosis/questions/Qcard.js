@@ -137,7 +137,7 @@ export class Qcard extends Component {
                 studentWrongAnswers:this.state.studentWrongAnswers,
                 id:allQ[i].id,
                 correctCount: allQ[i].correct.length,
-               correctness: true
+               correctAnst: allQ[i].correct
               }
             )
           }

@@ -3,7 +3,7 @@ import Picker from 'emoji-picker-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ScoreActions } from '../../../Actions/Score/ScoreActions';
 import { useNavigate, Link } from 'react-router-dom';
-
+import DiagCard from './feedbacks/DiagCard';
 import firebase from '../../../Config/Config'
 
 
@@ -18,6 +18,7 @@ function FeedbackEval() {
   const { diagScore } = useSelector((state) => state.score) //01.Systematic thinking
   const { selectedCaseDetails } = useSelector((state) => state.caseSelected)
   const { userInfomation } = useSelector((state) => state.user)
+ 
   //History Taking
   // 100 × (total number of selected correct history
   //   questions, examinations, diagnoses)/ (total
@@ -44,6 +45,11 @@ function FeedbackEval() {
 
   const [correctHistoryQ, setcorrectHistoryQ] = useState([])
   const [wrongHistoryQ, setwrongHistoryQ] = useState([])
+
+  const [perioselectedTool, setperioselectedTool] = useState([])
+  const [hardselectedTool, setselectedTool] = useState([])
+  const [perioselectedToolAns, setperioselectedToolAns] = useState([])
+  const [hardselectedToolAns, setselectedToolAns] = useState([])
 
 
 
@@ -208,6 +214,39 @@ function FeedbackEval() {
     }
     return array
   }
+
+  const setTools = (array2) => {
+    let array = []
+    for (let key in array2) {
+      console.log(key, array2[key])
+      if (array2[key]) {
+        if(key=='intra_ToolA'){
+          array.push('intra_ToolA')
+        }
+        if(key=='intra_ToolB'){
+          array.push('intra_ToolB')
+        }
+        if(key=='intra_ToolC'){
+          array.push('intra_ToolC')
+        }
+        
+        if(key=='intra_ToolD'){
+          array.push('intra_ToolD')
+        }
+        if(key=='intra_ToolE'){
+          array.push('intra_ToolE')
+        }
+        if(key=='intra_ToolE'){
+          array.push('intra_ToolE')
+        }
+        if(key=='intra_ToolF'){
+          array.push('intra_ToolF')
+        }
+        array.push(key)
+      }
+    }
+    return array
+  }
   //  const {periodentalScreeningScore}= useSelector((state) => state.score)
   //  const {hardTissueScore}= useSelector((state) => state.score)
   //  const {cariesScore}= useSelector((state) => state.score)
@@ -227,7 +266,10 @@ function FeedbackEval() {
     var historyScore = calculateHistoryScore()
     var path = 'StudentsRecord' + selectedCaseDetails.caseId
     var tutorialsRef = firebase.firestore().collection(path);
-    console.log(selectedQdata, periodentalScreeningScore, 'kk', diagScore, 'nn', getRadioSelections())
+    console.log(selectedAnsForDiagnosisQ)
+    console.log(userInfomation,":",selectedQdata,":", sectionOrder,":", historyScore,":",selectedPerodentalTools,":", bleedingValue,":", cariesSelected,":",restorationsSelected,":",plaqueValue)
+  //  console.log(periodentalScreeningScore,":", hardTissueScore,":",cariesScore,":",restorationScore,":",plaqueScore,":",bleedingScore)
+     console.log(plaqueToolScore,":",bleedingToolScore, ":",radioScore,":", diagScore,":",selectedAnsForDiagnosisQ)
     tutorialsRef.add({
       id: userInfomation.email,
       allHistoryTakingQ: selectedQdata,
@@ -237,20 +279,47 @@ function FeedbackEval() {
       bleedingValue: bleedingValue,
       cariesSelected: cariesSelected,
       restorationsSelected: restorationsSelected,
+
       plaqueValue: plaqueValue,
       radioSelections: getRadioSelections(),
       periodentalScreeningScore: periodentalScreeningScore,
       hardTissueScore: hardTissueScore,
       cariesScore: cariesScore,
       restorationScore: restorationScore,
+
       plaqueScore: plaqueScore,
       bleedingScore: bleedingScore,
       plaqueToolScore: plaqueToolScore,
       bleedingToolScore: bleedingToolScore,
+
       radioScore: radioScore,
       diagScore: diagScore,
       selectedAnsForDiagnosisQ: selectedAnsForDiagnosisQ,
+      //selectedAnsForDiagnosis:'hello',
       duration: setDuration()
+
+      // id: 'HELLO',
+      // allHistoryTakingQ:'HELLO',
+      // sectionOrder: 'HELLO',
+      // historyQMarks: historyScore,
+      // selectedPerodentalTools: 'HELLO',
+      // bleedingValue: 'HELLO',
+      // cariesSelected: 'HELLO',
+      // restorationsSelected: 'HELLO',
+      // plaqueValue: plaqueValue,
+      // radioSelections: 'HELLO',
+      // periodentalScreeningScore: 'HELLO',
+      // hardTissueScore: 'HELLO',
+      // cariesScore: 'HELLO',
+      // restorationScore:'HELLO',
+      // plaqueScore:'HELLO',
+      // bleedingScore:'HELLO',
+      // plaqueToolScore: 'HELLO',
+      // bleedingToolScore: 'HELLO',
+      // radioScore: 'HELLO',
+      // diagScore: 'HELLO',
+      // selectedAnsForDiagnosisQ: 'HELLO',
+      // duration: 'HELLO'
 
 
     })
@@ -273,6 +342,8 @@ function FeedbackEval() {
       </div>
 
       Feedback:..
+      <div>Case Id:{selectedCaseDetails.caseId}</div>
+      <div>Case Description:{selectedCaseDetails.description}</div>
       <div>
         Your Score :   {newStudentScore}</div>
       <div>  Your Systematic thinking Score :  {newStudentScore - diagScore}</div>
@@ -292,6 +363,14 @@ function FeedbackEval() {
       </div>
       ):null}
       <div>Diagnosis Part</div>
+      <div>
+      {/* {selectedAnsForDiagnosisQ ? selectedAnsForDiagnosisQ.map(que=>
+      <div>
+        <DiagCard oneQuestion={que}/>
+      </div>
+      ):null} */}
+
+      </div>
  
  
 
