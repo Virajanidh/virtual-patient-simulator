@@ -15,6 +15,9 @@ import Hard from './Hard'
 import img3 from "../../../../Images/examBck.jpg"
 import ThreeD from '../../resources/ThreeD';
 import Grid from '@mui/material/Grid';
+import Invest from '../Invest'
+import Extra from '../Extra'
+import Instructions from '../Instructions';
 
 const Intra = () => {
   const navigate = useNavigate();
@@ -134,6 +137,7 @@ const Intra = () => {
   };
   
   return (
+    <div>
     <div className ="app" style={{
         backgroundImage: `url(${img3})`,
         height:'200vh',
@@ -141,24 +145,17 @@ const Intra = () => {
         fontSize:'50px',
         backgroundSize: 'cover',
         }}>
-             
         <div className='contThr1'>
           {exam_inv.perio ?
-            <Grid item xs={12}>
-            <Periodental /> </Grid> :
-            null
-          }
-          {exam_inv.soft ?
           <Grid container spacing={10}>
-            <Grid item xs={9}>
-            <ThreeD/></Grid>
-            <Grid item xs={3}>
+          <Grid item xs={8}>
+          <ThreeD/></Grid><Grid item xs={3}>
                 <ButtonGroup size="lg" className="btnGrp" vertical>
                       <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
                       Intra-Oral view
                       </Button>
                       <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
-                      Periodental Screening
+                      Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
                       Soft Tissue Assesment
@@ -167,7 +164,41 @@ const Intra = () => {
                       Hard Tissue Assesment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingivel Assesment
+                      Gingival Assesment
+                      </Button>
+                  </ButtonGroup>
+                  <div className='softcard'> 
+                      <Card>
+                      <div className='quest'>
+                        Answer the questionnaire given below!
+                      </div>
+                      </Card>
+                    </div>
+                  </Grid>
+            <Grid item xs={12}>
+            <Periodental /> </Grid></Grid> :
+            null
+          }
+          {exam_inv.soft ?
+          <Grid container spacing={10}>
+            <Grid item xs={8}>
+            <ThreeD/></Grid>
+            <Grid item xs={3}>
+                <ButtonGroup size="lg" className="btnGrp" vertical>
+                      <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                      Intra-Oral view
+                      </Button>
+                      <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                      Periodontal Screening
+                      </Button>
+                      <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                      Soft Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                      Hard Tissue Assesment
+                      </Button>
+                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      Gingival Assesment
                       </Button>
                   </ButtonGroup>
                   <div className='softcard'> 
@@ -186,21 +217,70 @@ const Intra = () => {
           }
           
           {exam_inv.mark ?
-            <Hard/> :
-            null
+            <Grid container spacing={10}>
+            <Grid item xs={8}>
+            <ThreeD/></Grid><Grid item xs={3}>
+                  <ButtonGroup size="lg" className="btnGrp" vertical>
+                        <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                        Intra-Oral view
+                        </Button>
+                        <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                        Periodontal Screening
+                        </Button>
+                        <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                        Soft Tissue Assesment
+                        </Button>
+                        <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                        Hard Tissue Assesment
+                        </Button>
+                        <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                        Gingival Assesment
+                        </Button>
+                    </ButtonGroup>
+                    <div className='softcard'> 
+                      <Card>
+                      <div className='quest'>
+                        Answer the questionnaire given below!
+                      </div>
+                      </Card>
+                    </div>
+                    </Grid>
+              <Grid item xs={12}>
+              <Hard /> </Grid></Grid> :
+              null
           }
           
-          
           {exam_inv.intraview ?
-          <Grid item xs={9}>
-            <ThreeD/></Grid>:
-            null
+          <Grid container spacing={5}>
+          <Grid item xs={8}>
+          <ThreeD/></Grid>
+          <Grid item xs={3}>
+              <ButtonGroup size="lg" className="btnGrp" vertical>
+                    <Button onClick={() => onClickHandler1()} className="btnGrp" id='intrav'>
+                    Intra-Oral view
+                    </Button>
+                    <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
+                    Periodontal Screening
+                    </Button>
+                    <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
+                    Soft Tissue Assesment
+                    </Button>
+                    <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
+                    Hard Tissue Assesment
+                    </Button>
+                    <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                    Gingival Assesment
+                    </Button>
+                </ButtonGroup>
+          </Grid>
+        </Grid>: 
+          null
             
           }
           
           {exam_inv.ging ?
           <Grid container spacing={5}>
-            <Grid item xs={9}>
+            <Grid item xs={8}>
             <ThreeD/></Grid>
             <Grid item xs={3}>
                 <ButtonGroup size="lg" className="btnGrp" vertical>
@@ -208,7 +288,7 @@ const Intra = () => {
                       Intra-Oral view
                       </Button>
                       <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
-                      Periodental Screening
+                      Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
                       Soft Tissue Assesment
@@ -217,7 +297,7 @@ const Intra = () => {
                       Hard Tissue Assesment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingivel Assesment
+                      Gingival Assesment
                       </Button>
                   </ButtonGroup>
                   <div className='softcard'> 
@@ -244,7 +324,7 @@ const Intra = () => {
           
           {
             !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview && !exam_inv.ging ? <Grid container spacing={5}>
-            <Grid item xs={9}>
+            <Grid item xs={8}>
             <ThreeD/></Grid>
             <Grid item xs={3}>
                 <ButtonGroup size="lg" className="btnGrp" vertical>
@@ -252,7 +332,7 @@ const Intra = () => {
                       Intra-Oral view
                       </Button>
                       <Button onClick={() => onClickHandler2()} className="btnGrp" id='perio'>
-                      Periodental Screening
+                      Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
                       Soft Tissue Assesment
@@ -261,15 +341,14 @@ const Intra = () => {
                       Hard Tissue Assesment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingivel Assesment
+                      Gingival Assesment
                       </Button>
                   </ButtonGroup>
-              
             </Grid>
           </Grid>: null
           }
         </div>
-      
+        </div>
     </div>
   );
 };

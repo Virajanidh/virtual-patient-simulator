@@ -1,30 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import React, { useEffect,useState, Fragment } from 'react';
 import './Case.css'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import Chip from '@mui/material/Chip';
 import { useNavigate, Link} from 'react-router-dom';
-// import Button from 'react-bootstrap/Button';
-// import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
 import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
 import Instructions from './Instructions';
-
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
 import Navbar from '../../Navbar';
-
-import ToothGIF from './ToothGIF';
-
-
 
 const Invest = () => {
   const {userInfomation} = useSelector((state) => state.user)
@@ -97,7 +82,7 @@ const Invest = () => {
   return (
     <div className ="app" style={{
         backgroundImage: `url(${img3})`,
-        height:'400vh',
+        height:'500vh',
         marginTop:'0px',
         fontSize:'50px',
         backgroundSize: 'cover',
@@ -117,17 +102,9 @@ const Invest = () => {
                     <button className="back" size="medium" onClick={handleClick2}>Next</button>
                     </div>
                   </Grid>
-                  
                 </Grid>
-                
             </div>
-             <div style={{position:'absolute',
-              left:'35%',
-              top:'15%',
-              fontSize:'50px',
-              fontWeight : 'bold',
-              color: '#000'
-              }}>Examination
+             <div className='exmTopic'>Examination
 
               </div>
       <div className="contOne">
@@ -144,26 +121,9 @@ const Invest = () => {
         </ButtonGroup>
         
         </div> 
-     
-        {/* <div className='contsix'>
-              <div class="grid-container">
-                <div class="grid-item item1">
-                  {
-                      !exam_inv.intra && !exam_inv.extra && !exam_inv.help || exam_inv.extra ? <Extra/> : null
-                  }           
-              </div>
-              <div class="grid-item item2">
-                  {
-                      !exam_inv.intra && !exam_inv.extra || exam_inv.extra  ? <ToothGIF/> : null
-                  }
-               </div>
-              </div>
-              
-        </div>  */}
-
         <div className='contThr'>
         {exam_inv.intra ?
-           <Intra /> :
+           <Intra/> :
            null
         }
         </div>
@@ -183,12 +143,9 @@ const Invest = () => {
           !exam_inv.intra && !exam_inv.extra && !exam_inv.help ? <Instructions/> : null
         }
         </div>
-
       </div>
-
     </div>
   );
 };
-
 
 export default Invest;

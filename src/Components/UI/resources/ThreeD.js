@@ -43,7 +43,7 @@ function ThreeD() {
   return (
 
 <Suspense fallback={<Loader />}>
-<Canvas dpr={[1,1]} shadows camera={{fov: 35, position: [30, 10, 10]}} style={{position: "relative", height: "100vh"}}>
+<Canvas className="canvas" dpr={[1,1]} shadows camera={{fov: 35, position: [30, 10, 10]}} style={{position: "relative", height: "80vh"}}>
 <color attach="background" args={["#101010"]} />
 <PresentationControls speed={.5} global zoom={1.5} polar={[0, Math.PI / 2]}> 
   <ambientLight intensity={1.0} />

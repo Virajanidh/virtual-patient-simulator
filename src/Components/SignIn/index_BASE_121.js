@@ -1,19 +1,25 @@
 import React, { useEffect,useState, Fragment } from 'react'
+import { Component } from "react";
+import { connect } from 'react-redux';
 import jwt_decode from 'jwt-decode';
-import background from "../../Images/dental_pg.png";
+import background from "../../Images/DentistryBackgound.jpg";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header1 from "../Headers/Header1"
+import { alignPropType } from 'react-bootstrap/esm/types';
 import './style.css'
 import { useSelector,useDispatch} from "react-redux";
 import { UserActions } from '../../Actions/User/UserActions';
 import Swl from 'sweetalert2';
+//import Dashboard from '../Home/Dashboard';
 import CaseSelect from '../UI/CaseSelect' 
-import img3 from "../../Images/dental_pg.png"
-import {TimeActions} from  "../../Actions/Time/TimeActions.js"
+
 
 function SignIn(){
+
     const [user,setUser]= useState({});
     const {isSignIn} =useSelector((state) => state.user)
+    
     const dispatch = useDispatch()
 
     function handleCallbackResponse(response){
@@ -24,11 +30,12 @@ function SignIn(){
         if(text.match("pdn.ac.lk")){
             setUser(userObject)
             dispatch(UserActions.getCurrentUserDetails(userObject))
-            dispatch(TimeActions.setStartTime())
           
         }
         else{
+          
            showAlert();
+           
         }
     }
 
@@ -54,30 +61,39 @@ function SignIn(){
     })
         google.accounts.id.renderButton(
             document.getElementById("signInDiv"),
-            {theme:'outline' , size: 'extra-larger' }
+            {theme:'outline' , size:'large' }
         )
         google.accounts.id.prompt();
     } ,[]);
 
     if(Object.keys(user).length==0 || !isSignIn){
     return(
-        <div className ="backd" style={{
-            backgroundImage: `url(${img3})`,
-            height:'100vh',
+        <div className ="app" style={{
+            backgroundImage: `url(${background})`,
+            height:'120vh',
             marginTop:'0px',
-            fontSize:'50px',
-            backgroundSize: 'cover'}}>
-            <div xs={4} md={12} className='topic1'>
-                    Virtual Patient Simulator <br/></div>
-            <div xs={4} md={12} className='topic2'>
-                    for Skill Training in </div>
-            <div xs={3} md={12} className='topic3'>
-                    Dentistry</div>
-            <div className='authent'>
-                <Button className= "relative" id="signInDiv" variant="light"></Button>
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+            }}>
+              
+              
+            <div style={{position:'absolute',
+                left:'60%',
+                top:'20%',
+                fontSize:'70px',
+                fontWeight : 'bold'
+            }}>
+                    Virtual Patient<br/>Simulator for<br/>Skill Training<br/> in Dentistry
+
+                <Button     className= "relative"
+                 id="signInDiv" variant="light"></Button>
+
                  <p id="errorM"></p>
             </div>
+            
+
         </div>
+       
     )
             }
             else{

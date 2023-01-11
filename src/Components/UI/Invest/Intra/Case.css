@@ -46,7 +46,7 @@
 }
 
 .chart{
-    padding-top: 50px;
+    padding-top: 30px;
     padding-left: 15px;
     font-size: 30px;
     font-weight: bold;
@@ -70,6 +70,13 @@
     padding-top: 0px;
 }
 
+.exm{
+    padding-top: 15px;
+    padding-left: 535px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #000;
+}
 .mainqs{
     font-size: 20px;
     font-weight: 10px;
@@ -95,7 +102,7 @@
 
 .softcard{
     padding-top: 20px;
-    padding-right: 20px;
+    padding-right: 0px;
 }
 
 .caseBtn{
@@ -120,3 +127,58 @@
 .ans{
     color: black;
 }
+
+/* Periodontal */
+
+.pTopic{
+    padding-left: 400px;
+    padding-top: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #198A1E;
+}
+
+.topic2{
+    padding-left: 20px;
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(8, 1, 39, 0.445);
+}
+
+.topic3{
+    padding-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: 5px;
+    color: #000;
+}
+
+.tools{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.label1{
+    padding-left: 400px;
+    font-size: 20px;
+}
+
+.submit{
+   padding-left: 620px;
+}
+
+.toolc{
+    align-items: center;
+    width: 300px;
+}
+.toolc:hover {
+    transform: scale(1.04);
+    box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+  }
+.cariesQ{
+    padding-top: 20px;
+    font-size: 20px;
+    padding-left: 20px;
+}
+

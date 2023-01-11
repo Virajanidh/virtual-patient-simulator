@@ -259,41 +259,6 @@ function CaseDesc() {
                 </CardActionArea>
               </Card>
             </div>
-            </Grid>
-            <Grid Item xs={5}>
-            <div className='qna'>
-              <Card sx={{ maxWidth: 600 }}>
-                <CardActionArea>
-                  <CardMedia
-                    height="500"
-                    alt="Case Description"
-                  />
-                  <CardContent>
-                  <div className='case'>
-                    Your Questions
-                    </div>
-                      <QcardPack questionList={selectedQ}/>
-                    {/* {Section && qId ?  
-                    <Typography variant="body2" color="text.secondary">
-                   
-                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
-                         <h4>{filteredName.cat}</h4>
-                    ))}
-                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
-                         <h4>{filteredName.q}</h4>
-                    ))}
-                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
-                         <h4>{filteredName.a}</h4>
-                    ))}
-                    </Typography>
-                    : null} */}
-                    {/* <Qcard Qlist={questions} selectedQId={selectedQId}/> */}
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </div>
-            </Grid>
-            </Grid>
             <div className="cardsd">
               <Card sx={{ maxWidth: 500, maxHeight: 1000}}>
                 <CardActionArea>
@@ -357,6 +322,42 @@ function CaseDesc() {
                 </CardActionArea>
               </Card>
             </div>
+            </Grid>
+            <Grid Item xs={5}>
+            <div className='qna'>
+              <Card sx={{ maxWidth: 600 }}>
+                <CardActionArea>
+                  <CardMedia
+                    height="500"
+                    alt="Case Description"
+                  />
+                  <CardContent>
+                  <div className='case'>
+                    Your Questions
+                    </div>
+                      <QcardPack questionList={selectedQ}/>
+                    {/* {Section && qId ?  
+                    <Typography variant="body2" color="text.secondary">
+                   
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.cat}</h4>
+                    ))}
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.q}</h4>
+                    ))}
+                    {questions.filter(question => question.id.includes(qId)).map(filteredName => (
+                         <h4>{filteredName.a}</h4>
+                    ))}
+                    </Typography>
+                    : null} */}
+                    {/* <Qcard Qlist={questions} selectedQId={selectedQId}/> */}
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </div>
+            </Grid>
+            </Grid>
+            
           </div>
     );
 }
