@@ -10,7 +10,9 @@ export const ExaminationActions = {
     clearCaries,
     clearResto,
     setPlaqueValue,
-    setBleedingVal
+    setBleedingVal,
+    addToolToPerioTools,
+    addToolToHardTools
 };
 
 function  setPerodetanlTools(data){
@@ -164,6 +166,36 @@ function  setBleedingVal(data){
     }
 
 }
+function  addToolToPerioTools(data){
+    return async dispatch => {
+        try {
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: examTypes.PERIOTOOLCHECKBOX,data}
+    }
+
+}
+
+function  addToolToHardTools(data){
+    return async dispatch => {
+        try {
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: examTypes.HARDTOOLCHECKBOX,data}
+    }
+
+}
+
 
 
 

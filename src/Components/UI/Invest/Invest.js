@@ -3,6 +3,10 @@ import React, { useEffect,useState, Fragment } from 'react';
 import './Case.css'
 import { useNavigate, Link} from 'react-router-dom';
 import ButtonGroup from '@mui/material/ButtonGroup';
+
+import Button from '@mui/material/Button';
+
+
 import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
@@ -10,6 +14,9 @@ import Instructions from './Instructions';
 import Grid from '@mui/material/Grid';
 import { useSelector} from "react-redux";
 import Navbar from '../../Navbar';
+import ToothGIF from './ToothGIF';
+//import "bootswatch/dist/superhero/bootstrap.min.css"
+
 
 const Invest = () => {
   const {userInfomation} = useSelector((state) => state.user)
@@ -32,6 +39,7 @@ const Invest = () => {
         intra: false,
       extra: true,
       help: false
+      
     })
     const btn1 = document.getElementById('help');
     btn1.style.backgroundColor = 'rgb(9, 105, 239)';
@@ -39,6 +47,7 @@ const Invest = () => {
     btn2.style.backgroundColor = 'rgb(9, 105, 239)';
     const btn3 = document.getElementById('extra');
     btn3.style.backgroundColor =  'rgb(95,129,182)';
+    
   };
 
 
@@ -57,6 +66,21 @@ const Invest = () => {
     btn3.style.backgroundColor =  'rgb(9, 105, 239)';
   };
 
+  // const onClickHandler5= () => {
+  //   setexam_inv({
+  //       intra: false,
+  //       extra: false,
+  //       help: true
+  //       help: false
+  //   })
+  //   const btn1 = document.getElementById('help');
+  //   btn1.style.backgroundColor = 'rgb(9, 105, 239)';
+  //   const btn2 = document.getElementById('intra');
+  //   btn2.style.backgroundColor = 'rgb(95,129,182)';
+  //   const btn3 = document.getElementById('extra');
+  //   btn3.style.backgroundColor =  'rgb(9, 105, 239)';
+  // };
+
   const onClickHandler5= () => {
     setexam_inv({
         intra: false,
@@ -70,7 +94,6 @@ const Invest = () => {
     const btn3 = document.getElementById('extra');
     btn3.style.backgroundColor =  'rgb(9, 105, 239)';
 
-
   };
 
   if(exam_inv.help && !exam_inv.intra && !exam_inv.extra){
@@ -80,6 +103,7 @@ const Invest = () => {
 
   
   return (
+    
     <div className ="app" style={{
         backgroundImage: `url(${img3})`,
         height:'500vh',
@@ -103,6 +127,7 @@ const Invest = () => {
                     </div>
                   </Grid>
                 </Grid>
+                
             </div>
              <div className='exmTopic'>Examination
 
@@ -118,6 +143,8 @@ const Invest = () => {
             <button id= 'help' onClick={() => onClickHandler5()}  button type="button" class="btn btn-primary">
             Guide
             </button>
+            
+          
         </ButtonGroup>
         
         </div> 
@@ -132,6 +159,7 @@ const Invest = () => {
            <Extra/> :
            null
         }
+        
         <div className='setExtra2'>
         {exam_inv.help ?
            <Instructions/> :

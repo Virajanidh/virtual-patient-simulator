@@ -43,21 +43,33 @@ function Hard() {
   // setSelectedCheckBox(submitedHardTissueTools)
 
   const isCheckedA = (e) => {
+    let val={'intra_ToolA':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolA: e.target.checked }));
   }
   const isCheckedB = (e) => {
+    let val={'intra_ToolB':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolB: e.target.checked }));
   }
   const isCheckedC = (e) => {
+    let val={'intra_ToolC':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolC: e.target.checked }));
   }
   const isCheckedD = (e) => {
+    let val={'intra_ToolD':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolD: e.target.checked }));
   }
   const isCheckedE = (e) => {
+    let val={'intra_ToolE':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolE: e.target.checked }));
   }
   const isCheckedF = (e) => {
+    let val={'intra_ToolF':e.target.checked}
+    dispatch(ExaminationActions.addToolToHardTools(val))
     setSelectedCheckBox(selectedCheckBox => ({ ...selectedCheckBox, intra_ToolF: e.target.checked }));
   }
 
@@ -162,7 +174,7 @@ function Hard() {
       <strong>Allready submitted the answers.</strong> Can not modify Answers.
     </div>
   </div> : null }
-<div className='pTopic'>Hard Tissue Assesment</div>
+<div className='pTopic'>Hard Tissue Assessment</div>
 <div className='topic2'>Tool selection</div>
 <div className='topic3'>1. Select the most suitable tools. Wrong selections will carry negative marks.</div>
 <div className="tools">
@@ -193,6 +205,7 @@ function Hard() {
           label="Tool_1"
           control={
         <Checkbox
+        value='intra_ToolA'
         defaultChecked={submitedHardTissueTools['intra_ToolA']}
         onChange={isCheckedA}
         id='0'
@@ -231,7 +244,8 @@ function Hard() {
           control={
         <Checkbox
         onChange={isCheckedB}
-        defaultChecked={submit_hard_tools['intra_ToolB']}
+        value='intra_ToolB'
+        defaultChecked={submitedHardTissueTools['intra_ToolB']}
         id='1'
           {...label}
           sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } ,color:"red",
@@ -268,6 +282,7 @@ function Hard() {
           control={
         <Checkbox
         onChange={isCheckedC}
+        value='intra_ToolC'
         defaultChecked={submitedHardTissueTools['intra_ToolC']}
         id='2'
           {...label}
@@ -307,6 +322,7 @@ function Hard() {
           label="Tool_4"
           control={
         <Checkbox
+        value='intra_ToolD'
         onChange={isCheckedD}
         defaultChecked={submitedHardTissueTools['intra_ToolD']}
         id='3'
@@ -344,6 +360,7 @@ function Hard() {
           label="Tool_5"
           control={
         <Checkbox
+        value='intra_ToolE'
         onChange={isCheckedE}
         defaultChecked={submitedHardTissueTools['intra_ToolE']}
         id='4'
@@ -382,6 +399,7 @@ function Hard() {
           control={
         <Checkbox
         onChange={isCheckedF}
+        value='intra_ToolF'
         defaultChecked={submitedHardTissueTools['intra_ToolF']}
         id='5'
           {...label}
@@ -397,6 +415,7 @@ function Hard() {
 </div>
 </div>
 </div>
+
 
       <div className='chart'>2. Dental Chart</div>
       <Grid container spacing={3}>
@@ -438,6 +457,18 @@ function Hard() {
           {/* </CardActionArea> */}
         </Card></div></Grid></Grid>
       <div className='chart'>5. Answer the Questions</div>
+      <div className='mainqs'> Select the correct tool to calculate plaque score &nbsp;
+        <select className="dd1" label="Select Tool" onChange={handleChange} labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard">
+          <option className="dd"></option>
+          <option value='intra_ToolA' className="dd">Tool_1</option>
+          <option value='intra_ToolB' className="dd">Tool_2</option>
+          <option value='intra_ToolC' className="dd">Tool_3</option>
+          <option value='intra_ToolD' className="dd">Tool_4</option>
+          <option value='intra_ToolE' className="dd">Tool_5</option>
+          <option value='intra_ToolF' className="dd">Tool_6</option>
+        </select>
+      </div>
       <div className='mainqs'>What is the plaque score?</div>
       <div className='qs'>
         <Box
@@ -450,32 +481,8 @@ function Hard() {
         >
           <TextField id="standard-basic" label="Your answer" variant="standard" onChange={getInputValue} value={plaqueValue} />
         </Box></div>
-      <div className='mainqs'> Select the correct tool &nbsp;
-        <select className="dd1" label="Select Tool" onChange={handleChange} labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard">
-          <option className="dd"></option>
-          <option value='intra_ToolA' className="dd">Tool_1</option>
-          <option value='intra_ToolB' className="dd">Tool_2</option>
-          <option value='intra_ToolC' className="dd">Tool_3</option>
-          <option value='intra_ToolD' className="dd">Tool_4</option>
-          <option value='intra_ToolE' className="dd">Tool_5</option>
-          <option value='intra_ToolF' className="dd">Tool_6</option>
-        </select>
-      </div>
-
-      <div className='mainqs'>What is the bleeding score?</div>
-      <div className='qs'>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '20ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="standard-basic" label="Your answer" variant="standard" onChange={getInputValue2} value={bleedingValue}/>
-        </Box></div>
-      <div className='mainqs'> Select the correct tool &nbsp;
+     
+      <div className='mainqs'> Select the correct tool to calculate bleeding score &nbsp;
         <select className="dd1" label="Select Tool" onChange={handleChange2} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
 
@@ -489,6 +496,24 @@ function Hard() {
 
         </select>
       </div>
+      <div className='mainqs'>What is the bleeding score?</div>
+      <div className='qs'>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '20ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField id="standard-basic" label="Your answer" variant="standard" onChange={getInputValue2} value={bleedingValue}/>
+        </Box></div>
+      
+      <div className='label1'>If you submit, you can no longer edit the selections</div>
+      <div className='submit'>
+        <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
+      </div>
+      <label id="submitMsg"></label>
     </div>
   );
 }

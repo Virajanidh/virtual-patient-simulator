@@ -1,8 +1,8 @@
 import { examTypes } from '../types';
 const initialState = {
-  selectedPerodentalTools: [],
+  selectedPerodentalTools: {},
   submit_perio_tools: false,
-  submitedHardTissueTools: [],
+  submitedHardTissueTools: {},
   submit_hard_tools: false,
   cariesSelected: [],
   restorationsSelected: [],
@@ -41,6 +41,35 @@ const setResto = (array2, item) => {
     return array2.concat(item)
   }
 
+}
+const addPeroTools = (array, item) => {
+  let val = ''
+  let bool = false
+  for (let key in item) {
+    val = key
+    bool = item[key]
+
+  }
+  console.log(val, bool)
+  array[val] = bool
+  console.log(array)
+
+  return array
+}
+
+const addHardTools = (array, item) => {
+  let val = ''
+  let bool = false
+  for (let key in item) {
+    val = key
+    bool = item[key]
+
+  }
+  console.log(val, bool)
+  array[val] = bool
+  console.log(array)
+
+  return array
 }
 
 
@@ -103,10 +132,21 @@ const ExaminationReducer = (state = initialState, action) => {
     case examTypes.BLEEDINGVAL:
       return {
         ...state,
-        bleedingValue:action.data
+        bleedingValue: action.data
 
       };
+    case examTypes.PERIOTOOLCHECKBOX:
+      return {
+        ...state,
+        selectedPerodentalTools: addPeroTools(state.selectedPerodentalTools, action.data)
 
+      };
+    case examTypes.HARDTOOLCHECKBOX:
+      return {
+        ...state,
+        submitedHardTissueTools : addHardTools(state.submitedHardTissueTools, action.data)
+
+      };
 
     default:
       return state;
