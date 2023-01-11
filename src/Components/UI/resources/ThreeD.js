@@ -8,15 +8,18 @@ import { useEffect } from "react";
 import React, { Suspense } from 'react';
 import Loader from "../../Loader/Loader"
 import { OrbitControls } from "@react-three/drei";
+import { useSelector} from "react-redux";
 
 // npm install three
 // npm install @react-three/fiber @react-three/drei
 
 function Model(props){
+  const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
   //const {scene} =useGLTF("./tooth.glb")
    //const {scene} =useGLTF("https://firebasestorage.googleapis.com/v0/b/vitual-patient.appspot.com/o/files%2Ftooth.glb?alt=media&token=cc923058-a9c8-4c03-9d97-ff45f720774c")
-   const {scene} =useGLTF("https://firebasestorage.googleapis.com/v0/b/vitual-patient.appspot.com/o/files%2Ffinal.glb?alt=media&token=fd1dc43f-590d-45eb-85bc-773d87a0a99d")
-  return <primitive object={scene} {...props} />
+   //const {scene} =useGLTF("https://firebasestorage.googleapis.com/v0/b/vitual-patient.appspot.com/o/files%2Ffinal.glb?alt=media&token=fd1dc43f-590d-45eb-85bc-773d87a0a99d")
+   const {scene} =useGLTF(selectedCaseDetails.model3D)
+   return <primitive object={scene} {...props} />
 }
 
 function download(){

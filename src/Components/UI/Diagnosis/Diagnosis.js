@@ -22,6 +22,7 @@ function Diagnosis() {
 
   const {allDignosisQ}=useSelector((state) => state.diagnosisQ)
   const {diagScore}=useSelector((state) => state.score)
+  
 
   useEffect(()=> {
     fetchDQuestions();
@@ -46,31 +47,45 @@ function Diagnosis() {
   const setSubmit =()=>{
     setIsSubmit(true)
     dispatch(DiagnosisActions.setDiagnosisSubmit(true))
+   
+    var inputs = document.getElementsByTagName("input"); 
+    for (var i = 0; i < inputs.length; i++) { 
+        inputs[i].disabled = true;
+    } 
+    
     calculateScore();
   }
 
   const calculateScore=()=>{
-    let correctCount=0
-    let inCorrectCount=0
+    if(!isSubmitDiagnosis){
+    let correctScore=0
+    let inCorrectScore=0
     let TotalScore=0
     const weightForDiag = 3
+    const weightForOneQ=weightForDiag/allDignosisQ.length
+    console.log('hii')
     for(let i=0;i<selectedAnsForDiagnosisQ.length;i++){
-      if(selectedAnsForDiagnosisQ[i].correctness){
-        correctCount ++
+      
+      let score=0
+      let corrlen=selectedAnsForDiagnosisQ[i].studentCorrectAnswers.length
+      let wronglen=selectedAnsForDiagnosisQ[i].studentWrongAnswers.length
+      console.log(corrlen,'|,',wronglen)
+      let correctCount=selectedAnsForDiagnosisQ[i].correctCount
+      if(corrlen>wronglen){
+        correctScore=corrlen-wronglen
+        console.log(parseInt(correctCount),'/',correctScore)
+        score =100*(weightForOneQ/10)*((correctScore)/parseInt(correctCount))
+        console.log(score)
       }
-      else{
-        inCorrectCount++
-      }
+     TotalScore=TotalScore+score
+      // else{
+      //   inCorrectCount++
+      // }
+
     }
-    if(correctCount>inCorrectCount){
-      correctCount=correctCount-inCorrectCount
-      TotalScore = 100*(weightForDiag/10)*(correctCount/allDignosisQ.length)
-    }
-    else if(correctCount<=inCorrectCount){
-      TotalScore = 0
-    }
-    //TotalScore = 100*(weightForDiag/10)*(correctCount/allDignosisQ.length)
+    
     dispatch(ScoreActions.setDiagScore(TotalScore))
+    }
   }
 
   const content = [];
@@ -82,12 +97,7 @@ function Diagnosis() {
       );
       content.push(row);
     }
-    // if(!isSubmit){
-    //   document.getElementById("warningMsg").disabled = true;
-    // }
-    // else{
-    //   document.getElementById("warningMsg").disabled = false;
-    // }
+  
     const checkSubmit =isSubmit|isSubmitDiagnosis
   return(
    <div  >
@@ -104,13 +114,6 @@ function Diagnosis() {
         
     </div>
 
-    {selectedAnsForDiagnosisQ && 
-                    selectedAnsForDiagnosisQ.map(selectedDQ => (
-                      <div class="alert alert-dismissible alert-secondary">
-                      <label>{selectedDQ.q}</label>
-                      <label>{selectedDQ.studentAnswer}</label>
-                      </div>
-                    ))}
     <label>If you submit the answers, you can no longer edit the answers</label>
     <div>
     <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
