@@ -5,13 +5,14 @@ export const DiagnosisActions = {
     setSelectedAnsForDQ,
     setDiagnosisAllQ,
     setWrongDiagnosisQ,
-    setDiagnosisSubmit
+    setDiagnosisSubmit,
+    removeCorrectDiagnosisQ,
+    removeWrongDiagnosisQ
 };
 
 function  setDiagnosisAllQ(data){
     return async dispatch => {
         try {
-            console.log(data)
             dispatch(success(data));
         } catch (error) {
             console.log(error)
@@ -27,7 +28,7 @@ function  setDiagnosisAllQ(data){
 function setSelectedAnsForDQ(data){
     return async dispatch => {
         try {
-            console.log(data)
+            console.log('in diag actions')
             dispatch(success(data));
         } catch (error) {
             console.log(error)
@@ -83,6 +84,37 @@ function  setWrongDiagnosisQ(data){
 
     function success(data) {
         return {type: diagnosisTypes.SETWRONGDIAGNOSISQ,data}
+    }
+
+}
+function  removeWrongDiagnosisQ(data){
+    return async dispatch => {
+        try {
+            console.log(data)
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success(data) {
+        return {type: diagnosisTypes.WRONGREMOVE,data}
+    }
+
+}
+
+function  removeCorrectDiagnosisQ(data){
+    return async dispatch => {
+        try {
+            console.log(data)
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success(data) {
+        return {type: diagnosisTypes.CORRECTREMOVE,data}
     }
 
 }
