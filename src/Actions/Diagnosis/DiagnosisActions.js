@@ -7,7 +7,8 @@ export const DiagnosisActions = {
     setWrongDiagnosisQ,
     setDiagnosisSubmit,
     removeCorrectDiagnosisQ,
-    removeWrongDiagnosisQ
+    removeWrongDiagnosisQ,
+    clearhistory
 };
 
 function  setDiagnosisAllQ(data){
@@ -119,5 +120,20 @@ function  removeCorrectDiagnosisQ(data){
 
 }
 
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            console.log()
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: diagnosisTypes.CLEARHISTORYDT}
+    }
+
+}
 
 

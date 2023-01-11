@@ -2,7 +2,8 @@ import {DentalSheetTypes} from '../../Reducers/types';
 
 export const DentalSheetActions = {
     setcariesMarkDetails,
-    setrestorationMarkDetails
+    setrestorationMarkDetails,
+    clearhistory
 };
 
 function  setcariesMarkDetails(data){
@@ -32,6 +33,22 @@ function  setrestorationMarkDetails(data){
 
     function success(data) {
         return {type: DentalSheetTypes.RESTORATION,data}
+    }
+
+}
+
+function  clearhistory(data){
+    return async dispatch => {
+        try {
+            console.log()
+            dispatch(success());
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: DentalSheetTypes.CLEARHISTORYDS}
     }
 
 }

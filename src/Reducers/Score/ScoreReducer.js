@@ -95,6 +95,24 @@ const ScoreReducer = (state = initialState, action) => {
         radioScore: action.data
 
       };
+    case scoreTypes.CLEARHISTORYST:
+      return {
+        ...state,
+        histScore: 0,
+        diagScore: 0,
+        examScore: 0,
+        investScore: 0,
+        periodentalScreeningScore: 0,
+        hardTissueScore: 0,
+        cariesScore: 0,
+        restorationScore: 0,
+        plaqueScore: 0,
+        bleedingScore: 0,
+        plaqueToolScore: 0,
+        bleedingToolScore: 0,
+        radioScore: 0
+
+      };
     default:
       return state;
   }

@@ -122,45 +122,50 @@ function Hard() {
   }
 
   const handleChange = (e) => {
-    console.log(e.target.value)
-    if (e.target.value == selectedCaseDetails.Hard_Plaque_tool) {
-      dispatch(ScoreActions.setPlaqueToolScore(2.5))
-    }
-    else {
-      dispatch(ScoreActions.setPlaqueToolScore(0))
+    if(!isSubmitDiagnosis){
+      if (e.target.value == selectedCaseDetails.Hard_Plaque_tool) {
+        dispatch(ScoreActions.setPlaqueToolScore(2.5))
+      }
+      else {
+        dispatch(ScoreActions.setPlaqueToolScore(0))
+      }
     }
   }
 
   const handleChange2 = (e) => {
-    console.log(e.target.value)
-    if (e.target.value == selectedCaseDetails.Hard_bleeding_tool) {
-      dispatch(ScoreActions.setBleedingToolScore(2.5))
-    }
-    else {
-      dispatch(ScoreActions.setBleedingToolScore(0))
+  
+    if(!isSubmitDiagnosis){
+      if (e.target.value == selectedCaseDetails.Hard_bleeding_tool) {
+        dispatch(ScoreActions.setBleedingToolScore(2.5))
+      }
+      else {
+        dispatch(ScoreActions.setBleedingToolScore(0))
+      }
     }
   }
 
   const getInputValue=(e)=>{
     console.log(e.target.value)
-    dispatch(ExaminationActions.setPlaqueValue(e.target.value))
-    if (e.target.value == selectedCaseDetails.Hard_plaque_score) {
-      dispatch(ScoreActions.setPlaqueScore(2.5))
+    if(!isSubmitDiagnosis){
+      dispatch(ExaminationActions.setPlaqueValue(e.target.value))
+      if (e.target.value == selectedCaseDetails.Hard_plaque_score) {
+        dispatch(ScoreActions.setPlaqueScore(2.5))
+      }
+      else {
+        dispatch(ScoreActions.setPlaqueScore(0))
+      }
     }
-    else {
-      dispatch(ScoreActions.setPlaqueScore(0))
-    }
-    console.log(e.target.value)
     
   }
   const getInputValue2=(e)=>{
-    console.log(e.target.value)
-    dispatch(ExaminationActions.setBleedingVal(e.target.value))
-    if (e.target.value == selectedCaseDetails.Hard_bleeding_score) {
-      dispatch(ScoreActions.setBleedingScore(2.5))
-    }
-    else {
-      dispatch(ScoreActions.setBleedingScore(0))
+    if(!isSubmitDiagnosis){
+      dispatch(ExaminationActions.setBleedingVal(e.target.value))
+      if (e.target.value == selectedCaseDetails.Hard_bleeding_score) {
+        dispatch(ScoreActions.setBleedingScore(2.5))
+      }
+      else {
+        dispatch(ScoreActions.setBleedingScore(0))
+      }
     }
     
   }

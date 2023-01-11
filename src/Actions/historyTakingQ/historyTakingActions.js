@@ -3,24 +3,9 @@ import {historyTakingQTypes} from '../../Reducers/types';
 export const historyTakingActions = {
     addselectedQdata,
     addAllHTQdata,
-    setSelectionOrder
+    setSelectionOrder,
+    clearhistory,
 };
-
-// export const addselectedQdata = (data) =>{
-
-//     return  (dispatch, getState, {getFirestore}) => {
-//         console.log('hi')
-//         const firestore =getFirestore();
-//         firestore.collection('test').add({
-//             ...data
-//         }).then(()=>{
-//             dispatch({ type: historyTakingQTypes.CREATE_CASE_Q,data })
-//         }).catch((err)=> {
-//             console.log('err')
-//         })
-        
-//     }
-// }
 
 function  addselectedQdata(data){
     return async dispatch => {
@@ -71,6 +56,22 @@ function  setSelectionOrder(data){
 
     function success(data) {
         return {type: historyTakingQTypes.SECTIONORDER,data}
+    }
+}
+
+function  clearhistory(){
+    return async dispatch => {
+        try {
+            console.log()
+            dispatch(success());
+           
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: historyTakingQTypes.CLEARHISTORYQ}
     }
 }
 

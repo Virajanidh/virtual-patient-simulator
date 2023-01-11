@@ -10,25 +10,25 @@ const initialState = {
 
 const setCorrectDiagnosisQ = (array1, index) => {
 
-  let ind=parseInt(index[0])
+  let ind = parseInt(index[0])
   if (index !== -1) {
     for (let i = 0; i < array1.length; i++) {
-      if(array1[i].q==index[1]){
- 
-        var qarray=array1[i].studentCorrectAnswers
-        var newArray=[]
-        for(let r = 0 ; r<ind ;r++){
-          newArray[r]=qarray[r]
+      if (array1[i].q == index[1]) {
+
+        var qarray = array1[i].studentCorrectAnswers
+        var newArray = []
+        for (let r = 0; r < ind; r++) {
+          newArray[r] = qarray[r]
         }
 
-        for(let j = ind ; j < (qarray.length - 1); j++){
-           newArray[j] = qarray[j + 1];
+        for (let j = ind; j < (qarray.length - 1); j++) {
+          newArray[j] = qarray[j + 1];
         }
 
         array1[i].studentCorrectAnswers = newArray
         return array1;
       }
-     
+
     }
   }
   else {
@@ -50,28 +50,28 @@ const setCorrectDiagnosisQ = (array1, index) => {
 }
 
 const setWrongDiagnosisQ = (array1, index) => {
-  
- 
-  let ind=parseInt(index[0])
+
+
+  let ind = parseInt(index[0])
   if (index !== -1) {
     for (let i = 0; i < array1.length; i++) {
-      if(array1[i].q==index[1]){
-    console.log(ind)
-        var qarray=array1[i].studentWrongAnswers
-        var newArray=[]
-        for(let r = 0 ; r<ind ;r++){
-          newArray[r]=qarray[r]
+      if (array1[i].q == index[1]) {
+        console.log(ind)
+        var qarray = array1[i].studentWrongAnswers
+        var newArray = []
+        for (let r = 0; r < ind; r++) {
+          newArray[r] = qarray[r]
         }
 
-        for(let j = ind ; j < (qarray.length - 1); j++){
-          
-           newArray[j] = qarray[j + 1];
+        for (let j = ind; j < (qarray.length - 1); j++) {
+
+          newArray[j] = qarray[j + 1];
         }
 
         array1[i].studentWrongAnswers = newArray
         return array1;
       }
-     
+
     }
   }
   else {
@@ -113,7 +113,7 @@ const setWrongDiagnosisQ = (array1, index) => {
 const setSelectedAnsForDiagnosis = (array3, item) => {
   if (array3.length != 0) {
     for (let i = 0; i < array3.length; i++) {
-      
+
       if (array3[i].id == item.id) {
         array3[i].studentCorrectAnswers = item.studentCorrectAnswers
         array3[i].studentWrongAnswers = item.studentWrongAnswers
@@ -191,6 +191,15 @@ const DiagnosisReducer = (state = initialState, action) => {
       return {
         ...state,
         wrongDiagnosisQ: removeWrongDiagnosisQ(state.wrongDiagnosisQ, action.data)
+
+      };
+    case diagnosisTypes.CLEARHISTORYDT:
+      return {
+        ...state,
+        correctDiagnosisQ: [],
+        wrongDiagnosisQ: [],
+        selectedAnsForDiagnosisQ: [],
+        isSubmitDiagnosis: false
 
       };
 
