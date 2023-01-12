@@ -135,8 +135,8 @@ const {periodentalScreeningScore}= useSelector((state) => state.score)
           </div>
         </div> : null }
       <div className='pTopic'>Periodontal Screening</div>
-      <div className='topic2'>Tool selection</div>
-      <div className='topic3'>1. Select the most suitable tools. Wrong selections will carry negative marks.</div>
+      <div className='ptopic2'>Tool selection</div>
+      <div className='ptopic3'>1. Select the most suitable tools. Wrong selections will carry negative marks.</div>
       <div className="tools">
         <Grid container spacing={5}>
           <Grid item xs={4}>
@@ -380,7 +380,8 @@ const {periodentalScreeningScore}= useSelector((state) => state.score)
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>
-      <label id="submitMsg"></label>
+      <div className='submttd'>
+      <label id="submitMsg"></label></div>
 {isCorrect&&submit_perio_tools ? <div>
       <div className='chart'>Chart</div>
       <div>
