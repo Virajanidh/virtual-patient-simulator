@@ -3,6 +3,11 @@
     font-size: 30px;
     padding-bottom: 10px;
 }
+
+.cases{
+    padding-top: 10px;
+    max-height: 100px;
+}
 .casesubheading{
     font-weight: bold;
     font-size: 20px;
@@ -18,27 +23,31 @@
 }
 
 .cards{
-    padding-top: 250px;
     text-align: center;
     align-self: center;
     padding-left: 100px;
     max-width: '50rem';
 }
-.cardsd{
+.phcardsd{
     padding-top: 10px;
     text-align: center;
     align-self: center;
     padding-left: 100px;
-    max-width: '100rem';
+    max-width: '200rem';
     height: '1000px';
 }
 
-.cardDesc{
-    padding-top: 200px;
+.phcardDesc{
+    padding-top: 50px;
     text-align: center;
     align-self: center;
     padding-left: 100px;
     max-width: '50rem';
+}
+
+.choose{
+    background-color: rgb(143, 217, 240);
+    font-size: 20px;
 }
 .dropdown{
     padding-top: 10px;
@@ -46,21 +55,22 @@
     padding-left: 5px;
 }
 
-.ddown1{
+.phddown1{
     height: 200px;
-    padding-top: 0px;
-    padding-left: 0px;
+    width: 50px;
+    padding-top: 50px;
+    padding-left: 20px;
 }
 .NextChip{
     padding-right: 10px;
     padding-left: 900px;
 }
 
-
-.qna{
-    max-width: 200rem;
+.phqna{
+    max-width: 180rem;
     padding-right: 0px;
-    padding-top: 200px;
+    padding-top: 50px;
+    padding-left: 20px;
 }
 
 .middletext{
@@ -69,21 +79,11 @@
     
 }
 
-.sect{
-    text-align: center;
-    font-size: 30px;
+.phsect2{
+    font-size: 35px;
     color: brown;
     font-weight: bold;
-    padding-top: 5px;
-    
-}
-
-.sect1{
-    text-align: center;
-    font-size: 30px;
-    color: brown;
-    font-weight: bold;
-    padding-top: 5px;
+    padding-top: 20px;
     
 }
 
@@ -107,10 +107,7 @@
 }
 
 .exmbtn{
-
     padding-left: 200%;
-
-    
 }
 
 .exmchip{
@@ -142,7 +139,6 @@
 }
 
 .invGif{
-    
     padding-left: 400px;
 }
 
@@ -154,4 +150,29 @@
     padding-top: 100px;
     align-items: center;
     padding-left: 450px;
+}
+
+/* PHT */
+
+.phtopic1{
+    padding-left: 430px;
+    padding-top: 20px;
+    font-size: 45px;
+    font-weight: bold;
+    color: rgb(13, 13, 128);
+}
+.phtopic2{
+    padding-left: 200px;
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.phsect1{
+    padding-top: 10px;
+}
+
+.phddown2{
+    padding-top: 10px;
 }

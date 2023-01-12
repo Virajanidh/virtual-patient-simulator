@@ -192,37 +192,9 @@ function CaseDesc() {
                 backgroundRepeat: 'repeat'
           }}>
             <div className='navText'>
-            {/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="container-fluid">
-                <a class="navbar-brand" style={{
-                  fontSize: ' 20px',
-                }}href="#">Hi {userInfomation.name}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav" style={{
-                  fontSize: ' 20px',
-                }} >
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Previous Feedback</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Logout</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav> */}
             <Navbar/>
             </div>
-      
             <div>
-            
-        
                 <Grid container spacing={20}>
                 <Grid item xs={4}>
                   <div className='backbtn'>
@@ -237,24 +209,8 @@ function CaseDesc() {
                   </Grid>
                 </Grid>
             </div>
-            <div style={{position:'absolute',
-            left:'35%',
-            top:'25%',
-            fontSize:'45px',
-            fontWeight : 'bold',
-            color: '#000'
-            }}>Patient History Taking
-
-            </div>
-            <div style={{position:'absolute',
-            left:'10%',
-            top:'35%',
-            fontSize:'30px',
-            fontWeight : 'bold',
-            color: '#000'
-            }}>Case ID: {selectedCaseDetails.caseId}
-
-            </div>
+            <div className='phtopic1'>Patient History Taking</div>
+            <div className='phtopic2'>Case ID: {selectedCaseDetails.caseId}</div>
 
             {isSubmitDiagnosis ?
     <div id='warningMsg'style={{fontSize:'15px'}} >
@@ -262,15 +218,15 @@ function CaseDesc() {
           <strong>Allready submitted the answers.</strong> Can not modify Answers.
         </div>
         </div> : null }
-
-            <Grid container spacing={1}>
-              <Grid Item xs={6}>
-            <div className="cardDesc">
+          <div className="phsect1">
+            <Grid container spacing={5}>
+              <Grid Item xs={5}>
+            <div className="phcardDesc">
               <Card sx={{ maxWidth: 500 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="150"
                     alt="Case Description"
                     image={selectedCaseDetails.frontImage}
                   />
@@ -286,17 +242,29 @@ function CaseDesc() {
                 </CardActionArea>
               </Card>
             </div>
-            <div className="cardsd">
+            <div className="phcardsd">
               <Card sx={{ maxWidth: 500, maxHeight: 1000}}>
                 <CardActionArea>
                   <CardContent sx={{maxHeight: 500}} >
-                    <div className='ddown1'>
-                  <DropdownButton
-                    alignRight
+                  <Card className="choose" sx={{ maxWidth: 450, maxHeight: 400}} style={{backgroundColor:'#C3C6C4'}}>
+                    <li>Select the sections according to the correct order of patient examination</li>
+                    <li>Select only the relevant questions</li>
+                    <li>Wrong section order and Irrelevant questions will carry negative marks</li>
+                  </Card>
+                  
+                  <div sx={{ maxWidth: 600, maxHeight: 1000}}>
+                  <Grid container spacing={2}>
+                    <Grid Item xs={4}>
+                  <Dropdown className='phddown1'
                     title="Select the Section"
                     id="dropdown-menu-align-right"
                     onSelect={handleSection}
                   >
+                    
+                     <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      Select the section
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
                     <Dropdown.Item eventKey="complaint" >History of the presenting complaint</Dropdown.Item>
                     <Dropdown.Item eventKey="habits" >Habits</Dropdown.Item>
                     <Dropdown.Item eventKey="dhistory" >Dietary history</Dropdown.Item>
@@ -304,34 +272,37 @@ function CaseDesc() {
                     <Dropdown.Item eventKey="plaque" >Plaque control</Dropdown.Item>
                     <Dropdown.Item eventKey="pretreate" >Previous dental treatments</Dropdown.Item>
                     <Dropdown.Item eventKey="shistory" >Social history</Dropdown.Item>
-                    
-                    {/* <Dropdown.Divider />
-                    <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
-                  </DropdownButton>
-                <div className='sect1'>
-                  {Section==='complaint' ?
-                      <label>History of the presenting complaint</label> :null}
-                      {Section==='habits' ?
-                      <label>Habits</label> :null}
-                      {Section==='medicalH' ?
-                      <label>Medical history</label> :null}
-                      {Section==='plaque' ?
-                      <label>Plaque control</label> :null}
-                      {Section==='dhistory' ?
-                      <label>Dietary history</label> :null}
-                      {Section==='pretreate' ?
-                      <label>Previous dental treatments</label> :null}
-                      {Section==='shistory' ?
-                      <label>Social history</label> :null}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Grid>
+                  <Grid Item xs={8}>
+                    <div className='phsect2'>
+                      {Section==='complaint' ?
+                          <label>History of the presenting complaint</label> :null}
+                          {Section==='habits' ?
+                          <label>Habits</label> :null}
+                          {Section==='medicalH' ?
+                          <label>Medical history</label> :null}
+                          {Section==='plaque' ?
+                          <label>Plaque control</label> :null}
+                          {Section==='dhistory' ?
+                          <label>Dietary history</label> :null}
+                          {Section==='pretreate' ?
+                          <label>Previous dental treatments</label> :null}
+                          {Section==='shistory' ?
+                          <label>Social history</label> :null}
+                      </div>
+                  </Grid>
+            </Grid>
                     </div>
-
-            </div>
-            <div className='ddown1'>
-                  <DropdownButton
+                  
+            <div className='phddown2'>
+                  <DropdownButton className='ddown1'
                     alignRight
                     title="Select the question"
                     id="dropdown-menu-align-right"
                     onSelect={handleSelect}
+                    variant="success"
                   >
                     {Section && questions.filter(question => question.cat.includes(Section)).map(filteredName => (
                       <li>
@@ -350,9 +321,9 @@ function CaseDesc() {
               </Card>
             </div>
             </Grid>
-            <Grid Item xs={5}>
-            <div className='qna'>
-              <Card sx={{ maxWidth: 600 }}>
+            <Grid Item xs={7}>
+            <div className='phqna'>
+              <Card sx={{ maxWidth: 740 }}>
                 <CardActionArea>
                   <CardMedia
                     height="500"
@@ -384,7 +355,7 @@ function CaseDesc() {
             </div>
             </Grid>
             </Grid>
-            
+          </div>
           </div>
     );
 }
