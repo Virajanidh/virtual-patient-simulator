@@ -129,9 +129,7 @@ const Invest = () => {
                 </Grid>
                 
             </div>
-             <div className='exmTopic'>Examination
-
-              </div>
+             <div className='exmTopic'>Examination</div>
       <div className="contOne">
         <ButtonGroup size="large" aria-label="large button group">
             <button id= 'extra' button type="button" class="btn btn-primary" onClick={() => onClickHandler2()} >

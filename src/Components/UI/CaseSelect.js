@@ -63,7 +63,7 @@ function CaseSelect() {
     return (
           <div className ="app" style={{
               backgroundImage: `url(${img3})`,
-                height:'200vh',
+                height:'120vh',
                 marginTop:'0px',
               fontSize:'50px',
               backgroundSize: 'cover',
@@ -81,8 +81,8 @@ function CaseSelect() {
               }}>Case Selection 
 
               </div>
+              <div className='cases'>
               <Grid container spacing={1}>
-
                 {cases.map(function(object){
                     return (
                       <Grid Item xs={6}>
@@ -94,6 +94,7 @@ function CaseSelect() {
                 })}
                 
               </Grid>
+              </div>
           </div>
     );
 }

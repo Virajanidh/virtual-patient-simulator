@@ -1,5 +1,5 @@
-import { height } from "@mui/system";
-import img3 from "../../../Images/80.png"
+import { height, maxHeight } from "@mui/system";
+import img3 from "../../../Images/invBck2.webp"
 import { useSelector } from "react-redux";
 import firebase from '../../../Config/Config'
 import { useNavigate, Link} from 'react-router-dom';
@@ -8,6 +8,9 @@ import React, { useEffect,useState, Fragment } from 'react';
 import { useDispatch } from "react-redux";
 import { DiagnosisActions } from "../../../Actions/Diagnosis/DiagnosisActions";
 import { ScoreActions } from '../../../Actions/Score/ScoreActions';
+import './Diagnosis.css'
+import Navbar from "../../Navbar";
+import Card from '@mui/material/Card';
 
 function Diagnosis() {
 
@@ -100,19 +103,32 @@ function Diagnosis() {
   
     const checkSubmit =isSubmit|isSubmitDiagnosis
   return(
-   <div  >
-   {checkSubmit ?
-    <div id='warningMsg'>
-    <div  class="alert alert-dismissible alert-danger">
-          <strong>Allready submitted the answers.</strong> Can not modify Answers.
+    <div className ="app" style={{
+      backgroundImage: `url(${img3})`,
+      height:'100vh',
+      marginTop:'0px',
+      fontSize:'20px',
+      backgroundSize: 'cover',
+      }}>
+        <div className='navText'>
+          <Navbar/>
         </div>
-        </div> : null }
-    <button className="back" size="medium" onClick={handleClick}>Back</button>
+        {checkSubmit ?
+          <div id='warningMsg'>
+          <div  class="alert alert-dismissible alert-danger">
+                <strong>Already submitted the answers.</strong> Can not modify Answers.
+          </div>
+          </div> : null }
+        <button className="back" size="medium" onClick={handleClick}>Back</button>
 
       <div class="list-group">
+        <div className='midCard'>
+        <Card sx={{ maxWidth: 740, maxHeight: 500 }}>
         {content}
-        
+        </Card>
+        </div>
     </div>
+
 
     <label>If you submit the answers, you can no longer edit the answers</label>
     <div>
