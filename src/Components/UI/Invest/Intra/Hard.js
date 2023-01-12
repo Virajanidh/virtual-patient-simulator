@@ -423,6 +423,9 @@ function Hard() {
 
 
       <div className='chart'>2. Dental Chart</div>
+
+      <div>In bellow caries and restoration selections, select tooth number and related typr according to your 
+       <br/> observations and then add them using 'add' button. Selected list will show below the selection tab. To clear list use "clear List" button</div>
       <Grid container spacing={3}>
       <Grid item xs={6}>
       <div className='chart'>3. Caries status</div>
