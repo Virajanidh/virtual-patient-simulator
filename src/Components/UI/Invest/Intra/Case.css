@@ -165,7 +165,13 @@
 }
 
 .submit{
-   padding-left: 620px;
+   padding-left: 600px;
+}
+.submttd{
+   padding-left: 600px;
+   font-size: 20px;
+   font-weight: bold;
+   color: crimson;
 }
 
 .toolc{

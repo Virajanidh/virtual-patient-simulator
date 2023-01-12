@@ -105,7 +105,7 @@ function Diagnosis() {
   return(
     <div className ="app" style={{
       backgroundImage: `url(${img3})`,
-      height:'100vh',
+      height:'150vh',
       marginTop:'0px',
       fontSize:'20px',
       backgroundSize: 'cover',
@@ -120,24 +120,27 @@ function Diagnosis() {
           </div>
           </div> : null }
         <button className="back" size="medium" onClick={handleClick}>Back</button>
-
+        <div className='dgtopic1'>Diagnosis</div>
       <div class="list-group">
         <div className='midCard'>
-        <Card sx={{ maxWidth: 740, maxHeight: 500 }}>
-        {content}
+        <Card sx={{ maxWidth: 740, maxHeight: 390 }}>
+          <div className="dgContent">
+          {content}
+        </div>
         </Card>
         </div>
     </div>
 
 
-    <label>If you submit the answers, you can no longer edit the answers</label>
-    <div>
-    <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-     onClick={setSubmit}>submit</button>
-     </div>
+<div className='dglabel1'>If you submit, you can no longer edit the answers</div>
+<div className='dgsubmit'>
+  <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
+</div>
+
      
       { checkSubmit ?
-      <div>
+      <div className='dgsubmit2'>
+
     <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
      onClick={handdleFeedback}>View Evaluation and Feedback</button>
      </div> : null }

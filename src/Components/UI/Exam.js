@@ -187,7 +187,7 @@ const Exam = () => {
             Radiographs
             </Button>
             <Button style={{ border: " 2px  solid blue", borderColor:"#002966", buttonRadius:"50px" }} id='Invest'  type="button" class="btnGrp" onClick={() => onClickHandler4()} className="ground">
-            Laboratory Investigations
+            Sensibility Recordings
             </Button>
             <Button style={{ border: " 2px solid blue", borderColor:"#002966", buttonRadius:"50px" }}
             id='Help'type="button" class="btnGrp" onClick={() => onClickHandler6()} className="ground">

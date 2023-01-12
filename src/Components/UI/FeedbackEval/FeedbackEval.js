@@ -12,6 +12,11 @@ import { DiagnosisActions } from '../../../Actions/Diagnosis/DiagnosisActions';
 import { ExaminationActions } from '../../../Actions/Examination/ExaminationActions';
 import { InvestigationActions } from '../../../Actions/Investigation/InvestigationActions';
 import {TimeActions} from '../../../Actions/Time/TimeActions';
+import Navbar from '../../Navbar';
+import './Feed.css';
+import img3 from "../../../Images/invBck2.webp"
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
 
 function FeedbackEval() {
 
@@ -343,9 +348,6 @@ function FeedbackEval() {
   const { selectedAnsForDiagnosisQ } = useSelector((state) => state.diagnosisQ)
   const { histScore } = useSelector((state) => state.score)
 
-
-
-
   const addData = async () => {
     var historyScore = calculateHistoryScore()
     var path = 'StudentsRecord' + selectedCaseDetails.caseId
@@ -392,174 +394,235 @@ function FeedbackEval() {
     navigate('/diagnosis');
   };
 
-
-
   return (
-    <div>
-      <div className='backbtn'>
-        <button className="back" size="medium" onClick={handleClick1}>  Back </button>
-      </div>
+    <div className ="app" style={{
+      backgroundImage: `url(${img3})`,
+      height:'350vh',
+      marginTop:'0px',
+      fontSize:'20px',
+      backgroundSize: 'cover',
+      }}>
+        <div className='navText'>
+          <Navbar/>
+        </div>
+        <div className='backbtn'>
+          <button className="back" size="medium" onClick={handleClick1}>  Back </button>
+        </div>
+        <div className='fdtopic1'>Feedback and Evaluation</div>
+        <div className='fdcard'>
+          <Card sx={{ maxWidth: 1200, maxHeight: 2000 }}>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Case Id </div></Grid>
+                <Grid Item xs={8}>:{selectedCaseDetails.caseId}</Grid>
+              </Grid>
+            </div>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Case Description: </div></Grid>
+                <Grid Item xs={8}>:{selectedCaseDetails.description}</Grid>
+              </Grid>
+            </div>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Your Score :  </div></Grid>
+                <Grid Item xs={8}>:{newStudentScore}</Grid>
+              </Grid>
+            </div>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Your Systematic thinking Score :  </div></Grid>
+                <Grid Item xs={8}>:{newStudentScore - diagScore}</Grid>
+              </Grid>
+            </div>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Score based on expansion of knowledge :  </div></Grid>
+                <Grid Item xs={8}>:{diagScore}</Grid>
+              </Grid>
+            </div>
+            <div>
+              <Grid container>
+                <Grid Item xs={4}><div className='fdmain'>Your Spent time :  </div></Grid>
+                <Grid Item xs={8}>:{duration}</Grid>
+              </Grid>
+            </div>
+            <div className='fdtopic2'>History Taking</div>
+            <div>
+              <Grid container>
+                <Grid Item xs={3}><div className='fdmain'>Score:  </div></Grid>
+                <Grid Item xs={9}>:{histScore}/40.0</Grid>
+              </Grid>
+            </div>
+            <div className='fdtable2'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Correct Selections</th>
+                    <th>Not much related to case</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      {correctHistoryQ ? correctHistoryQ.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td>
+                      {wrongHistoryQ ? wrongHistoryQ.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Examination and Investigation</div>
+            <div>
+              <Grid container>
+                <Grid Item xs={3}><div className='fdmain'>Score:  </div></Grid>
+                <Grid Item xs={9}>:{newStudentScore - diagScore-histScore}/30.0</Grid>
+              </Grid>
+            </div>
+            <div className='fdtable1'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Your Selections</th>
+                    <th>Correct Answers</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      {perioselectedTool ? perioselectedTool.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td>
+                      {perioselectedToolAns? perioselectedToolAns.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Tools need for the dental assessment</div>
+            <div className='fdtable1'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Your Selections</th>
+                    <th>Correct Answers</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      {hardselectedTool ? hardselectedTool.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td>
+                      {hardselectedToolAns? hardselectedToolAns.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Plaque Score</div>
+            <div className='fdtable1'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Your answer</th>
+                    <th>Correct Answers</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      {plaqueValue}
+                    </td>
+                    <td>
+                    {selectedCaseDetails.Hard_plaque_score}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Bleeding Score</div>
+            <div className='fdtable1'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Your answer</th>
+                    <th>Correct Answers</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      {bleedingValue}
+                    </td>
+                    <td>
+                    {selectedCaseDetails.Hard_bleeding_score}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Radiographs</div>
+            <div className='fdtable1'>
+              <Table striped bordered hover>
+                <tbody>
+                  <tr>
+                    <th>Your selections</th>
+                    <th>Correct selections</th>
+                  </tr>
+                  <tr>
+                  <td>
+                      {radio ? radio.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td>
+                      {radioAns? radioAns.map(que =>
+                        <div>
+                          {que}
+                        </div>
+                      ) : null}
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className='fdtopic2'>Diagnosis</div>
+            <div>
+              <Grid container>
+                <Grid Item xs={3}><div className='fdmain'>Diagnosis score :  </div></Grid>
+                <Grid Item xs={9}>:{diagScore}/30.0</Grid>
+              </Grid>
+            </div>
 
-      Feedback:..
-      <div>Case Id:{selectedCaseDetails.caseId}</div>
-      <div>Case Description:{selectedCaseDetails.description}</div>
-      <div>
-        Your Score :   {newStudentScore}</div>
-      <div>  Your Systematic thinking Score :  {newStudentScore - diagScore}</div>
-      <div>Score based on expansion of knowledge : {diagScore} </div>
-      <div>   Your Spent time :   {duration}</div>
-      <div>History Taking====</div>
-      <div>Score: {histScore}/40.0</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Correct Selections</th>
-            <th>Not much related to case</th>
-          </tr>
-          <tr>
-            <td>
-              {correctHistoryQ ? correctHistoryQ.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-            <td>
-              {wrongHistoryQ ? wrongHistoryQ.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-      <div>Examination and Investigation====</div>
-      <div>Score: {newStudentScore - diagScore-histScore}/30.0</div>
-      <div>Instruments need to carry out the periodontal screening</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Your Selections</th>
-            <th>Correct Answers</th>
-          </tr>
-          <tr>
-            <td>
-              {perioselectedTool ? perioselectedTool.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-            <td>
-              {perioselectedToolAns? perioselectedToolAns.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-      <div>Tools need for the dental assessment</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Your Selections</th>
-            <th>Correct Answers</th>
-          </tr>
-          <tr>
-            <td>
-              {hardselectedTool ? hardselectedTool.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-            <td>
-              {hardselectedToolAns? hardselectedToolAns.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-      <div>Plaque Score</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Your answer</th>
-            <th>Correct Answers</th>
-          </tr>
-          <tr>
-            <td>
-              {plaqueValue}
-            </td>
-            <td>
-             {selectedCaseDetails.Hard_plaque_score}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-      <div>Bleeding Score</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Your answer</th>
-            <th>Correct Answers</th>
-          </tr>
-          <tr>
-            <td>
-              {bleedingValue}
-            </td>
-            <td>
-             {selectedCaseDetails.Hard_bleeding_score}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-      <div>Radiographs</div>
-      <Table striped bordered hover>
-        <tbody>
-          <tr>
-            <th>Your selections</th>
-            <th>Correct selections</th>
-          </tr>
-          <tr>
-          <td>
-              {radio ? radio.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-            <td>
-              {radioAns? radioAns.map(que =>
-                <div>
-                  {que}
-                </div>
-              ) : null}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-<div>Diagnosis</div>
-<div>Diagnosis score : {diagScore}/30.0</div>
 {selectedAnsForDiagnosisQ ? selectedAnsForDiagnosisQ.map(que =>
                 <div>
                   <DiagnosisFCard oneQuestion={que}/>
                 </div>
               ) : null}
-
+              </Card>
+</div>
+<div className='fdsubmit2'>
 <button onClick={handleclickExit} type="button" class="btn btn-primary btn-lg" fdprocessedid="6whgsi">Exit and back to Home</button>
-      
+</div>
     </div>
   );
 }
