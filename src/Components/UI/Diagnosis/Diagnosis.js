@@ -105,7 +105,7 @@ function Diagnosis() {
   return(
     <div className ="app" style={{
       backgroundImage: `url(${img3})`,
-      height:'240vh',
+      height:'400vh',
       marginTop:'0px',
       fontSize:'20px',
       backgroundSize: 'cover',
@@ -120,6 +120,7 @@ function Diagnosis() {
           </div>
           </div> : null }
         <button className="back" size="medium" onClick={handleClick}>Back</button>
+
         <div className='dgtopic1'>Diagnosis</div>
       <div class="list-group">
         <div className='midCard'>

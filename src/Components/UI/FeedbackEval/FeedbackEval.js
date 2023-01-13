@@ -397,7 +397,7 @@ function FeedbackEval() {
   return (
     <div className ="app" style={{
       backgroundImage: `url(${img3})`,
-      height:'350vh',
+      height:'400vh',
       marginTop:'0px',
       fontSize:'20px',
       backgroundSize: 'cover',
@@ -410,7 +410,7 @@ function FeedbackEval() {
         </div>
         <div className='fdtopic1'>Feedback and Evaluation</div>
         <div className='fdcard'>
-          <Card sx={{ maxWidth: 1200, maxHeight: 2000 }}>
+          <Card sx={{ maxWidth: 1200, maxHeight: 3000 }}>
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Case Id </div></Grid>
@@ -514,7 +514,7 @@ function FeedbackEval() {
                 </tbody>
               </Table>
             </div>
-            <div className='fdtopic2'>Tools need for the hard Tissue assessment</div>
+            <div className='fdtopic2'>Tools need for the dental assessment</div>
             <div className='fdtable1'>
               <Table striped bordered hover>
                 <tbody>
