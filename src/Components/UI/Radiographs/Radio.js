@@ -143,7 +143,7 @@ const Radio = () => {
       other: false
     })
     const btn1 = document.getElementById('OPG');
-    btn1.style.backgroundColor = '#110E61';
+    btn1.style.backgroundColor = 'rgb(95,129,182)';
     const btn2 = document.getElementById('IOPA');
     btn2.style.backgroundColor = '#002966';
     const btn3 = document.getElementById('Bitewing');
@@ -176,7 +176,7 @@ const Radio = () => {
     const btn1 = document.getElementById('OPG');
     btn1.style.backgroundColor = "#002966";
     const btn2 = document.getElementById('IOPA');
-    btn2.style.backgroundColor = '#110E61';
+    btn2.style.backgroundColor = 'rgb(95,129,182)';
     const btn3 = document.getElementById('Bitewing');
     btn3.style.backgroundColor = "#002966";
     const btn4 = document.getElementById('Other');
@@ -205,7 +205,7 @@ const Radio = () => {
     const btn2 = document.getElementById('IOPA');
     btn2.style.backgroundColor = "#002966";
     const btn3 = document.getElementById('Bitewing');
-    btn3.style.backgroundColor = '#110E61';
+    btn3.style.backgroundColor = 'rgb(95,129,182)';
     const btn4 = document.getElementById('Other');
     btn4.style.backgroundColor = "#002966";
     const btn5 = document.getElementById('cbct');
@@ -235,7 +235,7 @@ const Radio = () => {
     const btn3 = document.getElementById('Bitewing');
     btn3.style.backgroundColor = "#002966";
     const btn4 = document.getElementById('Other');
-    btn4.style.backgroundColor = '#110E61';
+    btn4.style.backgroundColor = 'rgb(95,129,182)';
     const btn5 = document.getElementById('cbct');
     btn5.style.backgroundColor = "#002966";
     setSelections(
@@ -264,7 +264,7 @@ const Radio = () => {
     const btn4 = document.getElementById('Other');
     btn4.style.backgroundColor = "#002966";
     const btn5 = document.getElementById('cbct');
-    btn5.style.backgroundColor = '#110E61';
+    btn5.style.backgroundColor = 'rgb(95,129,182)';
     setSelections(
       { // with a new array
           ...investSelections, // that contains all the old items

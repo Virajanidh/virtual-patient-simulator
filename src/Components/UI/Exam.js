@@ -64,6 +64,14 @@ const Exam = () => {
     xray : true,
     help: false
     })
+    const btn1 = document.getElementById('xray');
+    btn1.style.backgroundColor = 'rgb(95,129,182)';
+    const btn2 = document.getElementById('Radio');
+    btn2.style.backgroundColor = 'rgb(9, 105, 239)';
+    const btn3 = document.getElementById('Invest');
+    btn3.style.backgroundColor =  'rgb(9, 105, 239)';
+    const btn4 = document.getElementById('Help');
+    btn4.style.backgroundColor =  'rgb(9, 105, 239)';
   };
 
   const onClickHandler4 = () => {
@@ -82,6 +90,8 @@ const Exam = () => {
     btn2.style.backgroundColor = 'rgb(9, 105, 239)';
     const btn3 = document.getElementById('Invest');
     btn3.style.backgroundColor =  'rgb(95,129,182)';
+    const btn4 = document.getElementById('xray');
+    btn4.style.backgroundColor =  'rgb(9, 105, 239)';
 
 
   };
@@ -119,6 +129,8 @@ const Exam = () => {
     btn2.style.backgroundColor = 'rgb(9, 105, 239)';
     const btn3 = document.getElementById('Invest');
     btn3.style.backgroundColor =  'rgb(9, 105, 239)';
+    const btn4 = document.getElementById('xray');
+    btn4.style.backgroundColor =  'rgb(9, 105, 239)';
 
 
   };
