@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import { ExaminationActions } from '../../../../Actions/Examination/ExaminationActions';
 import { ScoreActions } from '../../../../Actions/Score/ScoreActions';
 import { connect } from 'react-redux'
+import { Grid, Card } from '@mui/material';
 
 // import Select from '@mui/material/Select';
 
@@ -168,16 +169,22 @@ class Resto extends React.Component {
     return (
       <div>
         <div id="App">
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel className="dd1" id="demo-simple-select-standard-label">Tooth</InputLabel>
+          <Grid container>
+            <Grid Item xs={6}>
+            <FormControl variant="standard" sx={{ m: 1,width: 500, height: 100 }}>
+            <InputLabel className="dd1" id="demo-simple-select-standard-label"><div className='dlabel'>Tooth</div></InputLabel>
             <select className="dd1" value={this.state.tooth} onChange={this.handleChange} labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard">
               {options.map((option) => (
                 <option value={option} className="dd">{option}</option>
               ))}
             </select>
+            </FormControl>
+            </Grid>
+            <Grid Item xs={6}>
             <div>
-              <InputLabel className="dd1" id="demo-simple-select-standard-label">Type</InputLabel>
+            <FormControl variant="standard" sx={{ m: 1,width: 200, height: 100 }}>
+              <InputLabel className="dd1" id="demo-simple-select-standard-label"><div className='dlabel'>Type</div></InputLabel>
               <select className="dd1" value={this.state.value} onChange={this.handleChange2} labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard">
                 <option value='' className="dd"></option>
@@ -185,22 +192,29 @@ class Resto extends React.Component {
                 <option value='Distal amalgam restoration' className="dd">Distal amalgam restoration </option>
                 <option value='Palatal GIC restoration' className="dd">Palatal GIC restoration</option>
                 <option value='Occlusal deep dentinal caries' className="dd">Distal composite restoration</option>
-
               </select>
+              </FormControl>
             </div>
-          </FormControl>
+            </Grid></Grid>
+            <div className='carcard'>
+              <Card >
           {this.props.restorationsSelected ? this.props.restorationsSelected.map(number => (
-
-            <div>
-              <label>{number[0]} &nbsp;{number[1]}</label>
+            <div className='carlabel'>{number[0]} &nbsp;{number[1]}
             </div>
           )) : null}
+          </Card>
+            </div>
 
-        </div>
-        <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-     onClick={this.addData}>Add</button>
-        <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-          onClick={this.clearList}>Clear List</button>
+          </div>
+        <Grid container>
+          <Grid Item xs={7}>
+          	<button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={this.addData}>Add List</button>
+          </Grid>
+          <Grid Item xs={5}>
+            <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={this.clearList}>Clear List</button>
+          </Grid>
+        </Grid>
+
       </div>
     );
   }

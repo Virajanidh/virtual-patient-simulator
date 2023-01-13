@@ -16,7 +16,8 @@ import { ExaminationActions } from '../../../../Actions/Examination/ExaminationA
 import { useDispatch } from 'react-redux';
 import Resto from './Resto';
 import { ScoreActions } from '../../../../Actions/Score/ScoreActions';
-
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 function Hard() {
 
   const { selectedCaseDetails } = useSelector((state) => state.caseSelected)
@@ -424,8 +425,8 @@ function Hard() {
 
       <div className='chart'>2. Dental Chart</div>
 
-      <div>In bellow caries and restoration selections, select tooth number and related typr according to your 
-       <br/> observations and then add them using 'add' button. Selected list will show below the selection tab. To clear list use "clear List" button</div>
+      <div className='ptopic3'>Select the tooth number and the related type according to your observations and add them using 'add' button. 
+         To clear the list use "clear List" button</div>
       <Grid container spacing={3}>
       <Grid item xs={6}>
       <div className='chart'>3. Caries status</div>
@@ -444,6 +445,7 @@ function Hard() {
         </Card></div></Grid>
         <Grid item xs={6}>
       <div className='chart'>4. Restorations</div>
+      <div className='cariesQ'>Are there any Restorations?</div>
       <div className='caries'><Resto /></div>
       <div className='cariesCard'>
         <Card sx={{ maxWidth: 500 }}>
@@ -465,7 +467,10 @@ function Hard() {
           {/* </CardActionArea> */}
         </Card></div></Grid></Grid>
       <div className='chart'>5. Answer the Questions</div>
-      <div className='mainqs'> Select the correct tool to calculate plaque score &nbsp;
+      
+          <div className='mainqs'> Select the correct tool to calculate plaque score &nbsp;
+       
+        
         <select className="dd1" label="Select Tool" onChange={handleChange} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
           <option className="dd"></option>
@@ -476,7 +481,8 @@ function Hard() {
           <option value='intra_ToolE' className="dd">Tool_5</option>
           <option value='intra_ToolF' className="dd">Tool_6</option>
         </select>
-      </div>
+                 
+        </div>
       <div className='mainqs'>What is the plaque score?</div>
       <div className='qs'>
         <Box
@@ -521,8 +527,7 @@ function Hard() {
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>
-      <div className='submttd'>
-      <label id="submitMsg"></label></div>
+      <div className='submttd' id="submitMsg"></div>
     </div>
   );
 }

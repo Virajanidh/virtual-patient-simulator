@@ -105,7 +105,7 @@ function Diagnosis() {
   return(
     <div className ="app" style={{
       backgroundImage: `url(${img3})`,
-      height:'150vh',
+      height:'240vh',
       marginTop:'0px',
       fontSize:'20px',
       backgroundSize: 'cover',
@@ -123,7 +123,7 @@ function Diagnosis() {
         <div className='dgtopic1'>Diagnosis</div>
       <div class="list-group">
         <div className='midCard'>
-        <Card sx={{ maxWidth: 740, maxHeight: 390 }}>
+        <Card sx={{ maxWidth: 740, maxHeight: 1000 }}>
           <div className="dgContent">
           {content}
         </div>

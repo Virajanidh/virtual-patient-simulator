@@ -27,3 +27,27 @@
   .checked-item {
     text-decoration: line-through;
   }
+
+  .HAtable1{
+    padding-left: 30px;
+    max-width: 670px;
+    padding-top: 20px;
+    font-size: 20px;
+  }
+  .HAtopic1{
+    padding-left: 300px;
+    padding-top: 20px;
+    font-size: 20px;
+    color: black;
+  }
+  .HAtopic2{
+    padding-left: 30px;
+    padding-top: 20px;
+    font-size: 20px;
+  }
+  .HAsec1{
+    padding-left: 300px;
+    max-width: 1000px;
+    padding-top: 20px;
+    font-size: 20px;
+  }

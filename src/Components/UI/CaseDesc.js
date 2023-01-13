@@ -248,13 +248,17 @@ function CaseDesc() {
                   <CardContent sx={{maxHeight: 500}} >
                   <Card className="choose" sx={{ maxWidth: 450, maxHeight: 400}} style={{backgroundColor:'#C3C6C4'}}>
                     <li>Select the sections according to the correct order of patient examination</li>
-                    <li>Select only the relevant questions</li>
+                    <li>From each section, select only the relevant questions</li>
                     <li>Wrong section order and Irrelevant questions will carry negative marks</li>
                   </Card>
                   
-                  <div sx={{ maxWidth: 600, maxHeight: 1000}}>
+                  
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+              <div sx={{ maxWidth: 600, maxHeight: 1000}}>
                   <Grid container spacing={2}>
-                    <Grid Item xs={4}>
+                    <Grid Item xs={6}>
                   <Dropdown className='phddown1'
                     title="Select the Section"
                     id="dropdown-menu-align-right"
@@ -275,28 +279,8 @@ function CaseDesc() {
                     </Dropdown.Menu>
                   </Dropdown>
                   </Grid>
-                  <Grid Item xs={8}>
-                    <div className='phsect2'>
-                      {Section==='complaint' ?
-                          <label>History of the presenting complaint</label> :null}
-                          {Section==='habits' ?
-                          <label>Habits</label> :null}
-                          {Section==='medicalH' ?
-                          <label>Medical history</label> :null}
-                          {Section==='plaque' ?
-                          <label>Plaque control</label> :null}
-                          {Section==='dhistory' ?
-                          <label>Dietary history</label> :null}
-                          {Section==='pretreate' ?
-                          <label>Previous dental treatments</label> :null}
-                          {Section==='shistory' ?
-                          <label>Social history</label> :null}
-                      </div>
-                  </Grid>
-            </Grid>
-                    </div>
-                  
-            <div className='phddown2'>
+                  <Grid Item xs={6}>
+                  <div className='phddown2'>
                   <DropdownButton className='ddown1'
                     alignRight
                     title="Select the question"
@@ -316,9 +300,27 @@ function CaseDesc() {
                     <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
                   </DropdownButton>
             </div>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+                  </Grid>
+                    <div className='phsect2' style={{fontSize:'60px'}}>
+                      {Section==='complaint' ?
+                          <div className='phsect2'>History of the presenting complaint</div> :null}
+                          {Section==='habits' ?
+                          <div className='phsect2'>Habits</div> :null}
+                          {Section==='medicalH' ?
+                          <div className='phsect2'>Medical history</div> :null}
+                          {Section==='plaque' ?
+                          <div className='phsect2'>Plaque control</div> :null}
+                          {Section==='dhistory' ?
+                          <div className='phsect2'>Dietary history</div> :null}
+                          {Section==='pretreate' ?
+                          <div className='phsect2'>Previous dental treatments</div> :null}
+                          {Section==='shistory' ?
+                          <div className='phsect2'>Social history</div> :null}
+                      </div>
+            </Grid>
+                    </div>
+                  
+            
             </div>
             </Grid>
             <Grid Item xs={7}>
