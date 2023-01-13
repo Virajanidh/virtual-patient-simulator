@@ -4,11 +4,18 @@ import { createTest } from '../../Actions/historyTakingQ/historyTakingActions'
 import {logout, UserLogoutActions} from '../../Actions/User/UserLogoutActions'
 import { useNavigate, Link} from 'react-router-dom';
 import './nav.css'
-
+import { ExaminationActions } from '../../Actions/Examination/ExaminationActions';
+import { CaseActions } from '../../Actions/Case/CaseActions';
+import { DiagnosisActions } from '../../Actions/Diagnosis/DiagnosisActions';
+import { InvestigationActions } from '../../Actions/Investigation/InvestigationActions';
+import { ScoreActions } from '../../Actions/Score/ScoreActions';
+import { historyTakingActions } from '../../Actions/historyTakingQ/historyTakingActions';
+import { TimeActions } from '../../Actions/Time/TimeActions';
 
 function Navbar(){
 
    const {userInfomation} = useSelector((state) => state.user)
+   const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
    const dispatch = useDispatch()
    const navigate = useNavigate();
   //  const dispatch =useDispatch()
@@ -18,6 +25,13 @@ function Navbar(){
   const handleClick2=(e)=>{
     console.log("logout")
     dispatch(UserLogoutActions.logout());
+    dispatch(ExaminationActions.clearhistory())
+    dispatch(CaseActions.clearhistory())
+    dispatch(DiagnosisActions.clearhistory())
+    dispatch(historyTakingActions.clearhistory())
+    dispatch(InvestigationActions.clearhistory())
+    dispatch(ScoreActions.clearhistory())
+    dispatch(TimeActions.clearhistory())
     navigate("/")
   }
 
@@ -33,6 +47,12 @@ function Navbar(){
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
       <li class="nav-item">
+        {selectedCaseDetails ? 
+          <a class="nav-link" > Case Id : {selectedCaseDetails.caseId}
+            {/* <span class="visually-hidden">(current)</span> */}
+          </a> : null }
+        </li>
+      {/* <li class="nav-item">
           <Link class="nav-link" to="/caseSelect">Home</Link>
         </li>
         <li class="nav-item">
@@ -45,8 +65,8 @@ function Navbar(){
         </li>
         <li class="nav-item">
           {/* <a class="nav-link" href="/adminSignIn">Admin</a> */}
-          <Link class="nav-link" to="/adminSignIn">Admin</Link>
-        </li>
+          {/* <Link class="nav-link" to="/adminSignIn">Admin</Link>
+        </li> */} 
       </ul>
       <form class="d-flex">
         {/* <input class="form-control me-sm-2" type="search" placeholder="Search"> */}

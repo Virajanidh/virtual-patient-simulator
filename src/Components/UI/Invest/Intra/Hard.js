@@ -425,6 +425,11 @@ function Hard() {
 
       <div className='chart'>2. Dental Chart</div>
 
+      <div>Plaque Chart</div>
+      <div>{selectedCaseDetails.plaqueChart}</div>
+      <div>Bleeding Chart</div>
+      <div>{selectedCaseDetails.bleedingChart}</div>
+
       <div className='ptopic3'>Select the tooth number and the related type according to your observations and add them using 'add' button. 
          To clear the list use "clear List" button</div>
       <Grid container spacing={3}>

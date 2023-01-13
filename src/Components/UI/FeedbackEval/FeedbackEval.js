@@ -426,19 +426,19 @@ function FeedbackEval() {
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Your Score :  </div></Grid>
-                <Grid Item xs={8}>:{newStudentScore}</Grid>
+                <Grid Item xs={8}>:{newStudentScore}/100.0</Grid>
               </Grid>
             </div>
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Your Systematic thinking Score :  </div></Grid>
-                <Grid Item xs={8}>:{newStudentScore - diagScore}</Grid>
+                <Grid Item xs={8}>:{newStudentScore - diagScore}/70.0</Grid>
               </Grid>
             </div>
             <div>
               <Grid container>
-                <Grid Item xs={4}><div className='fdmain'>Score based on expansion of knowledge :  </div></Grid>
-                <Grid Item xs={8}>:{diagScore}</Grid>
+                <Grid Item xs={4}><div className='fdmain'>Score based on expansion of knowledge  </div></Grid>
+                <Grid Item xs={8}>:{diagScore}/30.0</Grid>
               </Grid>
             </div>
             <div>
@@ -487,6 +487,7 @@ function FeedbackEval() {
                 <Grid Item xs={9}>:{newStudentScore - diagScore-histScore}/30.0</Grid>
               </Grid>
             </div>
+            <div className='fdtopic2'>Tools need for Periodontal screening/BPE</div>
             <div className='fdtable1'>
               <Table striped bordered hover>
                 <tbody>
@@ -513,7 +514,7 @@ function FeedbackEval() {
                 </tbody>
               </Table>
             </div>
-            <div className='fdtopic2'>Tools need for the dental assessment</div>
+            <div className='fdtopic2'>Tools need for the hard Tissue assessment</div>
             <div className='fdtable1'>
               <Table striped bordered hover>
                 <tbody>
