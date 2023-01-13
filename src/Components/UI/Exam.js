@@ -38,7 +38,8 @@ const Exam = () => {
     radio: false,
     lab: false,
     mark: false,
-    help: false
+    help: false,
+    xray: false
   });
 
   const onClickHandler2 = () => {
@@ -59,8 +60,8 @@ const Exam = () => {
       intra: false,
     radio: false,
     lab: false,
-    mark: true,
-    xray : false,
+    mark: false,
+    xray : true,
     help: false
     })
   };
@@ -109,7 +110,7 @@ const Exam = () => {
     radio: false,
     lab: false,
     mark: false,
-    xray : true,
+    xray : false,
     help: true
     })
     const btn1 = document.getElementById('Help');
@@ -158,22 +159,13 @@ const Exam = () => {
                   </Grid>
                 </Grid>
             </div>
-          <div style={{position:'absolute',
-              textAlign: "center",
-              left:'35%',
-              top:'20%',
-              fontSize:'50px',
-              fontWeight : 'bold',
-              color: 'darkblue',
-              }}>Investigation
-
-              </div>
+          <div className='Intopic'>Investigation</div>
               {/* <div className='instr'>
         {
           !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
         }
         </div> */}
-      <div className="Examsect" >
+      <div className="InExamsect" >
         
         <ButtonGroup size="lg" className="btnGrp">
             {/* <Button onClick={() => onClickHandler2()} className="ground">
@@ -188,6 +180,9 @@ const Exam = () => {
             </Button>
             <Button style={{ border: " 2px  solid blue", borderColor:"#002966", buttonRadius:"50px" }} id='Invest'  type="button" class="btnGrp" onClick={() => onClickHandler4()} className="ground">
             Sensibility Recordings
+            </Button>
+            <Button style={{ border: " 2px  solid blue", borderColor:"#002966", buttonRadius:"50px" }} id='xray'  type="button" class="btnGrp" onClick={() => onClickHandler3()} className="ground">
+            Haematological assessments
             </Button>
             <Button style={{ border: " 2px solid blue", borderColor:"#002966", buttonRadius:"50px" }}
             id='Help'type="button" class="btnGrp" onClick={() => onClickHandler6()} className="ground">
@@ -208,10 +203,10 @@ const Exam = () => {
            <Mark /> :
            null
         }
-        {/* {exam_inv.xray ?
+        { exam_inv.xray ?
            <Xray/> :
            null
-        } */}
+        }
         {exam_inv.help ?
            <Instructions/> :
            null

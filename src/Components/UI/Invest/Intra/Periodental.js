@@ -380,8 +380,7 @@ const {periodentalScreeningScore}= useSelector((state) => state.score)
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>
-      <div className='submttd'>
-      <label id="submitMsg"></label></div>
+      <div className='submttd' id="submitMsg"></div>
 {isCorrect&&submit_perio_tools ? <div>
       <div className='chart'>Chart</div>
       <div>

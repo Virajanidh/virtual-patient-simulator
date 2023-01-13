@@ -33,7 +33,7 @@
     text-align: center;
     align-self: center;
     padding-left: 100px;
-    max-width: '200rem';
+    max-width: '200px';
     height: '1000px';
 }
 
@@ -56,10 +56,9 @@
 }
 
 .phddown1{
-    height: 200px;
     width: 50px;
     padding-top: 50px;
-    padding-left: 20px;
+    padding-left: 30px;
 }
 .NextChip{
     padding-right: 10px;
@@ -80,10 +79,12 @@
 }
 
 .phsect2{
-    font-size: 35px;
     color: brown;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 5px;
+    padding-left: 10px;
+    width: 500px;
+    font-size: 25px;
     
 }
 
@@ -121,10 +122,18 @@
     border-color: blue;
 }
 
-.Examsect{
-    padding-top: 50px;
+.InExamsect{
+    padding-top: 5px;
     align-items: center;
-    padding-left: 50%;
+    padding-left: 300px;
+}
+
+.Intopic{
+    font-weight: bold;
+    font-size: 50px;
+    color: darkblue;
+    padding-top: 10px;
+    padding-left: 500px;
 }
 
 .instr{
@@ -174,5 +183,6 @@
 }
 
 .phddown2{
-    padding-top: 10px;
+    padding-top: 0px;
+    padding-left: 50px;
 }

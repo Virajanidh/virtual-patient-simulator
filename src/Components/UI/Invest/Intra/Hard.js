@@ -521,8 +521,7 @@ function Hard() {
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>
-      <div className='submttd'>
-      <label id="submitMsg"></label></div>
+      <div className='submttd' id="submitMsg"></div>
     </div>
   );
 }
