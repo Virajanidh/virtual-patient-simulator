@@ -52,8 +52,8 @@
     font-weight: bold;
 }
 .caries{
-    padding-top: 40px;
-    padding-left: 130px;
+    padding-top: 0px;
+    padding-left: 30px;
 }
 .cariesCard{
     padding-top: 30px;
@@ -65,11 +65,18 @@
 }
 .dd1{
     font-size: 15px;
-    fill: none;
-    height: 50px;
+    color: #FFF;
     padding-top: 0px;
+    width: 200px;
+    background-color: #1d8b54;
+    align-items: center;
 }
 
+.dlabel{
+    align-items: center;
+    color: #FFF;
+    padding-left: 70px;
+}
 .exm{
     padding-top: 15px;
     padding-left: 535px;
@@ -148,6 +155,7 @@
 
 .ptopic3{
     padding-left: 20px;
+    padding-right: 30px;
     padding-top: 20px;
     font-size: 20px;
     font-weight: 5px;
@@ -188,3 +196,29 @@
     padding-left: 20px;
 }
 
+.pctable2{
+    padding-left: 30px;
+    padding-right: 30px;
+    
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.pccard{
+    padding-left: 300px;
+    
+    padding-top: 20px;
+    font-size: 20px;
+  }
+
+  /* CariesDD */
+
+  .carcard{
+    padding-right: 100px;
+    
+  }
+
+  .carlabel{
+    font-size: 15px;
+    padding-left: 20px;
+  }

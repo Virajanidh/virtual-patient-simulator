@@ -5,7 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
  import { ExaminationActions } from '../../../../Actions/Examination/ExaminationActions';
 import { ScoreActions } from '../../../../Actions/Score/ScoreActions';
 import {connect} from 'react-redux'
-
+import { Grid } from '@mui/material';
+import {Card} from '@mui/material';
  // import Select from '@mui/material/Select';
 
 // export default function CariesDD() {
@@ -40,6 +41,7 @@ import {connect} from 'react-redux'
 // }
 
 import React from "react";
+import { maxHeight } from '@mui/system';
 
 const options = [ 11, 12, 13, 14, 15, 16, 17, 18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48];
 
@@ -166,16 +168,22 @@ class CariesDD extends React.Component {
       return (
         <div>
         <div id="App">
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel className="dd1" id="demo-simple-select-standard-label">Tooth</InputLabel>
-            <select className="dd1" value={this.state.tooth} onChange={this.handleChange} labelId="demo-simple-select-standard-label"
+          <Grid container>
+            <Grid Item xs={6}>
+            <FormControl variant="standard" sx={{ m: 1, width: 400, height: 100 }}>
+            <InputLabel variant="success" className="dd1" id="demo-simple-select-standard-label"><div className='dlabel'>Tooth</div></InputLabel>
+            <select variant="success" className="dd1" value={this.state.tooth} onChange={this.handleChange} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
               {options.map((option) => (
                 <option value={option} className="dd">{option}</option>
               ))}
             </select>
+            </FormControl>
+            </Grid>
+            <Grid Item xs={6}>
             <div>
-            <InputLabel className="dd1" id="demo-simple-select-standard-label">Type</InputLabel>
+            <FormControl variant="standard" sx={{ m: 1, width: 500, height: 100 }}>
+            <InputLabel className="dd1" id="demo-simple-select-standard-label"><div className='dlabel'>Type</div></InputLabel>
             <select className="dd1" value={this.state.value} onChange={this.handleChange2} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
               <option value='' className="dd"></option>
@@ -190,22 +198,27 @@ class CariesDD extends React.Component {
                 <option value='Mesial class II dentinal caries' className="dd">Mesial class II dentinal caries</option>
                 <option value='Distal class II dentinal caries' className="dd">Distal class II dentinal caries </option>
                 <option value='Distal class II early dentinal caries' className="dd">Distal class II early dentinal caries</option>
-              
             </select>
-            </div>
             </FormControl>
-            <div>
+            </div>
+            </Grid></Grid>
+            <div className='carcard'>
+              <Card >
             {this.props.cariesSelected? this.props.cariesSelected.map(number=> (
-                <div>
-            <label>{number[0]} &nbsp;{number[1]}</label>
-                </div>
-            )) :null}</div>
+                <div className='carlabel'>{number[0]} &nbsp;{number[1]}</div>
+            )) :null}
+              </Card>
+            </div>
             
         </div>
-        <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-     onClick={this.addData}>Add</button>
-        <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd"
-     onClick={this.clearList}>Clear List</button>
+        <Grid container>
+          <Grid Item xs={7}>
+            <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={this.addData}>Add</button>
+          </Grid>
+          <Grid Item xs={5}>
+            <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={this.clearList}>Clear List</button>
+          </Grid>
+        </Grid>
         </div>
       );
     }
