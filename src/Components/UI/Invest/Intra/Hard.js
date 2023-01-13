@@ -424,12 +424,31 @@ function Hard() {
 
 
       <div className='chart'>2. Dental Chart</div>
-
-      <div>Plaque Chart</div>
-      <div>{selectedCaseDetails.plaqueChart}</div>
-      <div>Bleeding Chart</div>
-      <div>{selectedCaseDetails.bleedingChart}</div>
-
+          <div className='htopic1'>Plaque Chart</div>
+          <div className='hsect1'><Card sx={{ maxWidth: 1000 }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="250"
+                  alt="Tool6"
+                  image={selectedCaseDetails.plaqueChart}
+                />
+                </CardActionArea>
+              </Card>
+            </div>
+            <div className='htopic1'>Bleeding Chart</div>
+            <div className='hsect1'><Card sx={{ maxWidth: 1000 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    alt="Tool6"
+                    image={selectedCaseDetails.bleedingChart}
+                  />
+                </CardActionArea>
+              </Card>
+              </div>
+              
       <div className='ptopic3'>Select the tooth number and the related type according to your observations and add them using 'add' button. 
          To clear the list use "clear List" button</div>
       <Grid container spacing={3}>
