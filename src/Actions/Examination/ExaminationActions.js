@@ -13,7 +13,9 @@ export const ExaminationActions = {
     setBleedingVal,
     addToolToPerioTools,
     addToolToHardTools,
-    clearhistory
+    clearhistory,
+    setNewCarries,
+    setNewResto
 };
 
 function  setPerodetanlTools(data){
@@ -193,6 +195,34 @@ function  addToolToHardTools(data){
 
     function success() {
         return {type: examTypes.HARDTOOLCHECKBOX,data}
+    }
+
+}
+function  setNewCarries(data){
+    return async dispatch => {
+        try {
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: examTypes.NEWSETCARRIES,data}
+    }
+
+}
+function  setNewResto(data){
+    return async dispatch => {
+        try {
+            dispatch(success(data));
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    function success() {
+        return {type: examTypes.NEWSETRESTO,data}
     }
 
 }

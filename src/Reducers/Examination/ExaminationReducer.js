@@ -7,7 +7,9 @@ const initialState = {
   cariesSelected: [],
   restorationsSelected: [],
   plaqueValue: '',
-  bleedingValue: ''
+  bleedingValue: '',
+  newcarries: [],
+  newresto: []
 };
 
 
@@ -135,6 +137,18 @@ const ExaminationReducer = (state = initialState, action) => {
         bleedingValue: action.data
 
       };
+    case examTypes.NEWSETCARRIES:
+      return {
+        ...state,
+        newcarries: action.data
+
+      };
+    case examTypes.NEWSETRESTO:
+      return {
+        ...state,
+        newresto: action.data
+
+      };
     case examTypes.PERIOTOOLCHECKBOX:
       return {
         ...state,
@@ -157,7 +171,9 @@ const ExaminationReducer = (state = initialState, action) => {
         cariesSelected: [],
         restorationsSelected: [],
         plaqueValue: '',
-        bleedingValue: ''
+        bleedingValue: '',
+        newcarries:[],
+        newresto:[]
       };
 
     default:

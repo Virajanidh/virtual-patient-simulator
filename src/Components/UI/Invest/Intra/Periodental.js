@@ -376,7 +376,7 @@ const {periodentalScreeningScore}= useSelector((state) => state.score)
   </div>
 </div>
       
-      <div className='label1'>If you submit, you can no longer edit the answers</div>
+      {/* <div className='label1'>If you submit, you can no longer edit the answers</div> */}
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>

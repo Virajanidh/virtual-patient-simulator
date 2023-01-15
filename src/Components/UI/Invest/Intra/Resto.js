@@ -93,6 +93,7 @@ class Resto extends React.Component {
   addData(){
 
     let pair=[[this.state.tooth,this.state.type]]
+    let arr1=this.state.tooth+' '+this.state.type
     let list=this.state.selectedList
     let canAdd=true
     for(let i=0;i<list.length;i++){
@@ -107,6 +108,7 @@ class Resto extends React.Component {
         selectedList: [...prevState.selectedList, pair]
       }))
       this.props.setSelectedRestorations(pair)
+      this.props.setNewResto(arr1)
       this.calculateScore()
     }
   }
@@ -233,7 +235,9 @@ const mapStateToProps = state => ({
 const mapActionsToProps = {
   setSelectedRestorations: ExaminationActions.setSelectedRestorations,
   clearResto: ExaminationActions.clearResto,
-  setRestorationScore: ScoreActions.setRestorationScore
+  setRestorationScore: ScoreActions.setRestorationScore,
+  setNewCarries:ExaminationActions.setNewCarries,
+  setNewResto:ExaminationActions.setNewResto
 }
 
 export default connect(

@@ -169,21 +169,22 @@ function FeedbackEval() {
     else {
       orderScore = orderScore - 100 * 0.25 * (weightForHis / 10) * (2 / 10)
     }
-    if (sectionOrder.includes('habits')) {
-      orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
-    }
-    if (sectionOrder.includes('dhistory')) {
-      orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
-    }
-    if (sectionOrder.includes('plaque')) {
-      orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
-    }
-    if (sectionOrder.includes('pretreate')) {
-      orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
-    }
-    if (sectionOrder.includes('shistory')) {
-      orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
-    }
+    // if (sectionOrder.includes('habits')) {
+    //   orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
+    // }
+    // if (sectionOrder.includes('dhistory')) {
+    //   orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
+    // }
+    // if (sectionOrder.includes('plaque')) {
+    //   orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
+    // }
+    // if (sectionOrder.includes('pretreate')) {
+    //   orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
+    // }
+    // if (sectionOrder.includes('shistory')) {
+    //   orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (1 / 10)
+    // }
+    orderScore = orderScore + 100 * 0.25 * (weightForHis / 10) * (5 / 10)
     let isWrongComplaint = false
     let isWrongMedicalH = false
     for (let i = 2; i < sectionOrder.length; i++) {
@@ -222,6 +223,8 @@ function FeedbackEval() {
   const { restorationsSelected } = useSelector((state) => state.examination)
   const { plaqueValue } = useSelector((state) => state.examination)
   const { bleedingValue } = useSelector((state) => state.examination)
+  const { newcarries } = useSelector((state) => state.examination)
+  const { newresto } = useSelector((state) => state.examination)
   
   console.log(radioSelections)
 
@@ -352,10 +355,7 @@ function FeedbackEval() {
     var historyScore = calculateHistoryScore()
     var path = 'StudentsRecord' + selectedCaseDetails.caseId
     var tutorialsRef = firebase.firestore().collection(path);
-    console.log(selectedAnsForDiagnosisQ)
-    console.log(userInfomation, ":", selectedQdata, ":", sectionOrder, ":", historyScore, ":", selectedPerodentalTools, ":", bleedingValue, ":", cariesSelected, ":", restorationsSelected, ":", plaqueValue)
-    //  console.log(periodentalScreeningScore,":", hardTissueScore,":",cariesScore,":",restorationScore,":",plaqueScore,":",bleedingScore)
-    console.log(plaqueToolScore, ":", bleedingToolScore, ":", radioScore, ":", diagScore, ":", selectedAnsForDiagnosisQ)
+    console.log(cariesSelected, ":",restorationsSelected)
     tutorialsRef.add({
       id: userInfomation.email,
       allHistoryTakingQ: selectedQdata,
@@ -363,8 +363,8 @@ function FeedbackEval() {
       historyQMarks: historyScore,
       selectedPerodentalTools: selectedPerodentalTools,
       bleedingValue: bleedingValue,
-      cariesSelected: cariesSelected,
-      restorationsSelected: restorationsSelected,
+      cariesSelected: newcarries,
+      restorationsSelected: newresto,
 
       plaqueValue: plaqueValue,
       radioSelections: getRadioSelections(),
@@ -426,19 +426,19 @@ function FeedbackEval() {
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Your Score :  </div></Grid>
-                <Grid Item xs={8}>:{newStudentScore}/100.0</Grid>
+                <Grid Item xs={8}>:{Math.round(newStudentScore)}/100.0</Grid>
               </Grid>
             </div>
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Your Systematic thinking Score :  </div></Grid>
-                <Grid Item xs={8}>:{newStudentScore - diagScore}/70.0</Grid>
+                <Grid Item xs={8}>:{Math.round(newStudentScore - diagScore)}/70.0</Grid>
               </Grid>
             </div>
             <div>
               <Grid container>
                 <Grid Item xs={4}><div className='fdmain'>Score based on expansion of knowledge  </div></Grid>
-                <Grid Item xs={8}>:{diagScore}/30.0</Grid>
+                <Grid Item xs={8}>:{Math.round(diagScore)}/30.0</Grid>
               </Grid>
             </div>
             <div>
@@ -451,7 +451,7 @@ function FeedbackEval() {
             <div>
               <Grid container>
                 <Grid Item xs={3}><div className='fdmain'>Score:  </div></Grid>
-                <Grid Item xs={9}>:{histScore}/40.0</Grid>
+                <Grid Item xs={9}>:{Math.round(histScore)}/40.0</Grid>
               </Grid>
             </div>
             <div className='fdtable2'>
@@ -484,7 +484,7 @@ function FeedbackEval() {
             <div>
               <Grid container>
                 <Grid Item xs={3}><div className='fdmain'>Score:  </div></Grid>
-                <Grid Item xs={9}>:{newStudentScore - diagScore-histScore}/30.0</Grid>
+                <Grid Item xs={9}>:{Math.round(newStudentScore - diagScore-histScore)}/30.0</Grid>
               </Grid>
             </div>
             <div className='fdtopic2'>Tools need for Periodontal screening/BPE</div>
@@ -610,7 +610,7 @@ function FeedbackEval() {
             <div>
               <Grid container>
                 <Grid Item xs={3}><div className='fdmain'>Diagnosis score :  </div></Grid>
-                <Grid Item xs={9}>:{diagScore}/30.0</Grid>
+                <Grid Item xs={9}>:{Math.round(diagScore)}/30.0</Grid>
               </Grid>
             </div>
 
