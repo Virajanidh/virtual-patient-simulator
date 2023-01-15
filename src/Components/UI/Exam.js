@@ -171,7 +171,7 @@ const Exam = () => {
                   </Grid>
                 </Grid>
             </div>
-          <div className='Intopic'>Investigation</div>
+          <div className='Intopic'>Investigations</div>
               {/* <div className='instr'>
         {
           !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
