@@ -90,6 +90,7 @@ class CariesDD extends React.Component {
     addData(){
 
       let pair=[[this.state.tooth,this.state.type]]
+      let arr1=this.state.tooth+" "+this.state.type
       let list=this.state.selectedList
       let canAdd=true
       for(let i=0;i<list.length;i++){
@@ -105,6 +106,7 @@ class CariesDD extends React.Component {
         }))
         this.props.setSelectedCaries(pair)
         this.calculateScore()
+        this.props.setNewCarries(arr1)
       }
     }
 
@@ -237,7 +239,9 @@ const mapStateToProps = state => ({
 const mapActionsToProps={
     setSelectedCaries: ExaminationActions.setSelectedCaries,
     clearCaries:ExaminationActions.clearCaries,
-    setCariesScore:ScoreActions.setCriesScore
+    setCariesScore:ScoreActions.setCriesScore,
+    setNewCarries:ExaminationActions.setNewCarries,
+    setNewResto:ExaminationActions.setNewResto
   }
 
   export default connect(

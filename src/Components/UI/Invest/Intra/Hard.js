@@ -547,7 +547,7 @@ function Hard() {
           <TextField id="standard-basic" label="Your answer" variant="standard" onChange={getInputValue2} value={bleedingValue}/>
         </Box></div>
       
-      <div className='label1'>If you submit, you can no longer edit the selections</div>
+      {/* <div className='label1'>If you submit, you can no longer edit the selections</div> */}
       <div className='submit'>
         <button type="button" class="btn btn-primary" fdprocessedid="b3ntkd" onClick={setSubmit}>submit</button>
       </div>

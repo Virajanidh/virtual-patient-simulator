@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "fir-virtual-patient-simulator"
-  }
+    "default": "vitual-patient",
+    "staging": "vitual-patient"
+  },
+  "targets": {},
+  "etags": {}
 }

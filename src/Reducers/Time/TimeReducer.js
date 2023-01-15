@@ -13,8 +13,7 @@ const TimeReducer = (state = initialState, action) => {
       };
     case timeTypes.CLEARHISTORYTT:
       return {
-        ...state,
-        start_time: ''
+        ...state
 
       };
 
