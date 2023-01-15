@@ -20,12 +20,32 @@ import ToothGIF from './ToothGIF';
 
 const Invest = () => {
   const {userInfomation} = useSelector((state) => state.user)
+  const { plaqueValue } = useSelector((state) => state.examination)
+  const { bleedingValue } = useSelector((state) => state.examination)
+  const { submitedHardTissueTools } = useSelector((state) => state.examination)
+  const {selectedPerodentalTools} = useSelector((state) => state.examination)
+
   const navigate = useNavigate();
   const handleClick1 = () => {
     navigate('/historyTaking');  
   };
   const handleClick2 = () => {
-    navigate('/page2');  
+    
+    let count1=0
+    let count2=0
+    for (let keys in submitedHardTissueTools){
+      count1++
+    }
+    for (let keys in selectedPerodentalTools){
+      count2++
+    }
+    if(plaqueValue!=''&& bleedingValue!='' && count1!=0 && count2!=0){
+      navigate('/page2');
+    }
+    else{
+      document.getElementById("nextMsg").textContent = 'Please fill all fields'
+    }
+      
   };
   const [exam_inv, setexam_inv] = useState({
     intra: false,
@@ -120,11 +140,13 @@ const Invest = () => {
                   <div className='backbtn'>
                     <button className="back"  size="medium" onClick={handleClick1}>Back</button>
                   </div>
+                  
                   </Grid>
                   <Grid item xs={4}>
                   <div className="exmbtn">
                     <button className="back" size="medium" onClick={handleClick2}>Next</button>
                     </div>
+                    <div className='submttd' id="nextMsg"></div>
                   </Grid>
                 </Grid>
                 

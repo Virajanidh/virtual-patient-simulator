@@ -160,13 +160,13 @@ const Intra = () => {
                       Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                      Soft Tissue Assesment
+                      Soft Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                      Hard Tissue Assesment
+                      Hard Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingival Assesment
+                      Gingival Assessment
                       </Button>
                   </ButtonGroup>
                   <div className='softcard'> 
@@ -194,13 +194,13 @@ const Intra = () => {
                       Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                      Soft Tissue Assesment
+                      Soft Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                      Hard Tissue Assesment
+                      Hard Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingival Assesment
+                      Gingival Assessment
                       </Button>
                   </ButtonGroup>
                   <div className='softcard'> 
@@ -230,13 +230,13 @@ const Intra = () => {
                         Periodontal Screening
                         </Button>
                         <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                        Soft Tissue Assesment
+                        Soft Tissue Assessment
                         </Button>
                         <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                        Hard Tissue Assesment
+                        Hard Tissue Assessment
                         </Button>
                         <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                        Gingival Assesment
+                        Gingival Assessment
                         </Button>
                     </ButtonGroup>
                     <div className='softcard'> 
@@ -265,13 +265,13 @@ const Intra = () => {
                     Periodontal Screening
                     </Button>
                     <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                    Soft Tissue Assesment
+                    Soft Tissue Assessment
                     </Button>
                     <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                    Hard Tissue Assesment
+                    Hard Tissue Assessment
                     </Button>
                     <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                    Gingival Assesment
+                    Gingival Assessment
                     </Button>
                 </ButtonGroup>
           </Grid>
@@ -293,13 +293,13 @@ const Intra = () => {
                       Periodontal Screening
                       </Button>
                       <Button onClick={() => onClickHandler4()} className="btnGrp" id='soft'>
-                      Soft Tissue Assesment
+                      Soft Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
-                      Hard Tissue Assesment
+                      Hard Tissue Assessment
                       </Button>
                       <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
-                      Gingival Assesment
+                      Gingival Assessment
                       </Button>
                   </ButtonGroup>
                   <div className='softcard'> 

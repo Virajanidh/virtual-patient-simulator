@@ -194,6 +194,12 @@ class Resto extends React.Component {
                 <option value='Distal amalgam restoration' className="dd">Distal amalgam restoration </option>
                 <option value='Palatal GIC restoration' className="dd">Palatal GIC restoration</option>
                 <option value='Occlusal deep dentinal caries' className="dd">Distal composite restoration</option>
+                <option value='Mesial amalgam restoration' className="dd">Mesial amalgam restoration</option>
+                <option value='Mesial composite restoration' className="dd">Mesial composite restoration</option>
+                <option value='Mesial GIC restoration' className="dd">Mesial GIC restoration</option>
+                <option value='Distal GIC restoration' className="dd">Distal GIC restoration</option>
+                <option value='Mesial to distal composite restoration' className="dd">Mesial to distal composite restoration</option>
+                <option value='Mesial composite restoration' className="dd">Mesial composite restoration</option>
               </select>
               </FormControl>
             </div>

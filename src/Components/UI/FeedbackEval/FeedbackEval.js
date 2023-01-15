@@ -459,7 +459,7 @@ function FeedbackEval() {
                 <tbody>
                   <tr>
                     <th>Correct Selections</th>
-                    <th>Not much related to case</th>
+                    <th>Wrong Questions. Can you identify why they are wrong ??</th>
                   </tr>
                   <tr>
                     <td>

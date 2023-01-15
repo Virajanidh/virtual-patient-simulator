@@ -33,6 +33,8 @@ function Hard() {
   const { cariesSelected } = useSelector((state) => state.examination)
   const { plaqueValue } = useSelector((state) => state.examination)
   const { bleedingValue } = useSelector((state) => state.examination)
+  const [plaqueTool, setPlaqueTool]=useState('')
+  const [bleedingTool, setBleedingTool]=useState('')
 
 
   useEffect(() => {
@@ -76,54 +78,60 @@ function Hard() {
 
 
   const setSubmit = () => {
-    dispatch(ExaminationActions.setSubmithardTissueTools(true))
-    if (!isSubmitDiagnosis) {
-      document.getElementById("submitMsg").textContent = 'Submitted!!'
-      document.getElementById("0").disabled = true
-      document.getElementById("1").disabled = true
-      document.getElementById("2").disabled = true
-      document.getElementById("3").disabled = true
-      document.getElementById("4").disabled = true
-      document.getElementById("5").disabled = true
-      const answers = selectedCaseDetails.hardTissueTools
-      let count = 0
-      let trueCount = 0
-      let wrongCount = 0
-      //Object.keys(selectedCheckBox)
-      for (let i = 0; i < answers.length; i++) {
-        for (let key in selectedCheckBox) {
-          let compare = new String(key).valueOf() == new String(answers[i]).valueOf()
-          console.log('compare', key, answers[i], !compare, selectedCheckBox[key], !answers.includes(key))
-          if (compare && selectedCheckBox[key]) {
-            count++
+      if(plaqueValue !='' && bleedingValue!='' && submitedHardTissueTools!='' && plaqueTool!='' && bleedingTool!=''){
+        dispatch(ExaminationActions.setSubmithardTissueTools(true))
+        if (!isSubmitDiagnosis) {
+          document.getElementById("submitMsg").textContent = 'Submitted!!'
+          document.getElementById("0").disabled = true
+          document.getElementById("1").disabled = true
+          document.getElementById("2").disabled = true
+          document.getElementById("3").disabled = true
+          document.getElementById("4").disabled = true
+          document.getElementById("5").disabled = true
+          const answers = selectedCaseDetails.hardTissueTools
+          let count = 0
+          let trueCount = 0
+          let wrongCount = 0
+          //Object.keys(selectedCheckBox)
+          for (let i = 0; i < answers.length; i++) {
+            for (let key in selectedCheckBox) {
+              let compare = new String(key).valueOf() == new String(answers[i]).valueOf()
+              console.log('compare', key, answers[i], !compare, selectedCheckBox[key], !answers.includes(key))
+              if (compare && selectedCheckBox[key]) {
+                count++
+              }
+              else if (!compare && selectedCheckBox[key] && !answers.includes(key)) {
+                wrongCount++
+              }
+              // do something for each key in the object 
+            }
           }
-          else if (!compare && selectedCheckBox[key] && !answers.includes(key)) {
-            wrongCount++
-          }
-          // do something for each key in the object 
-        }
-      }
 
-      console.log(wrongCount)
-      wrongCount = wrongCount / 2
-      const weightExam = 1.5
-      let score = 100 * (weightExam / 10) * (1 / 3) * (count / answers.length)
-      score = score - 100 * (weightExam / 10) * (1 / 3) * (wrongCount / (6 - answers.length))
-      console.log(count, 'countw', wrongCount)
-      if (score >= 0) {
-        dispatch(ScoreActions.setHardTissueScore(score))
-        setToolsScore(score)
-        console.log(score)
-      }
-      dispatch(ExaminationActions.setHardTissueTools(selectedCheckBox))
+          console.log(wrongCount)
+          wrongCount = wrongCount / 2
+          const weightExam = 1.5
+          let score = 100 * (weightExam / 10) * (1 / 3) * (count / answers.length)
+          score = score - 100 * (weightExam / 10) * (1 / 3) * (wrongCount / (6 - answers.length))
+          console.log(count, 'countw', wrongCount)
+          if (score >= 0) {
+            dispatch(ScoreActions.setHardTissueScore(score))
+            setToolsScore(score)
+            console.log(score)
+          }
+          dispatch(ExaminationActions.setHardTissueTools(selectedCheckBox))
+        }
+        else if (submit_hard_tools) {
+          document.getElementById("submitMsg").textContent = 'Submitted!!'
+        }
     }
-    else if (submit_hard_tools) {
-      document.getElementById("submitMsg").textContent = 'Submitted!!'
+    else{
+      document.getElementById("submitMsg").textContent = 'Please fill all fields'
     }
   }
 
   const handleChange = (e) => {
     if(!isSubmitDiagnosis){
+      setPlaqueTool(e.target.value)
       if (e.target.value == selectedCaseDetails.Hard_Plaque_tool) {
         dispatch(ScoreActions.setPlaqueToolScore(2.5))
       }
@@ -134,7 +142,7 @@ function Hard() {
   }
 
   const handleChange2 = (e) => {
-  
+  setBleedingTool(e.target.value)
     if(!isSubmitDiagnosis){
       if (e.target.value == selectedCaseDetails.Hard_bleeding_tool) {
         dispatch(ScoreActions.setBleedingToolScore(2.5))
@@ -424,6 +432,30 @@ function Hard() {
 
 
       <div className='chart'>2. Dental Chart</div>
+      <div className='ptopic3'>Select the tooth number and the related type according to your observations and add them using 'add' button. 
+         To clear the list use "clear List" button</div>
+      <Grid container spacing={3}>
+      <Grid item xs={6}>
+      <div className='chart'>Caries status</div>
+      <div className='cariesQ'>Are there any Caries?</div>
+      <div className='caries'><CariesDD /></div>
+      <div className='cariesCard'>
+        <Card sx={{ maxWidth: 500 }}>
+        </Card></div></Grid>
+        <Grid item xs={6}>
+      <div className='chart'>Restorations</div>
+      <div className='cariesQ'>Are there any Restorations?</div>
+      <div className='caries'><Resto /></div>
+      <div className='cariesCard'>
+        <Card sx={{ maxWidth: 500 }}>
+          
+        </Card></div></Grid></Grid>
+        <div>
+          {selectedCaseDetails.caseId=='C001' ? 
+          <div className='cariesQ' > Tooth 17 assessment  : Discolouration and caries on
+          distal proximal surface </div> : null
+        }
+        </div>
           <div className='htopic1'>Plaque Chart</div>
           <div className='hsect1'><Card sx={{ maxWidth: 1000 }}>
               <CardActionArea>
@@ -449,50 +481,10 @@ function Hard() {
               </Card>
               </div>
               
-      <div className='ptopic3'>Select the tooth number and the related type according to your observations and add them using 'add' button. 
-         To clear the list use "clear List" button</div>
-      <Grid container spacing={3}>
-      <Grid item xs={6}>
-      <div className='chart'>3. Caries status</div>
-      <div className='cariesQ'>Are there any Caries?</div>
-      <div className='caries'><CariesDD /></div>
-      <div className='cariesCard'>
-        <Card sx={{ maxWidth: 500 }}>
-          {/* <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    paddingLeft="50px"
-                  />
-                  {cariesSelected}
-                </CardActionArea> */}
-        </Card></div></Grid>
-        <Grid item xs={6}>
-      <div className='chart'>4. Restorations</div>
-      <div className='cariesQ'>Are there any Restorations?</div>
-      <div className='caries'><Resto /></div>
-      <div className='cariesCard'>
-        <Card sx={{ maxWidth: 500 }}>
-          {/* <CardActionArea> */}
-          {/* <CardMedia
-                    component="img"
-                    height="200"
-                    paddingLeft="50px"
-                  />
-                  {/* <CardContent>
-                    <div className='case'>
-                          Case {selectedCaseDetails.name}
-                          </div>
-                          <div className='casedes'>
-                        {selectedCaseDetails.description}
-                    </div>
-                        
-                  </CardContent> */}
-          {/* </CardActionArea> */}
-        </Card></div></Grid></Grid>
-      <div className='chart'>5. Answer the Questions</div>
       
-          <div className='mainqs'> Select the correct tool to calculate plaque score &nbsp;
+      <div className='chart'>3. Answer the Questions</div>
+      
+          <div className='mainqs'> Select the correct tool to check plaque score &nbsp;
        
         
         <select className="dd1" label="Select Tool" onChange={handleChange} labelId="demo-simple-select-standard-label"
@@ -520,7 +512,7 @@ function Hard() {
           <TextField id="standard-basic" label="Your answer" variant="standard" onChange={getInputValue} value={plaqueValue} />
         </Box></div>
      
-      <div className='mainqs'> Select the correct tool to calculate bleeding score &nbsp;
+      <div className='mainqs'> Select the correct tool to check bleeding score &nbsp;
         <select className="dd1" label="Select Tool" onChange={handleChange2} labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard">
 

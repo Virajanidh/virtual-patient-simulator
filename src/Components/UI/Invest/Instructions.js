@@ -21,7 +21,7 @@ function Instructions() {
                       Extra-oral view - Description of the physical appearence of the patient
                       </li>
                       <li>
-                      Intra-oral view - Subsection for intra-oral view, Periodental chart, Plaque chart and soft tissue assesment
+                      Intra-oral view - Subsection for intra-oral view, Periodontal chart, Plaque chart and soft tissue assessment
                       </li>
                       <li>
                       In intra-oral view use your mouse pointer to see 3D view.

@@ -82,6 +82,13 @@
     font-size: 40px;
 }
 
+.submttd{
+  padding-left: 580px;
+  font-size: 20px;
+  font-weight: bold;
+  color: crimson;
+}
+
 .btnGrp{
     background-color: brown;
     fill: aqua;
