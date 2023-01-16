@@ -134,3 +134,18 @@
     background-color: rgb(221, 233, 53);
     border-color: rgb(221, 233, 53);
 }
+
+.radtopic{
+    padding-left: 540px;
+    font-size: 50px;
+    font-weight: bold;
+    color: darkblue;
+    padding-bottom: 0px;
+}
+
+.radmainqs{
+    padding-top: 30px;
+    font-size: 25px;
+    padding-left: 150px;
+    padding-bottom: 30px;
+}

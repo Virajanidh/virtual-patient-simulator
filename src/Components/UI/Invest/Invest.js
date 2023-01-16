@@ -3,10 +3,7 @@ import React, { useEffect,useState, Fragment } from 'react';
 import './Case.css'
 import { useNavigate, Link} from 'react-router-dom';
 import ButtonGroup from '@mui/material/ButtonGroup';
-
 import Button from '@mui/material/Button';
-
-
 import Intra from './Intra/Intra'
 import Extra from './Extra'
 import img3 from "../../../Images/examBck.jpg"
@@ -43,7 +40,7 @@ const Invest = () => {
       navigate('/page2');
     }
     else{
-      document.getElementById("nextMsg").textContent = 'Please fill all fields'
+      document.getElementById("nextMsg").textContent = 'You cannot move to Investigation until you finish all the fields in Examination!'
     }
       
   };
@@ -136,13 +133,15 @@ const Invest = () => {
               </div>
             <div>
                 <Grid container spacing={20}>
-                <Grid item xs={4}>
-                  <div className='backbtn'>
-                    <button className="back"  size="medium" onClick={handleClick1}>Back</button>
-                  </div>
-                  
+                  <Grid item xs={1}>
+                    <div className='backbtn'>
+                      <button className="back"  size="medium" onClick={handleClick1}>Back</button>
+                    </div>
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={8}>
+                  <div className='cssect1' id="nextMsg"></div>
+                  </Grid>
+                  <Grid item xs={1}>
                   <div className="exmbtn">
                     <button className="back" size="medium" onClick={handleClick2}>Next</button>
                     </div>

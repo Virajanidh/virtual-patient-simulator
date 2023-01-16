@@ -66,3 +66,12 @@ color: rgb(102, 52, 26);
 font:bold
 }
 
+.intitle1{
+  font-size: 25px;
+  padding-left: 300px;
+  padding-bottom: 0;
+  color: rgb(194, 122, 34);
+  padding-top: 20px;
+  padding-right: 30%;
+  font:bold;
+}

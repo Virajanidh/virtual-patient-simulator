@@ -224,10 +224,9 @@ const Exam = () => {
            null
         }
         {
-          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray ? <Instructions/> : null
+          !exam_inv.mark && !exam_inv.lab && !exam_inv.intra && !exam_inv.xray && !exam_inv.help ? <Instructions/> : null
         }
         
-
       </div>
       <img src={giphy} className="invGif" />
       <div className="image">
