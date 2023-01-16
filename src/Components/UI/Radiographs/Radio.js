@@ -1,12 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import React, { useEffect, useState, Fragment } from 'react';
 import './Case.css'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import Chip from '@mui/material/Chip';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -330,21 +324,11 @@ const Radio = () => {
           </Grid>
         </Grid>
       </div>
-      <div style={{
-        position: 'absolute',
-        left: '40%',
-        top: '20%',
-        fontSize: '50px',
-        fontWeight: 'bold',
-        color: 'darkblue'
-      }}>Radiographs
-
-      </div>
-
-      <div className='mainqs' style={sentencestyle}> Select the correct tests you need.View them. Wrong selections will carry negative marks. </div>
+      <div className='radtopic'>Radiographs</div>
+      <div className='radmainqs'> Select the correct tests you need. View them. Wrong selections will carry negative marks. </div>
       {isSubmitDiagnosis ?
     <div id='warningMsg' style={{fontSize:'15px'}}>
-    <div  class="alert alert-dismissible alert-danger">
+        <div  class="alert alert-dismissible alert-danger">
           <strong>Allready submitted the answers.</strong> Can not modify Answers.
         </div>
         </div> : null }

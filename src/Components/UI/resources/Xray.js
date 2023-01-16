@@ -1,12 +1,16 @@
 import './styles.css'
 import { Table } from 'react-bootstrap';
 import { Card } from '@mui/material';
+import { useSelector } from "react-redux";
+import NoRecord from '../NoRecord.js';
 
 function Xray() {
-
-  
+  const {selectedCaseDetails} = useSelector((state) => state.caseSelected)
+  const caseID='C002'
     return (
       <div>
+        {selectedCaseDetails.caseId == caseID ?
+        <div>
         <div className="HAtopic1">Fasting blood sugar levels (Taken last month)</div>
         <div className="HAsec1">
           <Card sx={{ maxWidth: 1000, maxHeight: 500}}>
@@ -56,7 +60,7 @@ function Xray() {
             </div>
             <div className="HAtopic1">FBS 162 mg/dl</div>
           </Card>
-        </div>
+        </div> </div> :  <NoRecord/> } 
       </div>
     );
   }

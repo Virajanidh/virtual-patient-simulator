@@ -63,7 +63,7 @@ function CaseSelect() {
     return (
           <div className ="app" style={{
               backgroundImage: `url(${img3})`,
-                height:'120vh',
+                height:'100vh',
                 marginTop:'0px',
               fontSize:'50px',
               backgroundSize: 'cover',
@@ -72,21 +72,13 @@ function CaseSelect() {
               <Navbar/>
               </div>
               
-              <div style={{position:'absolute',
-              left:'35%',
-              top:'20%',
-              fontSize:'50px',
-              fontWeight : 'bold',
-              color: '#FFF'
-              }}>Case Selection 
-
-              </div>
-              <div className='cases'>
+              <div className='cstopic1'>Case Selection</div>
+              <div className='CScases'>
               <Grid container spacing={1}>
                 {cases.map(function(object){
                     return (
                       <Grid Item xs={6}>
-                      <div className='cards'>
+                      <div className='CScards'>
                       <CaseCard caseSelectedInUI={object}/>
                       </div>
                       </Grid>

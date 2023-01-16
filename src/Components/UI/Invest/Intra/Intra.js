@@ -165,9 +165,9 @@ const Intra = () => {
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
                       Hard Tissue Assessment
                       </Button>
-                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      {/* <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
                       Gingival Assessment
-                      </Button>
+                      </Button> */}
                   </ButtonGroup>
                   <div className='softcard'> 
                       <Card>
@@ -199,9 +199,9 @@ const Intra = () => {
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
                       Hard Tissue Assessment
                       </Button>
-                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      {/* <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
                       Gingival Assessment
-                      </Button>
+                      </Button> */}
                   </ButtonGroup>
                   <div className='softcard'> 
                     <Card>
@@ -212,6 +212,26 @@ const Intra = () => {
                         Normal in color and texture
                       </div>
                     </Card>
+                    <div className='softcard'> 
+                    <Card>
+                      <div className='quest'>
+                        Gingival Assessment
+                      </div>
+                      <div className='quest'>
+                        Color
+                      </div>
+                      <div className='ans'>
+                        {selectedCaseDetails.gingival_color}
+                      </div>
+                      <div className='quest'>
+                        Inflammatory status
+                      </div>
+                      <div className='ans'>
+                      {selectedCaseDetails.gingival_Inflammatory}
+                      </div>
+
+                    </Card>
+                  </div>
                   </div>
             </Grid>
           </Grid>: 
@@ -235,9 +255,9 @@ const Intra = () => {
                         <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
                         Hard Tissue Assessment
                         </Button>
-                        <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                        {/* <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
                         Gingival Assessment
-                        </Button>
+                        </Button> */}
                     </ButtonGroup>
                     <div className='softcard'> 
                       <Card>
@@ -270,9 +290,9 @@ const Intra = () => {
                     <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
                     Hard Tissue Assessment
                     </Button>
-                    <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                    {/* <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
                     Gingival Assessment
-                    </Button>
+                    </Button> */}
                 </ButtonGroup>
           </Grid>
         </Grid>: 
@@ -280,7 +300,7 @@ const Intra = () => {
             
           }
           
-          {exam_inv.ging ?
+          {/* {exam_inv.ging ?
           <Grid container spacing={5}>
             <Grid item xs={8}>
             <ThreeD/></Grid>
@@ -322,7 +342,7 @@ const Intra = () => {
             </Grid>
           </Grid>: 
             null
-          }
+          } */}
           
           {
             !exam_inv.perio && !exam_inv.soft && !exam_inv.mark && !exam_inv.intraview && !exam_inv.ging ? <Grid container spacing={5}>
@@ -342,9 +362,9 @@ const Intra = () => {
                       <Button onClick={() => onClickHandler5()} className="btnGrp" id='plaq'>
                       Hard Tissue Assessment
                       </Button>
-                      <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
+                      {/* <Button onClick={() => onClickHandler6()} className="btnGrp" id='ging'>
                       Gingival Assessment
-                      </Button>
+                      </Button> */}
                   </ButtonGroup>
             </Grid>
           </Grid>: null

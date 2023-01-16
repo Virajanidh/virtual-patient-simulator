@@ -4,7 +4,7 @@ import React from 'react';
 function Instructions() {
     return (
       <div>
-      <div className="title2">
+      <div className="intitle1">
         Choose the resources you want from the given tabs and use for the patient Investigation
       </div>
       <div class ="instraction">
